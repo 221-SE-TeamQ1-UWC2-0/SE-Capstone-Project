@@ -1,0 +1,78 @@
+body{
+    background-image: url("/static/img/trash.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    text-align: center;
+    padding-top:60px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 80px;
+}
+.container{
+    display:flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+.login{
+    display:block;
+    align-items: center;
+    width:500px;
+    border-color: black;
+    background-color: azure;
+    padding:25px;
+    border-radius: 20px;
+    
+}
+.admin , .BO, .staff{
+    width:auto;
+    height:60px;
+    padding:0px;
+    background-color: #5689AC;
+    margin-top:10px;
+    border-radius: 15px;
+    font-weight: bold;
+    padding-top:15px;
+}
+
+/*------------------*/
+.register-form .form-group{
+    padding-top:20px;
+}
+.register-form .form-group input{
+    border-radius: 5px;
+    height:40px;
+    width:300px;
+    background-color:rgba(146, 186, 255, 0.4)
+}
+.register-form .tick{
+    padding-top:20px;
+}
+.register-form .form-button{
+    padding-top:15px;
+}
+.register-form .form-button input{
+    border-radius: 5px;
+    width:150px;
+    height:35px;
+}
+.form-button__register{
+    padding-top:15px;
+}
+
+
+
+/**/
+@media (max-width: 600px) {
+    .column {
+        width: 50%;
+    }
+    body{
+        background-image: url("/static/img/trash.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        
+    }
+}
