@@ -21,5 +21,5 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include('usr.urls')),
-    path("", include('backofficer.urls'))
+    path("", include('base.urls')),
 ] + static(settings.STATIC_URL)
