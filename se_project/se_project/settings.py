@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--#rx_uzt=q@=xtpfqw6yk%i#-uf(!acmf6@x%d7fcs=7fhi0dm
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL= 'usr.UWC_User'
 
 # Application definition
 
