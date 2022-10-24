@@ -19,7 +19,14 @@ def login(request):
         name = request.POST['username']
         password = request.POST['user_password']
         print(name, password)
-    return render(request, 'home-login.html')
+    return render(request, 'user/login.html')
 
 def register(request):
-    return render(request, 'register.html')
+    return render(request, 'user/register.html')
+
+
+def login_vi(request):
+    return render(request, 'user/login-vi.html')
+    
+def register_vi(request):
+    return render(request, 'user/register-vi.html')

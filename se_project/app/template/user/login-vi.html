@@ -15,6 +15,7 @@
 
   </head>
   <body>
+    <a href="/" style="float:right;padding:0px 30px;">Đổi sang tiếng Anh</a>
     <h1 class="title">UWC 2.0</h1>
     <div class="container">
         <div class="login">
@@ -28,27 +29,27 @@
                 <a>Staffs</a>
             </div>-->
             <div>
-                <h1><b>LOGIN</b></h1>
-                <h5>Enter your username and password</h5>
+                <h1><b>ĐĂNG NHẬP</b></h1>
+                <h5>Vui lòng nhập tên đăng nhập và mật khẩu</h5>
             </div>
             
             <form method="POST" action="" class="register-form" id="login-form">`
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                    <input type="text" name="username" id="your_name" placeholder="Username">
+                    <input type="text" name="username" id="your_name" placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-group">
                     <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                    <input type="password" name="user_password" id="your_pass" placeholder="Password">
+                    <input type="password" name="user_password" id="your_pass" placeholder="Mật khẩu">
                 </div>
                 <div class="tick">
                     <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
-                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember password ?</label>
+                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Nhớ mật khẩu</label>
                 </div>
                 <div class="form-button">
-                    <input type="submit" name="signin" id="signin" class="form-submit" value="LOGIN">
-                    <div class="form-button__register"><p style="margin:0;">Don't have an account ?</p><a href="/register" >REGISTER</a></div>
+                    <input type="submit" name="signin" id="signin" class="form-submit" value="ĐĂNG NHẬP">
+                    <div class="form-button__register"><p style="margin:0;">Chưa có tài khoản ?</p><a href="/register-vi" >ĐĂNG KÝ</a></div>
                 </div>
             </form>
         
