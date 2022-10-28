@@ -47,6 +47,16 @@ body{
     width:300px;
     background-color:rgba(146, 186, 255, 0.4)
 }
+
+.register-form .form-group p input{
+    width: 100%;
+}
+
+.register-form .form-group p select{
+    border-radius: 0.25rem;
+    background-color: rgba(146, 186, 255, 0.4);
+}
+
 .register-form .tick{
     padding-top:20px;
 }

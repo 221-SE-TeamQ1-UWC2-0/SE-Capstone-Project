@@ -1,30 +1,35 @@
 {%load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-
-    <link rel="stylesheet" href='{% static "css/home.css" %}'>
-
-
-    
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    />
 
+    <link rel="stylesheet" href='{% static "css/home.css" %}' />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <h1 class="title">UWC 2.0</h1>
     <div class="container">
-        <div class="login">
-            <div>
-                <h1><b>REGISTER</b></h1>
-            </div>
-            <div class="signup-form">
-                <form method="POST" class="register-form" id="register-form">
-                    <input type="hidden" name="csrfmiddlewaretoken" value="3ZE4veKt4M3iKzjk08eRBBqDtFn18jreClkSNumiVkqaguPa1s3SaNFsuz4IC8AR">
+      <div class="login">
+        <div>
+          <h1><b>REGISTER</b></h1>
+        </div>
+        <div class="signup-form">
+          <form method="POST" class="register-form" id="register-form">
+            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="3ZE4veKt4M3iKzjk08eRBBqDtFn18jreClkSNumiVkqaguPa1s3SaNFsuz4IC8AR">
                     <div class="form-group">
                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="name" id="name" placeholder="Fullname">
@@ -64,25 +69,57 @@
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
                         <label for="agree-term" class="label-agree-term"><span><span></span></span>I have read and agreed to the <a href="#" class="term-service" style="color: #c1292e">terms</a> &amp; 
                             <a href="#" class="privacy-policy" style="color: #c1292e">conditions.</a></label>
-                    </div>
-                    <div class="form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="REGISTER">
-                    </div>
-                </form>
+                    </div> -->
+            {% csrf_token %} 
+            
+            {% for error in form.non_field_errors %}
+              <p>{{error}}</p>
+            {% endfor %}
+              
+            {% for field in form %}
+            <div class="form-group" style="text-align: left">
+              
+              {% for error in field.errors %}
+                <p>{{error}}</p>
+              {% endfor %}
+                
+              <label for="">{{field.label_tag}}</label>
+              <p>{{field}}</p>
             </div>
-        
+            {% endfor %}
+
+            <div class="form-button">
+              <input
+                type="submit"
+                name="signup"
+                id="signup"
+                class="form-submit"
+                value="REGISTER"
+              />
+            </div>
+          </form>
+          <div class="login-route">
+            Have an account ?
+            <a href="{% url 'login' %}" style="text-decoration: none">Log In</a>
+          </div>
         </div>
+      </div>
     </div>
 
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"
+    ></script>
   </body>
-
-
-
-  
 </html>
