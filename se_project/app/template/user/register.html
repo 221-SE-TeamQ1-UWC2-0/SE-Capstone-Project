@@ -21,15 +21,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <a href="/register-vi" style="float:right;padding:0px 30px;">Đổi sang tiếng Việt</a>
     <h1 class="title">UWC 2.0</h1>
     <div class="container">
-      <div class="login">
-        <div>
-          <h1><b>REGISTER</b></h1>
-        </div>
-        <div class="signup-form">
-          <form method="POST" class="register-form" id="register-form">
-            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="3ZE4veKt4M3iKzjk08eRBBqDtFn18jreClkSNumiVkqaguPa1s3SaNFsuz4IC8AR">
+        <div class="login">
+            <div>
+                <h1><b>REGISTER</b></h1>
+            </div>
+            <div class="signup-form">
+                <form method="POST" class="register-form" id="register-form">
                     <div class="form-group">
                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="name" id="name" placeholder="Fullname">
@@ -62,12 +62,12 @@
                         </div>
                         <div class="tick" style="width:50%;">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>Staff (Collector/Janitor)</label>
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>Collector/Janitor</label>
                         </div>
                     </div>
-                    <div class="tick">
+                    <div class="tick" style="display:flex; justify-content: center;">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
-                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I have read and agreed to the <a href="#" class="term-service" style="color: #c1292e">terms</a> &amp; 
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>&nbsp; I agreed to the <a href="#" class="term-service" style="color: #c1292e">terms</a> &amp; 
                             <a href="#" class="privacy-policy" style="color: #c1292e">conditions.</a></label>
                     </div> -->
             {% csrf_token %} 
