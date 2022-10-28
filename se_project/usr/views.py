@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.exceptions import ValidationError 
-from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from . import forms, models
 
 # Create your views here.
@@ -12,7 +12,7 @@ from . import forms, models
 #     logout(request)
 #     return render("/login")
 
-def loginView(request):
+def loginView(request,pk):
     """ 
     GET [id, password]
         
@@ -40,17 +40,20 @@ def loginView(request):
             error = 'User does not exist'
 
         
+    context  = {
+        'error': error,
+        'lang': pk,
+        }
 
-    context  = {'error': error}
-    return render(request, 'home-login.html', context)
+    return render(request, 'user/login.html', context)
 
 def logoutView(request):
     if request.user.is_authenticated:
         logout(request)
 
-    return redirect('login')
+    return redirect(reverse('login', kwargs={'pk': 'en'}))
 
-def registerView(request):
+def registerView(request,pk):
     form = forms.RegisterForm()
 
     if request.method == 'POST':
@@ -74,6 +77,9 @@ def registerView(request):
             form = forms.RegisterForm(request.POST)
         
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'lang': pk,
+        }
 
-    return render(request, 'register.html', context)
+    return render(request, 'user/register.html', context)

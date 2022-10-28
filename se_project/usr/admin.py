@@ -10,16 +10,16 @@ class UWCUserAdmin(UserAdmin):
     form = forms.UserUpdateForm
 
     search_fields = ('staff_id', 'fullname', 'residential_id')
-    list_display = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'residential_id', 'role']
-    list_filter = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'residential_id', 'role']
+    list_display = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role', 'date_joined']
+    list_filter = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role', 'date_joined']
     fieldsets = (
-        (None, {'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'residential_id', 'role')}),
+        (None, {'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role')}),
         ('Permissions', {'fields': ('is_staff', 'is_superuser', 'is_active', 'user_permissions')})
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'residential_id', 'role', 'password1', 'password2')}
+            'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'residential_id', 'email', 'role', 'password1', 'password2')}
         ),
     )
 
