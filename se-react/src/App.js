@@ -1,6 +1,5 @@
 import './App.css';
-import MainContent from './component/main/main';
-import SideBar from './component/sidebar/sidebar';
+import Dashboard from './component/Dashboard/dashboard'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 
@@ -9,14 +8,11 @@ function App() {
 
   return (
     <div>
-      <SideBar />
-      <MainContent>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainContent />} />
+            <Route path="/" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
-      </MainContent>
     </div>
   );
 }
