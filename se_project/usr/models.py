@@ -55,6 +55,10 @@ class UWC_User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default = False)
     is_superuser = models.BooleanField(default=False)
     
+    #   Status: an integer in {-1, 0, 1}
+    # -1: inactive; 0: on-going; 1: available
+    status = models.IntegerField(default = 1)
+    
     USERNAME_FIELD = 'staff_id'
     REQUIRED_FIELDS = []
 

@@ -29,7 +29,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
-
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 AUTH_USER_MODEL= 'usr.UWC_User'
 
 # Application definition
