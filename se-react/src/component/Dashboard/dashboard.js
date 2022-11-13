@@ -1,5 +1,5 @@
 import "./dashboard.css";
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 
 import {
     MdCalendarToday,
@@ -22,6 +22,7 @@ import {
     FaUserCircle,
     FaPlus,
   } from "react-icons/fa";
+  /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
     return (
@@ -42,7 +43,20 @@ const Logo = () => {
         </div>
     );
 };
+/*Check list*/
 const checkList = ["Rooftop t4", "???", "Die", "Draft SE", "Life"];
+/*Table*/
+const collector = [
+    { id: "CO001", status: "Available", action: "Contact" },
+    { id: "CO002", status: "On-going task", action: "Contact" },
+    { id: "CO003", status: "Inactive", action: "Contact"},
+]
+const janitor = [
+    { id: "JA001", status: "Available", action: "Contact" },
+    { id: "JA002", status: "On-going task", action: "Contact" },
+    { id: "Ja003", status: "Inactive", action: "Contact"},
+]
+
 
 
 
@@ -59,10 +73,10 @@ function Dashboard(){
         }
         setChecked(updatedList);
     };
-    // Generate string of checked items
+    // Generate string of checked items 
     const checkedItems = checked.length
         ? checked.reduce((total, item) => {
-            return total + ", " + item;
+            return total + " , " + item;
         })
         : "";
     // Return classes based on whether item is checked
@@ -134,7 +148,7 @@ function Dashboard(){
                     </div>  
                 </div>
             </div>
-
+            
             <div className="content">
                 <div className="header">
                     <div style={{float:'left'}}>
@@ -148,7 +162,7 @@ function Dashboard(){
                             </button>                            
                             <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
                             <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <FaUserCircle style={{ margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
+                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
                         </div>
                     </div>
                 </div>
@@ -167,70 +181,38 @@ function Dashboard(){
                         <div className="lower">
                             <div className="collector">
                             <table>
-                                <thead>
-                                    <tr>
-                                        <th style={{width:'7em',borderBottom:'solid 1px #454545'}}>Collector ID</th>
-                                        <th style={{width:'7em',borderBottom:'solid 1px #454545'}}>Status</th>
-                                        <th style={{width:'7em',borderBottom:'solid 1px #454545'}}>Action</th>
+                                <tr>
+                                    <th style={{borderBottom:'solid 1px black'}}>Collector ID</th>
+                                    <th style={{borderBottom:'solid 1px black'}}>Status</th>
+                                    <th style={{borderBottom:'solid 1px black'}}>Action</th>
+                                </tr>
+                                {collector.map((val, key) => {
+                                return (
+                                    <tr key={key}>
+                                        <td>{val.id}</td>
+                                        <td>{val.status}</td>
+                                        <td>{val.action}</td>
                                     </tr>
-                                </thead>
-                                
-                                <tbody>                                    
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>CO001</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>CO002</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>CO003</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>CO004</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                </tbody>
+                                )
+                                })}
                             </table>
                             </div>
                             <div className="janitor">
                             <table>
-                                <thead>
-                                    <tr>
-                                    <th style={{width:'7em',borderBottom:'solid 1px black'}}>Janitor ID</th>
-                                        <th style={{width:'7em',borderBottom:'solid 1px black'}}>Status</th>
-                                        <th style={{width:'7em',borderBottom:'solid 1px black'}}>Action</th>
+                                <tr>
+                                    <th style={{borderBottom:'solid 1px black'}}>Janitor ID</th>
+                                    <th style={{borderBottom:'solid 1px black'}}>Status</th>
+                                    <th style={{borderBottom:'solid 1px black'}}>Action</th>
+                                </tr>
+                                {janitor.map((val, key) => {
+                                return (
+                                    <tr key={key}>
+                                        <td>{val.id}</td>
+                                        <td>{val.status}</td>
+                                        <td>{val.action}</td>
                                     </tr>
-                                </thead>
-                                    
-                                <tbody>                                    
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>JA001</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>JA002</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>JA003</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                    <tr>
-                                        <th style={{width:'7em', fontWeight:'450'}}>JA004</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Available</th>
-                                        <th style={{width:'7em', fontWeight:'450'}}>Contact</th>
-                                    </tr>
-                                </tbody>
+                                )
+                                })}
                             </table>
                             </div>
                         </div>
@@ -246,6 +228,10 @@ function Dashboard(){
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                        <div className="checkedlist">
+                            <p>Items checked are: </p>
+                            <p>{`${checkedItems}`}</p>
                         </div>
                     </div>
                 </div>

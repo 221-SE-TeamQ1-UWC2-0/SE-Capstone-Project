@@ -121,6 +121,17 @@
     border: none;
     color:white;
 }
+.addtaskbtn:hover{
+    height:3em;
+    width:10em;
+    font-size: 13px;
+    margin-right:3em;
+    padding-top:.8em;
+    background-color: #454545;
+    border: none;
+    color:white;
+    cursor:pointer;
+}
 /*main*/
 .main{
     display: flex;
@@ -189,6 +200,10 @@ table{
 thead{
     padding-bottom:3em;
 }
+th,td{
+   padding:0em 1.5em;
+   
+}
 
 /*janitor*/
 .janitor{
@@ -200,6 +215,13 @@ thead{
 /*tasklist*/
 .tasklist{
     padding:0em 1em;
+    width:15%;
+}
+.checkedlist{
+    margin-top:3em;
+}
+.checkedlist p{
+    display: block;
 }
 .list-container {
     display: flex;
