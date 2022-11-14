@@ -1,5 +1,7 @@
 import "./dashboard.css";
 import React, { useState, Component } from "react";
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+
 
 import {
     MdCalendarToday,
@@ -46,17 +48,74 @@ const Logo = () => {
 /*Check list*/
 const checkList = ["Rooftop t4", "???", "Die", "Draft SE", "Life"];
 /*Table*/
-const collector = [
-    { id: "CO001", status: "Available", action: "Contact" },
-    { id: "CO002", status: "On-going task", action: "Contact" },
-    { id: "CO003", status: "Inactive", action: "Contact"},
-]
-const janitor = [
-    { id: "JA001", status: "Available", action: "Contact" },
-    { id: "JA002", status: "On-going task", action: "Contact" },
-    { id: "Ja003", status: "Inactive", action: "Contact"},
-]
 
+
+const collector = {
+    columns: [
+      {
+        label: 'ID',
+        field: 'id',
+        sort: 'asc'
+      },
+      {
+        label: 'Status',
+        field: 'first',
+        sort: 'asc'
+      },
+      {
+        label: 'Action',
+        field: 'last',
+        sort: 'asc'
+      },
+    ],
+    rows: [
+        { id: "CO001", status: "Available", action: "Contact" },
+        { id: "CO002", status: "On-going", action: "Contact" },
+        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO001", status: "Available", action: "Contact" },
+        { id: "CO002", status: "On-going", action: "Contact" },
+        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO001", status: "Available", action: "Contact" },
+        { id: "CO002", status: "On-going", action: "Contact" },
+        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO001", status: "Available", action: "Contact" },
+        { id: "CO002", status: "On-going", action: "Contact" },
+        { id: "CO003", status: "Inactive", action: "Contact"},
+    ]
+  };
+const janitor = {
+    columns: [
+      {
+        label: 'ID',
+        field: 'id',
+        sort: 'asc'
+      },
+      {
+        label: 'Status',
+        field: 'first',
+        sort: 'asc'
+      },
+      {
+        label: 'Action',
+        field: 'last',
+        sort: 'asc'
+      },
+    ],
+    rows: [
+        { id: "JA001", status: "Available", action: "Contact" },
+        { id: "JA002", status: "On-going", action: "Contact" },
+        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "JA001", status: "Available", action: "Contact" },
+        { id: "JA002", status: "On-going", action: "Contact" },
+        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "JA001", status: "Available", action: "Contact" },
+        { id: "JA002", status: "On-going", action: "Contact" },
+        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "JA001", status: "Available", action: "Contact" },
+        { id: "JA002", status: "On-going", action: "Contact" },
+        { id: "Ja003", status: "Inactive", action: "Contact"},
+    ],
+  };
 
 
 
@@ -178,42 +237,18 @@ function Dashboard(){
                                 <div className="calendaring"></div>
                             </div>
                         </div>
-                        <div className="lower">
+                        <div className="lower">                            
                             <div className="collector">
-                            <table>
-                                <tr>
-                                    <th style={{borderBottom:'solid 1px black'}}>Collector ID</th>
-                                    <th style={{borderBottom:'solid 1px black'}}>Status</th>
-                                    <th style={{borderBottom:'solid 1px black'}}>Action</th>
-                                </tr>
-                                {collector.map((val, key) => {
-                                return (
-                                    <tr key={key}>
-                                        <td>{val.id}</td>
-                                        <td>{val.status}</td>
-                                        <td>{val.action}</td>
-                                    </tr>
-                                )
-                                })}
-                            </table>
+                            <MDBTable scrollY style={{height:'1000px'}}>
+                            <MDBTableHead columns={collector.columns} />
+                            <MDBTableBody rows={collector.rows} />
+                            </MDBTable>
                             </div>
                             <div className="janitor">
-                            <table>
-                                <tr>
-                                    <th style={{borderBottom:'solid 1px black'}}>Janitor ID</th>
-                                    <th style={{borderBottom:'solid 1px black'}}>Status</th>
-                                    <th style={{borderBottom:'solid 1px black'}}>Action</th>
-                                </tr>
-                                {janitor.map((val, key) => {
-                                return (
-                                    <tr key={key}>
-                                        <td>{val.id}</td>
-                                        <td>{val.status}</td>
-                                        <td>{val.action}</td>
-                                    </tr>
-                                )
-                                })}
-                            </table>
+                            <MDBTable scrollY style={{height:'1000px'}}>
+                            <MDBTableHead columns={janitor.columns} />
+                            <MDBTableBody rows={janitor.rows} />
+                            </MDBTable>
                             </div>
                         </div>
                     </div>

@@ -191,7 +191,19 @@
     width: 50%;
     height: 100%;
     justify-content: center;
-    display: flex;
+    margin-left:5em;
+}
+/*janitor*/
+.janitor{
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    margin-left:5em;
+}
+.table-wrapper-scroll-y{
+    max-height:1000px !important;
+    height:23em;
+    width:23em;
 }
 table{
     margin-top:1em;
@@ -200,18 +212,12 @@ table{
 thead{
     padding-bottom:3em;
 }
+
 th,td{
    padding:0em 1.5em;
-   
 }
 
-/*janitor*/
-.janitor{
-    width: 50%;
-    height: 100%;
-    justify-content: center;
-    display: flex;
-}
+
 /*tasklist*/
 .tasklist{
     padding:0em 1em;
