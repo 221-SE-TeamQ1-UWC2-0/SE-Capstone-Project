@@ -192,12 +192,12 @@ function Dashboard(){
                         <div className="taskovr">
                             <RiLoader2Fill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Ongoing tasks</p>
-                            <h1>69</h1>
+                            <h1 style={{marginLeft:'-3.3em'}}>69</h1>
                         </div>
                         <div className="taskovr">
                             <RiTimeLine style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Overdued tasks</p>
-                            <h1>420</h1>
+                            <h1 style={{marginLeft:'-3.8em'}}>420</h1>
                         </div>
                         <div className="taskovr">
                             <RiCheckboxCircleFill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
