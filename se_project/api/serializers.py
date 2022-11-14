@@ -19,7 +19,7 @@ class UserSerializer(ModelSerializer):
         fields = ['staff_id','fullname', 'date_of_birth', 'residential_id', 'phone_number', 'email', 'role', 'password']
         extra_kwargs = {
             'password': {
-                # 'write_only': True,
+                'write_only': True,
                 'style': {
                     'input_type': 'password',
                 },
@@ -29,19 +29,14 @@ class UserSerializer(ModelSerializer):
             },
         }
     
-    # def create(self, validated_data):
-    #     user = UWC_User.objects.create(
-    #         fullname = validated_data['fullname'],
-    #         date_of_birth = validated_data['date_of_birth'],
-    #         residential_id = validated_data['residential_id'],
-    #         phone_number = validated_data['phone_number'],
-    #         email = validated_data['email'],
-    #         role = validated_data['role'],
-    #     )
-    #     user.set_password(validated_data['password'])
-    #     user.staff_id = user.get_role_display() + user.staff_id
-    #     user.save()
-    #     return user
+    def create(self, validated_data):
+        user = super().create(validated_data)
+        user.set_password(validated_data['password'])
+
+        user.save()
+        return user
+
+    
 
     
         

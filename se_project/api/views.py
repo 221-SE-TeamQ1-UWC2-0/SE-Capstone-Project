@@ -18,13 +18,12 @@ class UserViewSet(ModelViewSet):
     queryset = UWC_User.objects.all()
     serializer_class = UserSerializer
 
-    
-    # def create(self, request, *args, **kwargs):
-    #     return super().create(request, *args, **kwargs)
-
     def retrieve(self, request, pk):
-        user = get_object_or_404(UWC_User.objects.all(), staff_id=pk)
-        serializer = UserSerializer(user)
+        try:
+            user = get_object_or_404(UWC_User.objects.all(), staff_id=pk)
+            serializer = UserSerializer(user)
+        except Http404:
+            return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
 
     def destroy(self, request, pk):

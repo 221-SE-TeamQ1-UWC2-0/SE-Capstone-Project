@@ -49,7 +49,7 @@ class UWC_User(AbstractBaseUser, PermissionsMixin):
     gender = models.IntegerField(default=-1)  # 0: Male, 1: Female, -1: others
     phone_number = models.CharField(max_length=20,  default='', unique=True)
     email = models.EmailField(max_length=254, default='', unique=True)
-    residential_id = models.CharField(max_length=100, default='', unique=True)
+    residential_id = models.CharField(max_length=100,default='', unique=True)
 
     # Staff ID = Username
     staff_id = models.CharField(max_length=100, unique=True, primary_key=True)
@@ -71,6 +71,10 @@ class UWC_User(AbstractBaseUser, PermissionsMixin):
         return "{} joined on {}".format(self.staff_id, self.date_joined)
 
     def save(self,*args, **kwargs):
-        if (kwargs['staff_id'] == ''):
-            kwargs['staff_id'] = str(UWC_User.objects.all().count()).rjust(4, '0')
+        if (self.staff_id == ''):    
+            self.staff_id = self.get_role_display().lower() + str(UWC_User.objects.all().count()).rjust(4, '0')
+
+        if (self.role == 'ADMIN'):
+            self.is_staff = True
+            self.is_superuser = True
         return super(UWC_User,self).save(*args, **kwargs)
