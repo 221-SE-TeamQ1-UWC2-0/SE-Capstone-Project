@@ -4,15 +4,17 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils import timezone
 # Create your models here.
 
+
 class UWC_Manager(BaseUserManager):
     """
         Not including the verification of valid user and password based on some constraints
         The verification process was done before setting user.
     """
+
     def create_user(self, staff_id, password, **extra_fields):
         if not staff_id:
             raise ValueError(_('Staff ID must not be empty.'))
-        user = self.model(staff_id= staff_id, **extra_fields)
+        user = self.model(staff_id=staff_id, **extra_fields)
         user.set_password(password)
         user.save()
         print("Create successfully!")
@@ -24,13 +26,14 @@ class UWC_Manager(BaseUserManager):
 
         : parameters: is_staff, is_superuser is True (by default) 
     """
-    def create_superuser(self, staff_id, password, **extra_fields): 
-        
-        extra_fields.setdefault('is_superuser',True)
-        extra_fields.setdefault('is_staff',True)
+
+    def create_superuser(self, staff_id, password, **extra_fields):
+
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_active', True)
         return self.create_user(staff_id, password, **extra_fields)
-    
+
 
 class UWC_User(AbstractBaseUser, PermissionsMixin):
 
@@ -39,26 +42,39 @@ class UWC_User(AbstractBaseUser, PermissionsMixin):
         BO = 'BACKOFFICER'
         JA = 'JANITOR'
         CO = 'COLLECTOR'
-    
-    role = models.CharField(max_length=50, choices = Role.choices)
+
+    role = models.CharField(max_length=50, choices=Role.choices)
     fullname = models.CharField(max_length=100, default='')
-    date_of_birth = models.DateTimeField(default = timezone.now)
-    gender = models.IntegerField(default = -1)  # 0: Male, 1: Female, -1: others
-    phone_number = models.CharField(max_length=20,  default = '', unique= True)
+    date_of_birth = models.DateField(default=timezone.now)
+    gender = models.IntegerField(default=-1)  # 0: Male, 1: Female, -1: others
+    phone_number = models.CharField(max_length=20,  default='', unique=True)
     email = models.EmailField(max_length=254, default='', unique=True)
-    residential_id = models.CharField(max_length=100, default = '', unique= True)
-    
+    residential_id = models.CharField(max_length=100,default='', unique=True)
+
     # Staff ID = Username
-    staff_id = models.CharField(max_length=100, unique=True, primary_key = True) 
-    date_joined = models.DateTimeField(default = timezone.now)
-    is_active = models.BooleanField(default = True)
-    is_staff = models.BooleanField(default = False)
+    staff_id = models.CharField(max_length=100, unique=True, primary_key=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     
+    #   Status: an integer in {-1, 0, 1}
+    # -1: inactive; 0: on-going; 1: available
+    status = models.IntegerField(default = 1)
+    
     USERNAME_FIELD = 'staff_id'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['role']
 
     objects = UWC_Manager()
-    
+
     def __str__(self):
         return "{} joined on {}".format(self.staff_id, self.date_joined)
+
+    def save(self,*args, **kwargs):
+        if (self.staff_id == ''):    
+            self.staff_id = self.get_role_display().lower() + str(UWC_User.objects.all().count()).rjust(4, '0')
+
+        if (self.role == 'ADMIN'):
+            self.is_staff = True
+            self.is_superuser = True
+        return super(UWC_User,self).save(*args, **kwargs)

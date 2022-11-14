@@ -29,7 +29,7 @@ pip install -r requirements.txt
 You need to go to the folder containing the **manage.py** file then running the following commands
 
 ```
-python manage.py makemigrations usr base backofficer
+python manage.py makemigrations usr base backofficer api
 ```
 
 ```
