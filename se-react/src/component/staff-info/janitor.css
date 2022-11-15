@@ -1,0 +1,113 @@
+.container{
+    position: absolute;
+    display: flex;
+    width:100%;
+    height:100%;
+}
+/*Sidebar*/
+.sidebar{
+    background-color: white;
+    width:20%;
+    height:100%;
+    border-right: solid 1px #868585;
+}
+/*Upper sidebar*/
+.sidebar .opt{
+    height:48%;
+    border-bottom: solid 1px #868585;
+}
+.logo {
+    width: 5em;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img{
+    width: 2.5em;
+    height: auto;
+}
+.Logoname{
+    margin-top:-5px;
+}
+.Logoname h4{
+    margin-bottom:-10px;
+    font-weight: 500;
+}
+.Logoname p{
+    font-size:13px;
+    color: #868585;
+}
+.sidebar_link {
+    text-decoration: none;
+    color: white;
+    width: fit-content;
+}
+.sidebar_item {
+    display: flex;
+    align-items: center;
+    padding-left: 1.4em;
+    cursor: pointer;
+    height:3em;
+    border-radius: 5px;
+}
+.sidebar_item:hover{
+    background-color: rgb(195, 195, 195);
+}
+.sidebar_item h3{
+    color:#454545;
+    font-weight: 500;
+    font-size: .9em;
+}
+/*Icon*/
+.sidebar_img{
+    color:#454545;
+    width: 1.5em;
+    height: auto;
+    margin-right:.5em;
+}
+
+
+/*Lower Sidebar*/
+.overview h4{
+    color:#454545;
+}
+.taskovr{
+    height:5em;
+    width:15em;
+    border: solid 1px #acacac;
+    display: flex;
+}
+.taskovr p{
+    margin-top:.6em;
+}
+.taskovr h1{
+    margin-top:1em;
+    margin-left:-4em;
+    font-weight: 450;
+}
+
+
+/*Content*/
+.content{
+    width:80%;
+    height: 100%;
+}
+/*header*/
+.header{
+    width:100%;
+    height:10%;
+    background-color: white;
+    border-bottom: solid 1px #454545;
+}
+.header p{
+    font-size:20px;
+    font-weight: 700;
+    margin-left: 1.5em;
+}
+.header .headerstuff{
+    width:auto;
+    padding:1em 1em;
+    display: flex;
+}
