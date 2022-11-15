@@ -10,6 +10,7 @@
     width:20%;
     height:100%;
     border-right: solid 1px #868585;
+    margin-left:0em;
 }
 /*Upper sidebar*/
 .sidebar .opt{
@@ -32,8 +33,9 @@
     margin-top:-5px;
 }
 .Logoname h4{
-    margin-bottom:-10px;
+    margin-bottom:-2px;
     font-weight: 500;
+    margin-top:.5em;
 }
 .Logoname p{
     font-size:13px;
@@ -72,17 +74,20 @@
 /*Lower Sidebar*/
 .overview h4{
     color:#454545;
+    margin-left:0em;
 }
 .taskovr{
     height:5em;
     width:15em;
     border: solid 1px #acacac;
     display: flex;
+    margin-left: -1em;
 }
 .taskovr p{
     margin-top:.6em;
 }
 .taskovr h1{
+    font-size: 35px;
     margin-top:1em;
     margin-left:-4em;
     font-weight: 450;
@@ -91,12 +96,12 @@
 
 /*Content*/
 .content{
-    width:80%;
+    width:100%;
     height: 100%;
 }
 /*header*/
 .header{
-    width:100%;
+    width:122%;
     height:10%;
     background-color: white;
     border-bottom: solid 1px #454545;
@@ -105,9 +110,35 @@
     font-size:20px;
     font-weight: 700;
     margin-left: 1.5em;
+    margin-top: 1em;
 }
 .header .headerstuff{
     width:auto;
     padding:1em 1em;
     display: flex;
+}
+
+
+/*main*/
+.table{
+    margin-left:5em;
+    margin-top:3em;
+}
+
+.sr-only{
+    display: none;
+}
+.row{
+    margin-left:5em !important;
+}
+table th{
+    text-align: center;
+}
+.page-link{
+    color:#6c757d !important;
+}
+.active>.page-link, .page-link.active {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color:white !important;
 }
