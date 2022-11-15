@@ -14,6 +14,8 @@ if(false)
     <div>
         <BrowserRouter>
           <Routes>
+            <Route path="/register" element={<RegisterView />} />
+            <Route path="/login" element={<LoginView />} />
             <Route path="/" element={<Dashboard />} />
             <Route path="/janitor-info" element={<Janitor />} />
           </Routes>
