@@ -252,3 +252,19 @@
 }
 
 
+
+
+/*======================================================================================================================*/
+/*Responsive for portrait phone*/
+@media only screen and (max-width: 46.1875em) {
+  .holder{
+    position: fixed;
+    height:50em;
+    width:60em;
+    background-color: aliceblue;
+    margin-top:0em;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+}
