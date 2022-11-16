@@ -22,6 +22,8 @@ function LoginView(){
                             <input type="password" name="" required=""/>
                             <label>Password</label>
                             </div>
+                            <p style={{marginTop:'0em',color:'white'}}>Don't have an account ? <a href="/register" style={{color:'#03e9f4', cursor:'pointer'}}>Sign up</a></p>
+
                             <a href="#" className="btn">
                             <span></span>
                             <span></span>
