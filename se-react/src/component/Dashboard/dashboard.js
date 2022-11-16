@@ -28,9 +28,9 @@ import {
 
 const SideBarItem = ({ Item, page, href }) => {
     return (
-      <a className="sidebar_link" href={href}>
-        <div className="sidebar_item">
-          {<Item className="sidebar_img" />}
+      <a className="db-sidebar_link" href={href}>
+        <div className="db-sidebar_item">
+          {<Item className="db-sidebar_img" />}
           <h3>
             {page}
           </h3>
@@ -40,7 +40,7 @@ const SideBarItem = ({ Item, page, href }) => {
   };
 const Logo = () => {
     return (
-        <div className="logo">
+        <div className="db-logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HCMUT_official_logo.png" />
         </div>
     );
@@ -147,12 +147,12 @@ function Dashboard(){
 
     /*Return function*/    
     return (
-        <div className="container">
-            <div className="sidebar">
-                <div className="opt">
+        <div className="db-container">
+            <div className="db-sidebar">
+                <div className="db-opt">
                     <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
                         <Logo />
-                        <div className="Logoname">
+                        <div className="db-Logoname">
                             <h4>UWC 2.0</h4>
                             <p>BO interface</p>
                         </div>
@@ -183,23 +183,23 @@ function Dashboard(){
                         href="/"
                     />
                 </div>
-                <div className="overview">
+                <div className="db-overview">
                     <div style={{ display:'flex', margin:'0em 1.5em'}}>
                         <h4 style={{ marginRight:'9em'}}>Overview</h4>
                         <MdAddCircleOutline style={{ marginTop:'.9em', fontSize:'25px', color:'#454545'}}/>
                     </div>
                     <div style={{ marginLeft:'1.3em'}}>
-                        <div className="taskovr">
+                        <div className="db-taskovr">
                             <RiLoader2Fill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Ongoing tasks</p>
                             <h1 style={{marginLeft:'-3.3em'}}>69</h1>
                         </div>
-                        <div className="taskovr">
+                        <div className="db-taskovr">
                             <RiTimeLine style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Overdued tasks</p>
                             <h1 style={{marginLeft:'-3.8em'}}>420</h1>
                         </div>
-                        <div className="taskovr">
+                        <div className="db-taskovr">
                             <RiCheckboxCircleFill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Completed tasks</p>
                             <h1>111</h1>
@@ -208,14 +208,14 @@ function Dashboard(){
                 </div>
             </div>
             
-            <div className="content">
-                <div className="header">
+            <div className="db-content">
+                <div className="db-header">
                     <div style={{float:'left'}}>
                         <p>DASHBOARD</p>
                     </div>
                     <div style={{float:'right'}}>
-                        <div className="headerstuff">
-                            <button className="addtaskbtn">
+                        <div className="db-headerstuff">
+                            <button className="db-addtaskbtn">
                                 <FaPlus style={{fontSize:'15px', color:'white', float:'left'}}/>
                                 <p style={{fontSize:'15px', color:'white', float:'left', marginTop:'0em'}}>Add task</p>
                             </button>                            
@@ -225,26 +225,26 @@ function Dashboard(){
                         </div>
                     </div>
                 </div>
-                <div className="main">
-                    <div className="board">
-                        <div className="upper">
-                            <div className="map">
+                <div className="db-main">
+                    <div className="db-board">
+                        <div className="db-upper">
+                            <div className="db-map">
                                 <h2>Map</h2>
-                                <div className="mapping"></div>
+                                <div className="db-mapping"></div>
                             </div>
-                            <div className="calendar">
+                            <div className="db-calendar">
                                 <h2>Calendar</h2>
-                                <div className="calendaring"></div>
+                                <div className="db-calendaring"></div>
                             </div>
                         </div>
-                        <div className="lower">                            
-                            <div className="collector">
+                        <div className="db-lower">                            
+                            <div className="db-collector">
                             <MDBTable scrollY style={{height:'1000px'}}>
                             <MDBTableHead columns={collector.columns} />
                             <MDBTableBody rows={collector.rows} />
                             </MDBTable>
                             </div>
-                            <div className="janitor">
+                            <div className="db-janitor">
                             <MDBTable scrollY style={{height:'1000px'}}>
                             <MDBTableHead columns={janitor.columns} />
                             <MDBTableBody rows={janitor.rows} />
@@ -252,10 +252,10 @@ function Dashboard(){
                             </div>
                         </div>
                     </div>
-                    <div className="tasklist">
+                    <div className="db-tasklist">
                         <h2>Task list</h2>
-                        <div className="checkList">
-                            <div className="list-container">
+                        <div className="db-checkList">
+                            <div className="db-list-container">
                                 {checkList.map((item, index) => (
                                     <div key={index}>
                                     <input value={item} type="checkbox" onChange={handleCheck} />
@@ -264,7 +264,7 @@ function Dashboard(){
                                 ))}
                             </div>
                         </div>
-                        <div className="checkedlist">
+                        <div className="db-checkedlist">
                             <p>Items checked are: </p>
                             <p>{`${checkedItems}`}</p>
                         </div>

@@ -12,6 +12,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          <Route path='/' element={<Dashboard />} />
           <Route path='/register' element={<RegisterView />} />
           <Route path='/login' element={<LoginView />} />
           <Route element={<PrivateRoute />}>

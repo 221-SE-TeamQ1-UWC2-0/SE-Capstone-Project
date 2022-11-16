@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 
 function PrivateRoute() {
   let isAuthenticated = false
-  return isAuthenticated ? <Outlet /> : <Navigate to='/login' />;
+  return isAuthenticated ? <Outlet /> : <Navigate to='/' />;
 }
 
 export default PrivateRoute;
