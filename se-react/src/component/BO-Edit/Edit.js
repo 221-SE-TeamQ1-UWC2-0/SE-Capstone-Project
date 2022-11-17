@@ -1,6 +1,5 @@
-import "./info.css";
+import "./Edit.css";
 import React, { useState, Component, useEffect } from "react";
-import JAList from "./JAList";
 
 
 import {
@@ -28,9 +27,9 @@ import {
 
 const SideBarItem = ({ Item, page, href }) => {
     return (
-      <a className="in4-sidebar_link" href={href}>
-        <div className="in4-sidebar_item">
-          {<Item className="in4-sidebar_img" />}
+      <a className="edit-sidebar_link" href={href}>
+        <div className="edit-sidebar_item">
+          {<Item className="edit-sidebar_img" />}
           <h3>
             {page}
           </h3>
@@ -40,23 +39,23 @@ const SideBarItem = ({ Item, page, href }) => {
   };
 const Logo = () => {
     return (
-        <div className="in4-logo">
+        <div className="edit-logo">
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HCMUT_official_logo.png" />
         </div>
     );
 };
 
 
-function Janitor(){
+function Edit(){
     
     /*Return function*/    
     return (
-        <div className="in4-container">
-            <div className="in4-sidebar">
-                <div className="in4-opt">
+        <div className="edit-container">
+            <div className="edit-sidebar">
+                <div className="edit-opt">
                     <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
                         <Logo />
-                        <div className="in4-Logoname">
+                        <div className="edit-Logoname">
                             <h4>UWC 2.0</h4>
                             <p>BO interface</p>
                         </div>
@@ -87,23 +86,23 @@ function Janitor(){
                         href="/"
                     />
                 </div>
-                <div className="in4-overview">
+                <div className="edit-overview">
                     <div style={{ display:'flex', margin:'0em 1.5em'}}>
                         <h4 style={{ marginRight:'9em'}}>Overview</h4>
                         <MdAddCircleOutline style={{ marginTop:'.9em', fontSize:'25px', color:'#454545'}}/>
                     </div>
                     <div style={{ marginLeft:'1.3em'}}>
-                        <div className="in4-taskovr">
+                        <div className="edit-taskovr">
                             <RiLoader2Fill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Ongoing tasks</p>
                             <h1 style={{marginLeft:'-3.3em'}}>69</h1>
                         </div>
-                        <div className="in4-taskovr">
+                        <div className="edit-taskovr">
                             <RiTimeLine style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Overdued tasks</p>
                             <h1 style={{marginLeft:'-3.8em'}}>420</h1>
                         </div>
-                        <div className="in4-taskovr">
+                        <div className="edit-taskovr">
                             <RiCheckboxCircleFill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
                             <p>Completed tasks</p>
                             <h1>111</h1>
@@ -112,29 +111,10 @@ function Janitor(){
                 </div>
             </div>
             
-            <div className="in4-content">
-                <div className="in4-header">
-                    <div style={{float:'left'}}>
-                        <p>JANITOR INFORMATION</p>
-                    </div>
-                    <div style={{float:'right'}}>
-                        <div className="in4-headerstuff">
-                            <button className="in4-addtaskbtn">
-                                <FaPlus style={{fontSize:'15px', color:'white', float:'left'}}/>
-                                <p style={{fontSize:'15px', color:'white', float:'left', marginTop:'0em'}}>Add task</p>
-                            </button>                            
-                            <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
-                        </div>
-                    </div>
-                </div>
-                <div className="in4-main">
-                    <JAList/>
-                </div>
-
+            <div className="edit-content">
+                
             </div>
         </div>
     );
 }
-export default Janitor;
+export default Edit;

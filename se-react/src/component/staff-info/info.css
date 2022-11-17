@@ -1,22 +1,22 @@
-.jain4-container{
+.in4-container{
     position: absolute;
     display: flex;
     width:100%;
     height:100%;
 }
 /*Sidebar*/
-.jain4-sidebar{
+.in4-sidebar{
     background-color: white;
     width:20%;
     height:100%;
     border-right: solid 1px #868585;
 }
 /*Upper sidebar*/
-.jain4-sidebar .opt{
+.in4-sidebar .opt{
     height:48%;
     border-bottom: solid 1px #868585;
 }
-.jain4-logo {
+.in4-logo {
     width: 5em;
     background-color: white;
     display: flex;
@@ -24,27 +24,27 @@
     justify-content: center;
 }
 
-.jain4-logo img{
+.in4-logo img{
     width: 2.5em;
     height: auto;
 }
-.jain4-Logoname{
+.in4-Logoname{
     margin-top:10px;
 }
-.jain4-Logoname h4{
+.in4-Logoname h4{
     margin-bottom:-5px;
     font-weight: 500;
 }
-.jain4-Logoname p{
+.in4-Logoname p{
     font-size:13px;
     color: #868585;
 }
-.jain4-sidebar_link {
+.in4-sidebar_link {
     text-decoration: none;
     color: white;
     width: fit-content;
 }
-.jain4-sidebar_item {
+.in4-sidebar_item {
     display: flex;
     align-items: center;
     padding-left: 1.4em;
@@ -52,16 +52,16 @@
     height:3em;
     border-radius: 5px;
 }
-.jain4-sidebar_item:hover{
+.in4-sidebar_item:hover{
     background-color: rgb(195, 195, 195);
 }
-.jain4-sidebar_item h3{
+.in4-sidebar_item h3{
     color:#454545;
     font-weight: 500;
     font-size: .9em;
 }
 /*Icon*/
-.jain4-sidebar_img{
+.in4-sidebar_img{
     color:#454545;
     width: 1.5em;
     height: auto;
@@ -70,22 +70,22 @@
 
 
 /*Lower Sidebar*/
-.jain4-overview h4{
+.in4-overview h4{
     color:#454545;
     margin-top:2em;
     margin-bottom: 1.5em;
 
 }
-.jain4-taskovr{
+.in4-taskovr{
     height:5em;
     width:15em;
     border: solid 1px #acacac;
     display: flex;
 }
-.jain4-taskovr p{
+.in4-taskovr p{
     margin-top:.6em;
 }
-.jain4-taskovr h1{
+.in4-taskovr h1{
     margin-top:1em;
     margin-left:-4em;
     font-weight: 450;
@@ -94,30 +94,30 @@
 
 
 /*Content*/
-.jain4-content{
+.in4-content{
     width:100%;
     height: 100%;
 }
 /*header*/
-.jain4-header{
+.in4-header{
     width:100%;
     height:10%;
     background-color: white;
     border-bottom: solid 1px #454545;
 }
-.jain4-header p{
+.in4-header p{
     font-size:20px;
     font-weight: 700;
     margin-left: 1.5em;
     margin-top:1em;
 }
-.jain4-header .jain4-headerstuff{
+.in4-header .in4-headerstuff{
     width:auto;
     padding:1em 1em;
     display: flex;
     justify-content: center;
 }
-.jain4-addtaskbtn{
+.in4-addtaskbtn{
     height:3em;
     width:10em;
     font-size: 13px;
@@ -127,7 +127,7 @@
     border: none;
     color:white;
 }
-.jain4-addtaskbtn:hover{
+.in4-addtaskbtn:hover{
     height:3em;
     width:10em;
     font-size: 13px;
@@ -140,24 +140,24 @@
 }
 
 /*main*/
-.jain4-table{
+.in4-table{
     margin-left:5em;
     margin-top:3em;
 }
 
-.jain4-sr-only{
+.in4-sr-only{
     display: none;
 }
-.jain4-row{
+.in4-row{
     margin-left:5em !important;
 }
 table th{
     text-align: center;
 }
-.jain4-page-link{
+.in4-page-link{
     color:#6c757d !important;
 }
-.active>.jain4-page-link, .jain4-page-link.active {
+.active>.in4-page-link, .in4-page-link.active {
     background-color: #6c757d !important;
     border-color: #6c757d !important;
     color:white !important;
