@@ -21,12 +21,9 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/janitor-info' element={<Janitor />} />
-<<<<<<< HEAD
             <Route path='/task' element={<Task />} />
-=======
             <Route path='/collector-info' element={<Collector />} />
             <Route path='/edit' element={<Edit />} />
->>>>>>> 2f2e3da55303ba72ef0901466c1103478b87bb46
           </Route>
         </Routes>
       </AuthProvider>
