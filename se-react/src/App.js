@@ -1,6 +1,8 @@
 import './App.css';
 import Dashboard from './component/Dashboard/dashboard';
 import Janitor from './component/staff-info/janitor-info';
+import Collector from './component/staff-info/collector-info';
+import Edit from './component/BO-Edit/Edit';
 import LoginView from './component/authenticate/login';
 import RegisterView from './component/authenticate/register';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -19,7 +21,12 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/janitor-info' element={<Janitor />} />
+<<<<<<< HEAD
             <Route path='/task' element={<Task />} />
+=======
+            <Route path='/collector-info' element={<Collector />} />
+            <Route path='/edit' element={<Edit />} />
+>>>>>>> 2f2e3da55303ba72ef0901466c1103478b87bb46
           </Route>
         </Routes>
       </AuthProvider>

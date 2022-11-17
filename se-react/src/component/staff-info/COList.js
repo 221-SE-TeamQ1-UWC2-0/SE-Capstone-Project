@@ -6,7 +6,7 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import filterFactory, {textFilter} from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
-function DataList(){
+function COList(){
     const [userList, setUserList] = useState([]);
 
     const columns = [
@@ -73,4 +73,4 @@ function DataList(){
         </table>*/}
     </div>
 }
-export default DataList;
+export default COList;
