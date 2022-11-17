@@ -8,20 +8,13 @@ import {
     MdSource,
     MdChatBubbleOutline,
     MdSettings,
-    MdAddCircleOutline,
-    MdNotifications,
-    MdInfo,
+
   } from "react-icons/md";
-
   import {
-    RiLoader2Fill,
-    RiTimeLine,
-    RiCheckboxCircleFill
-  } from "react-icons/ri";
-
-  import {
+    FaRegImage,
     FaUserCircle,
-    FaPlus,
+    FaRegIdCard,
+
   } from "react-icons/fa";
   /*-----------------------*/
 
@@ -85,34 +78,53 @@ function Edit(){
                         page="Settings"
                         href="/"
                     />
-                </div>
-                <div className="edit-overview">
-                    <div style={{ display:'flex', margin:'0em 1.5em'}}>
-                        <h4 style={{ marginRight:'9em'}}>Overview</h4>
-                        <MdAddCircleOutline style={{ marginTop:'.9em', fontSize:'25px', color:'#454545'}}/>
-                    </div>
-                    <div style={{ marginLeft:'1.3em'}}>
-                        <div className="edit-taskovr">
-                            <RiLoader2Fill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
-                            <p>Ongoing tasks</p>
-                            <h1 style={{marginLeft:'-3.3em'}}>69</h1>
-                        </div>
-                        <div className="edit-taskovr">
-                            <RiTimeLine style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
-                            <p>Overdued tasks</p>
-                            <h1 style={{marginLeft:'-3.8em'}}>420</h1>
-                        </div>
-                        <div className="edit-taskovr">
-                            <RiCheckboxCircleFill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
-                            <p>Completed tasks</p>
-                            <h1>111</h1>
-                        </div>
-                    </div>  
+                  
                 </div>
             </div>
             
             <div className="edit-content">
-                
+                <div className="edit-header">
+                    <div style={{float:'left'}}>
+                        <p>EDIT EMPLOYEE</p>
+                    </div>
+                    <div style={{float:'right'}}>
+                        <div className="edit-headerstuff">
+                            <button className="edit-cancel">Cancel</button>
+                            <button className="edit-save">SAVE</button>                            
+                        </div>
+                    </div>
+                </div>
+                <div className="edit-main">
+                    <div className="edit-main-left">
+                        <div className="edit-photo">
+                            <div className="small-title">
+                                <FaRegImage style={{ marginTop:'0.15em', fontSize:'25px', marginRight:'1em' }}/>
+                                <p>Photo</p>
+                            </div>
+                            <h5 style={{margin:'0.6em 1em' }}><b>Avatar</b></h5>
+                            <div className="edit-avatar">
+                                <div className="avatar-img"></div>
+                                <button> Change </button>
+                                <button> Remove </button>
+                            </div>
+                        </div>
+                        <div className="edit-account">
+                            <div className="small-title">
+                                <FaUserCircle style={{ marginTop:'0.15em', fontSize:'25px', marginRight:'1em' }}/>
+                                <p>Account</p>
+                                <button> Edit </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="edit-main-right">
+                        <div className="general-in4">
+                            <div className="small-title">
+                                <FaRegIdCard style={{ marginTop:'0.15em', fontSize:'25px', marginRight:'1em' }}/>
+                                <p>Account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

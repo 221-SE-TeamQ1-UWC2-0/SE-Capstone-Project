@@ -7,9 +7,8 @@
 /*Sidebar*/
 .edit-sidebar{
     background-color: white;
-    width:20%;
+    width:15%;
     height:100%;
-    border-right: solid 1px #868585;
 }
 /*Upper sidebar*/
 .edit-sidebar .opt{
@@ -92,3 +91,108 @@
     font-size:35px;
 }
 
+.edit-header{
+    width:82em;
+    height:10%;
+    background-color: white;
+}
+.edit-header p{
+    font-size:20px;
+    font-weight: 700;
+    margin-left: 1.5em;
+    margin-top:1em;
+}
+.edit-header .edit-headerstuff{
+    width:auto;
+    padding:1em 3em;
+    display: flex;
+    justify-content: center;
+}
+.edit-headerstuff button{
+    margin-top:.2em;
+    margin-right:.2em;
+    width:5em;
+    height:2.5em;
+    border: none;
+}
+.edit-headerstuff .edit-save{
+    background-color: #454545;
+    color:white;
+}
+.edit-headerstuff .edit-cancel{
+    background-color: #acacac;
+    color:#454545;
+}
+
+
+.edit-main{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    height:90%;
+}
+.small-title{
+    height:4em;
+    width:100%;
+    display: flex;
+    padding:.8em 2em;
+    border-bottom:solid 1px #acacac;
+}
+.small-title p{
+    font-size:20px;
+    font-weight:750;
+}
+.edit-main-left{
+    float:left;
+    width:35%;
+}
+.edit-photo{
+    width:100%;
+    height:35%;
+    border:solid 1px #acacac;
+}
+.edit-photo .edit-avatar{
+    width:100%;
+    height:8.5em;
+    border:solid 1px #acacac;
+    padding-top:5%;
+    padding-left:10%;
+    display: flex;
+}
+.avatar-img{
+    height:5em;
+    width:5em;
+    border-radius: 50%;
+    background-color: #454545;
+}
+.edit-photo button{
+    height:3em;
+    width:6.5em;
+    margin-top:1em;
+    margin-left:1em;
+    border:none;
+    color:#454545;
+}
+.edit-account{
+    width:100%;
+    height:60%;
+    border:solid 1px #acacac;
+    margin-top:2.2em;
+}
+.edit-account button{
+    margin-left:14em;
+    background-color: transparent;
+    border: none;
+    color:#acacac;
+}
+.edit-main-right{
+    float:right;
+    width:65%;
+    display: flex;
+    justify-content: center;
+}
+.general-in4{
+    width:90%;
+    height:90%;
+    border: solid 1px #acacac;
+}
