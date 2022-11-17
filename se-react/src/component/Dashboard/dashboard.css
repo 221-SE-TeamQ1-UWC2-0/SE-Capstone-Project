@@ -1,22 +1,22 @@
-.container{
+.db-container{
     position: absolute;
     display: flex;
     width:100%;
     height:100%;
 }
 /*Sidebar*/
-.sidebar{
+.db-sidebar{
     background-color: white;
     width:20%;
     height:100%;
     border-right: solid 1px #868585;
 }
 /*Upper sidebar*/
-.sidebar .opt{
+.db-sidebar .opt{
     height:48%;
     border-bottom: solid 1px #868585;
 }
-.logo {
+.db-logo {
     width: 5em;
     background-color: white;
     display: flex;
@@ -24,27 +24,27 @@
     justify-content: center;
 }
 
-.logo img{
+.db-logo img{
     width: 2.5em;
     height: auto;
 }
-.Logoname{
-    margin-top:-5px;
+.db-Logoname{
+    margin-top:10px;
 }
-.Logoname h4{
-    margin-bottom:-10px;
+.db-Logoname h4{
+    margin-bottom:-5px;
     font-weight: 500;
 }
-.Logoname p{
+.db-Logoname p{
     font-size:13px;
     color: #868585;
 }
-.sidebar_link {
+.db-sidebar_link {
     text-decoration: none;
     color: white;
     width: fit-content;
 }
-.sidebar_item {
+.db-sidebar_item {
     display: flex;
     align-items: center;
     padding-left: 1.4em;
@@ -52,16 +52,16 @@
     height:3em;
     border-radius: 5px;
 }
-.sidebar_item:hover{
+.db-sidebar_item:hover{
     background-color: rgb(195, 195, 195);
 }
-.sidebar_item h3{
+.db-sidebar_item h3{
     color:#454545;
     font-weight: 500;
     font-size: .9em;
 }
 /*Icon*/
-.sidebar_img{
+.db-sidebar_img{
     color:#454545;
     width: 1.5em;
     height: auto;
@@ -70,48 +70,53 @@
 
 
 /*Lower Sidebar*/
-.overview h4{
+.db-overview h4{
     color:#454545;
+    margin-top:2em;
+    margin-bottom: 1.5em;
+
 }
-.taskovr{
+.db-taskovr{
     height:5em;
     width:15em;
     border: solid 1px #acacac;
     display: flex;
 }
-.taskovr p{
+.db-taskovr p{
     margin-top:.6em;
 }
-.taskovr h1{
+.db-taskovr h1{
     margin-top:1em;
     margin-left:-4em;
     font-weight: 450;
+    font-size:35px;
 }
 
 
 /*Content*/
-.content{
+.db-content{
     width:80%;
     height: 100%;
 }
 /*header*/
-.header{
+.db-header{
     width:100%;
     height:10%;
     background-color: white;
     border-bottom: solid 1px #454545;
 }
-.header p{
+.db-header p{
     font-size:20px;
     font-weight: 700;
     margin-left: 1.5em;
+    margin-top:1em;
 }
-.header .headerstuff{
+.db-header .db-headerstuff{
     width:auto;
     padding:1em 1em;
     display: flex;
 }
-.addtaskbtn{
+.db-addtaskbtn{
     height:3em;
     width:10em;
     font-size: 13px;
@@ -121,7 +126,7 @@
     border: none;
     color:white;
 }
-.addtaskbtn:hover{
+.db-addtaskbtn:hover{
     height:3em;
     width:10em;
     font-size: 13px;
@@ -133,47 +138,49 @@
     cursor:pointer;
 }
 /*main*/
-.main{
+.db-main{
     display: flex;
     width:100%;
     height: 80%;
 }
 /*board*/
-.board{
+.db-board{
     height: 100%;
     width:85%;
 }
 /*upper*/
-.upper{
+.db-upper{
     display: flex;
     width:100%;
     height:50%;
 }
 /*map*/
-.map{
+.db-map{
     height: 100%;
     width: 50%;
 }
-.map h2{
-    margin-top:0;
+.db-map h2{
+    margin-top:.3em;
+    margin-bottom: .5em;
     margin-left:1.5em;
 }
-.mapping{
+.db-mapping{
     background-color: gray;
     width:80%;
     height:85%;
     margin-left:2.5em;
     margin-top:-.5em;
 }
-.calendar{
+.db-calendar{
     height: 100%;
     width: 50%;
 }
-.calendar h2{
-    margin-top:0;
+.db-calendar h2{
+    margin-top:.3em;
+    margin-bottom: .5em;
     margin-left:1.5em;
 }
-.calendaring{
+.db-calendaring{
     background-color: gray;
     width:80%;
     height:85%;
@@ -181,20 +188,21 @@
     margin-top:-.5em;
 }
 /*lower*/
-.lower{
+.db-lower{
     display: flex;
     width:100%;
     height:60%;
+    margin-top:1em;
 }
 /*collector*/
-.collector{
+.db-collector{
     width: 50%;
     height: 100%;
     justify-content: center;
     margin-left:5em;
 }
 /*janitor*/
-.janitor{
+.db-janitor{
     width: 50%;
     height: 100%;
     justify-content: center;
@@ -202,15 +210,22 @@
 }
 .table-wrapper-scroll-y{
     max-height:1000px !important;
-    height:23em;
+    height:21.5em;
     width:23em;
 }
 table{
     margin-top:1em;
     line-height: 3.5em;
 }
+.table{
+    margin:0 !important;
+    margin-right:1em;
+}
 thead{
     padding-bottom:3em;
+}
+thead th{
+    padding-right:3em !important;
 }
 
 th,td{
@@ -219,17 +234,20 @@ th,td{
 
 
 /*tasklist*/
-.tasklist{
-    padding:0em 1em;
+.db-tasklist{
+    padding:2em 1em;
     width:15%;
 }
-.checkedlist{
+.db-checkList{
+    margin-top:2em;
+}
+.db-checkedlist{
     margin-top:3em;
 }
-.checkedlist p{
+.db-checkedlist p{
     display: block;
 }
-.list-container {
+.db-list-container {
     display: flex;
     flex-direction: column;
     gap: 10px;

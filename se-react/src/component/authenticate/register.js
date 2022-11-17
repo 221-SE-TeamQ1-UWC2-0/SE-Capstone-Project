@@ -54,7 +54,7 @@ function RegisterView(){
                                 </select>
                                 <label>Sign up as</label>
                             </div>
-                            <p style={{marginTop:'-1em',color:'white'}}>Already have an account ? <a href="#" style={{color:'#03e9f4', cursor:'pointer'}}>Sign in</a></p>
+                            <p style={{marginTop:'-1em',color:'white'}}>Already have an account ? <a href="/login" style={{color:'#03e9f4', cursor:'pointer'}}>Sign in</a></p>
                             <a href="#" className="btn">
                             <span></span>
                             <span></span>
