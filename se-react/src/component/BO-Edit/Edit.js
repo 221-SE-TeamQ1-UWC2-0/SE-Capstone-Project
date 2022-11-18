@@ -114,6 +114,16 @@ function Edit(){
                                 <p>Account</p>
                                 <button> Edit </button>
                             </div>
+                            <div className="edit-info">
+                                <div className="user-box">
+                                    <label>Username</label>
+                                    <input type="text" name="" required="" placeholder="user name"/>                                    
+                                </div>
+                                <div className="user-box">
+                                    <label>Password</label>
+                                    <input type="password" name="" required="" placeholder="user password"/>                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="edit-main-right">
@@ -121,6 +131,50 @@ function Edit(){
                             <div className="small-title">
                                 <FaRegIdCard style={{ marginTop:'0.15em', fontSize:'25px', marginRight:'1em' }}/>
                                 <p>Account</p>
+                            </div>
+                            <div className="cover">
+                                <div className="user-box">
+                                    <label>Fullname</label>
+                                    <input type="text" name="" required="" placeholder="full name"/>                                    
+                                </div>
+                                <div className="user-box">
+                                    <label>Email</label>
+                                    <input type="text" name="" required="" placeholder="user email"/>                                    
+                                </div>
+                            </div>
+                            <div className="cover">
+                                <div className="user-box">
+                                    <label>Phone</label>
+                                    <input type="text" name="" required="" placeholder="phone number"/>                                    
+                                </div>
+                                <div className="user-box">
+                                    <label>Role</label>
+                                    <select name="languages" id="lang" placeholder="user role" style={{color:"gray"}}>
+                                        <option value="javascript">Back officer</option>
+                                        <option value="php">Collector</option>
+                                        <option value="java">Janitor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="cover">
+                                <div className="user-box">
+                                    <label>DOB</label>
+                                    <input type="date" name="" required="" style={{color:'gray'}}/>
+                                </div>
+                                <div className="user-box">
+                                    <label>Gender</label>
+                                    <select name="languages" id="lang" placeholder="user gender" style={{color:"gray"}}>
+                                        <option value="javascript">Male</option>
+                                        <option value="php">Female</option>
+                                        <option value="java">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="cover">
+                                <div className="user-box">
+                                    <label>Address</label>
+                                    <input type="text" name="" required="" placeholder="user address" style={{color:'gray'}}/>
+                                </div>
                             </div>
                         </div>
                     </div>

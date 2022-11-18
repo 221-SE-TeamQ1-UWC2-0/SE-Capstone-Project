@@ -196,3 +196,65 @@
     height:90%;
     border: solid 1px #acacac;
 }
+
+.edit-info .user-box {
+    position: relative;
+    width:80%;
+    margin-left:3em;
+}
+.edit-info .user-box label{
+    margin:1em 0em;
+}
+  
+.edit-info .user-box input {
+    width: 100%;
+    padding: .5em 0;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 2em;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+.cover {
+    display:flex;
+    justify-content: center;
+    margin-top:.5em;
+}
+.cover .user-box {
+    position: relative;
+    width:80%;
+    margin: 0em 1em;
+}
+.cover .user-box label{
+    margin:1em 0em;
+}
+  
+.cover .user-box input {
+    width: 100%;
+    padding: .5em 0;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 2em;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+}
+.cover .user-box select {
+    width: 100%;
+    padding: .5em 0;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 2em;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    outline: none;
+  }
