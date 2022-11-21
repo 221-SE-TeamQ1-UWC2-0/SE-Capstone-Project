@@ -5,6 +5,7 @@ import Collector from './component/staff-info/collector-info';
 import Edit from './component/BO-Edit/Edit';
 import LoginView from './component/authenticate/login';
 import RegisterView from './component/authenticate/register';
+import Mapbox from './component/map/map';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utils/privateRoute';
 import { AuthProvider } from './context/AuthContext';
@@ -24,6 +25,7 @@ function App() {
             <Route path='/task' element={<Task />} />
             <Route path='/collector-info' element={<Collector />} />
             <Route path='/edit' element={<Edit />} />
+            <Route path='/map' element={<Mapbox />} />
           </Route>
         </Routes>
       </AuthProvider>
