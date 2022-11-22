@@ -1,45 +1,63 @@
-import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useRef, useEffect } from "react";
+import mapboxgl from "mapbox-gl";
+import "./map.css";
+import geoJson from "./chicago-parks.json";
 
-import './map.css';
+mapboxgl.accessToken =
+  "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbmh0cmFuMjQxMCIsImEiOiJjbGFxaHg1ejMxamNhM3FtaWtsa25mYTl5In0.asQPFmOasyJYE5_lHpUq0A';
+const Map = () => {
+  const mapContainerRef = useRef(null);
 
-export default function Mapbox() {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  const [lng, setLng] = useState(106.6626 );
-  const [lat, setLat] = useState(10.7733 );
-  const [zoom, setZoom] = useState(14);
-
+  // Initialize map when component mounts
   useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [106.6626, 10.7733 ],
-      zoom: 14
+      zoom: 11.5,
     });
-  });
-
-  useEffect(() => {
-    if (!map.current) return; // wait for map to initialize
-    map.current.on('move', () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
+    map.on("load", function () {
+      // Add an image to use as a custom marker
+      map.loadImage(
+        "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
+        function (error, image) {
+          if (error) throw error;
+          map.addImage("custom-marker", image);
+          // Add a GeoJSON source with multiple points
+          map.addSource("points", {
+            type: "geojson",
+            data: {
+              type: "FeatureCollection",
+              features: geoJson.features,
+            },
+          });
+          // Add a symbol layer
+          map.addLayer({
+            id: "points",
+            type: "symbol",
+            source: "points",
+            layout: {
+              "icon-image": "custom-marker",
+              // get the title name from the source's "title" property
+              "text-field": ["get", "title"],
+              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+              "text-offset": [0, 1.25],
+              "text-anchor": "top",
+            },
+          });
+        }
+      );
     });
-  });
 
+    // Add navigation control (the +/- zoom buttons)
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
+    // Clean up on unmount
+    return () => map.remove();
+  }, []);
 
-  return (
-    <div>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-      <div ref={mapContainer} className="map-container" /> 
-      
-    </div>
-  );
-}
+  return <div className="map-container" ref={mapContainerRef} />;
+};
+
+export default Map;
