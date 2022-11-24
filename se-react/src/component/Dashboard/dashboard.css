@@ -1,21 +1,24 @@
-.db-container{
+.db-container {
     position: absolute;
     display: flex;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
+
 /*Sidebar*/
-.db-sidebar{
+.db-sidebar {
     background-color: white;
-    width:20%;
-    height:100%;
+    width: 20%;
+    height: 100%;
     border-right: solid 1px #868585;
 }
+
 /*Upper sidebar*/
-.db-sidebar .opt{
-    height:48%;
+.db-sidebar .opt {
+    height: 48%;
     border-bottom: solid 1px #868585;
 }
+
 .db-logo {
     width: 5em;
     background-color: white;
@@ -24,229 +27,266 @@
     justify-content: center;
 }
 
-.db-logo img{
+.db-logo img {
     width: 2.5em;
     height: auto;
 }
-.db-Logoname{
-    margin-top:10px;
+
+.db-Logoname {
+    margin-top: 10px;
 }
-.db-Logoname h4{
-    margin-bottom:-5px;
+
+.db-Logoname h4 {
+    margin-bottom: -5px;
     font-weight: 500;
 }
-.db-Logoname p{
-    font-size:13px;
+
+.db-Logoname p {
+    font-size: 13px;
     color: #868585;
 }
+
 .db-sidebar_link {
     text-decoration: none;
     color: white;
     width: fit-content;
 }
+
 .db-sidebar_item {
     display: flex;
     align-items: center;
     padding-left: 1.4em;
     cursor: pointer;
-    height:3em;
+    height: 3em;
     border-radius: 5px;
 }
-.db-sidebar_item:hover{
+
+.db-sidebar_item:hover {
     background-color: rgb(195, 195, 195);
 }
-.db-sidebar_item h3{
-    color:#454545;
+
+.db-sidebar_item h3 {
+    color: #454545;
     font-weight: 500;
     font-size: .9em;
 }
+
 /*Icon*/
-.db-sidebar_img{
-    color:#454545;
+.db-sidebar_img {
+    color: #454545;
     width: 1.5em;
     height: auto;
-    margin-right:.5em;
+    margin-right: .5em;
 }
 
 
 /*Lower Sidebar*/
-.db-overview h4{
-    color:#454545;
-    margin-top:2em;
+.db-overview h4 {
+    color: #454545;
+    margin-top: 2em;
     margin-bottom: 1.5em;
 
 }
-.db-taskovr{
-    height:5em;
-    width:15em;
+
+.db-taskovr {
+    height: 5em;
+    width: 15em;
     border: solid 1px #acacac;
     display: flex;
 }
-.db-taskovr p{
-    margin-top:.6em;
+
+.db-taskovr p {
+    margin-top: .6em;
 }
-.db-taskovr h1{
-    margin-top:1em;
-    margin-left:-4em;
+
+.db-taskovr h1 {
+    margin-top: 1em;
+    margin-left: -4em;
     font-weight: 450;
-    font-size:35px;
+    font-size: 35px;
 }
 
 
 /*Content*/
-.db-content{
-    width:80%;
+.db-content {
+    width: 80%;
     height: 100%;
 }
+
 /*header*/
-.db-header{
-    width:100%;
-    height:10%;
+.db-header {
+    width: 100%;
+    height: 10%;
     background-color: white;
     border-bottom: solid 1px #454545;
 }
-.db-header p{
-    font-size:20px;
+
+.db-header p {
+    font-size: 20px;
     font-weight: 700;
     margin-left: 1.5em;
-    margin-top:1em;
-}
-.db-header .db-headerstuff{
-    width:auto;
-    padding:1em 1em;
-    display: flex;
-}
-.db-addtaskbtn{
-    height:3em;
-    width:10em;
-    font-size: 13px;
-    margin-right:3em;
-    padding-top:.8em;
-    background-color: #868585;
-    border: none;
-    color:white;
-}
-.db-addtaskbtn:hover{
-    height:3em;
-    width:10em;
-    font-size: 13px;
-    margin-right:3em;
-    padding-top:.8em;
-    background-color: #454545;
-    border: none;
-    color:white;
-    cursor:pointer;
-}
-/*main*/
-.db-main{
-    display: flex;
-    width:100%;
-    height: 80%;
-}
-/*board*/
-.db-board{
-    height: 100%;
-    width:85%;
-}
-/*upper*/
-.db-upper{
-    display: flex;
-    width:100%;
-    height:50%;
-}
-/*map*/
-.db-map{
-    height: 100%;
-    width: 50%;
-}
-.db-map h2{
-    margin-top:.3em;
-    margin-bottom: .5em;
-    margin-left:1.5em;
-}
-.db-mapping{
-    background-color: gray;
-    width:80%;
-    height:85%;
-    margin-left:2.5em;
-    margin-top:-.5em;
-}
-.db-calendar{
-    height: 100%;
-    width: 50%;
-}
-.db-calendar h2{
-    margin-top:.3em;
-    margin-bottom: .5em;
-    margin-left:1.5em;
-}
-.db-calendaring{
-    background-color: gray;
-    width:80%;
-    height:85%;
-    margin-left:2.5em;
-    margin-top:-.5em;
-}
-/*lower*/
-.db-lower{
-    display: flex;
-    width:100%;
-    height:60%;
-    margin-top:1em;
-}
-/*collector*/
-.db-collector{
-    width: 50%;
-    height: 100%;
-    justify-content: center;
-    margin-left:5em;
-}
-/*janitor*/
-.db-janitor{
-    width: 50%;
-    height: 100%;
-    justify-content: center;
-    margin-left:5em;
-}
-.table-wrapper-scroll-y{
-    max-height:1000px !important;
-    height:21.5em;
-    width:23em;
-}
-table{
-    margin-top:1em;
-    line-height: 3.5em;
-}
-.table{
-    margin:0 !important;
-    margin-right:1em;
-}
-thead{
-    padding-bottom:3em;
-}
-thead th{
-    padding-right:3em !important;
+    margin-top: 1em;
 }
 
-th,td{
-   padding:0em 1.5em;
+.db-header .db-headerstuff {
+    width: auto;
+    padding: 1em 1em;
+    display: flex;
+}
+
+.db-addtaskbtn {
+    height: 3em;
+    width: 10em;
+    font-size: 13px;
+    margin-right: 3em;
+    padding-top: .8em;
+    background-color: #868585;
+    border: none;
+    color: white;
+}
+
+.db-addtaskbtn:hover {
+    height: 3em;
+    width: 10em;
+    font-size: 13px;
+    margin-right: 3em;
+    padding-top: .8em;
+    background-color: #454545;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/*main*/
+.db-main {
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+
+/*board*/
+.db-board {
+    height: 100%;
+    width: 85%;
+}
+
+/*upper*/
+.db-upper {
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+/*map*/
+.db-map {
+    height: 100%;
+    width: 50%;
+}
+
+.db-map h2 {
+    margin-top: .3em;
+    margin-bottom: .5em;
+    margin-left: 1.5em;
+}
+
+.db-mapping {
+    background-color: gray;
+    width: 80%;
+    height: 85%;
+    margin-left: 2.5em;
+    margin-top: -.5em;
+}
+
+.db-calendar {
+    height: 100%;
+    width: 50%;
+}
+
+.db-calendar h2 {
+    margin-top: .3em;
+    margin-bottom: .5em;
+    margin-left: 1.5em;
+}
+
+.db-calendaring {
+    width: 80%;
+    height: 85%;
+    margin-left: 2.5em;
+    margin-top: -.5em;
+}
+
+/*lower*/
+.db-lower {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    margin-top: 1em;
+}
+
+/*collector*/
+.db-collector {
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    margin-left: 5em;
+}
+
+/*janitor*/
+.db-janitor {
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    margin-left: 5em;
+}
+
+.table-wrapper-scroll-y {
+    max-height: 1000px !important;
+    height: 21.5em;
+    width: 23em;
+}
+
+table {
+    margin-top: 1em;
+    line-height: 3.5em;
+}
+
+.table {
+    margin: 0 !important;
+    margin-right: 1em;
+}
+
+thead {
+    padding-bottom: 3em;
+}
+
+thead th {
+    padding-right: 3em !important;
+}
+
+th,
+td {
+    padding: 0em 1.5em;
 }
 
 
 /*tasklist*/
-.db-tasklist{
-    padding:2em 1em;
-    width:15%;
+.db-tasklist {
+    padding: 2em 1em;
+    width: 15%;
 }
-.db-checkList{
-    margin-top:2em;
+
+.db-checkList {
+    margin-top: 2em;
 }
-.db-checkedlist{
-    margin-top:3em;
+
+.db-checkedlist {
+    margin-top: 3em;
 }
-.db-checkedlist p{
+
+.db-checkedlist p {
     display: block;
 }
+
 .db-list-container {
     display: flex;
     flex-direction: column;

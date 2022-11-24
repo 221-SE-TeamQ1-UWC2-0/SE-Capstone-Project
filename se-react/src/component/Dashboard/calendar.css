@@ -1,0 +1,29 @@
+.react-calendar__navigation {
+    height: 2em;
+}
+
+.db-calendaring button {
+    border: 0;
+    background-color: white;
+
+}
+
+.react-calendar__navigation {
+    display: flex;
+
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+}
+
+.react-calendar__tile {
+    border: 0;
+    height: 2.5em;
+    margin-top: 0.1em;
+}
+
+.react-calendar__tile:hover {
+    background-color: aliceblue;
+    font-weight: bold;
+}

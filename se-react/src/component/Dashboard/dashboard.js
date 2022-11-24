@@ -1,7 +1,8 @@
 import "./dashboard.css";
 import React, { useState, Component } from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
-
+import Calendar from 'react-calendar';
+import './calendar.css'
 
 import {
     MdCalendarToday,
@@ -12,32 +13,32 @@ import {
     MdAddCircleOutline,
     MdNotifications,
     MdInfo,
-  } from "react-icons/md";
+} from "react-icons/md";
 
-  import {
+import {
     RiLoader2Fill,
     RiTimeLine,
     RiCheckboxCircleFill
-  } from "react-icons/ri";
+} from "react-icons/ri";
 
-  import {
+import {
     FaUserCircle,
     FaPlus,
-  } from "react-icons/fa";
-  /*-----------------------*/
+} from "react-icons/fa";
+/*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
     return (
-      <a className="db-sidebar_link" href={href}>
-        <div className="db-sidebar_item">
-          {<Item className="db-sidebar_img" />}
-          <h3>
-            {page}
-          </h3>
-        </div>
-      </a>
+        <a className="db-sidebar_link" href={href}>
+            <div className="db-sidebar_item">
+                {<Item className="db-sidebar_img" />}
+                <h3>
+                    {page}
+                </h3>
+            </div>
+        </a>
     );
-  };
+};
 const Logo = () => {
     return (
         <div className="db-logo">
@@ -52,83 +53,85 @@ const checkList = ["Rooftop t4", "???", "Die", "Draft SE", "Life"];
 
 const collector = {
     columns: [
-      {
-        label: 'ID',
-        field: 'id',
-        sort: 'asc'
-      },
-      {
-        label: 'Status',
-        field: 'first',
-        sort: 'asc'
-      },
-      {
-        label: 'Action',
-        field: 'last',
-        sort: 'asc'
-      },
+        {
+            label: 'ID',
+            field: 'id',
+            sort: 'asc'
+        },
+        {
+            label: 'Status',
+            field: 'first',
+            sort: 'asc'
+        },
+        {
+            label: 'Action',
+            field: 'last',
+            sort: 'asc'
+        },
     ],
     rows: [
         { id: "CO001", status: "Available", action: "Contact" },
         { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO003", status: "Inactive", action: "Contact" },
         { id: "CO001", status: "Available", action: "Contact" },
         { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO003", status: "Inactive", action: "Contact" },
         { id: "CO001", status: "Available", action: "Contact" },
         { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO003", status: "Inactive", action: "Contact" },
         { id: "CO001", status: "Available", action: "Contact" },
         { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact"},
+        { id: "CO003", status: "Inactive", action: "Contact" },
     ]
-  };
+};
 const janitor = {
     columns: [
-      {
-        label: 'ID',
-        field: 'id',
-        sort: 'asc'
-      },
-      {
-        label: 'Status',
-        field: 'first',
-        sort: 'asc'
-      },
-      {
-        label: 'Action',
-        field: 'last',
-        sort: 'asc'
-      },
+        {
+            label: 'ID',
+            field: 'id',
+            sort: 'asc'
+        },
+        {
+            label: 'Status',
+            field: 'first',
+            sort: 'asc'
+        },
+        {
+            label: 'Action',
+            field: 'last',
+            sort: 'asc'
+        },
     ],
     rows: [
         { id: "JA001", status: "Available", action: "Contact" },
         { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "Ja003", status: "Inactive", action: "Contact" },
         { id: "JA001", status: "Available", action: "Contact" },
         { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "Ja003", status: "Inactive", action: "Contact" },
         { id: "JA001", status: "Available", action: "Contact" },
         { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "Ja003", status: "Inactive", action: "Contact" },
         { id: "JA001", status: "Available", action: "Contact" },
         { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact"},
+        { id: "Ja003", status: "Inactive", action: "Contact" },
     ],
-  };
+};
 
 
 
-function Dashboard(){
+function Dashboard() {
+    const [value, onChange] = useState(new Date());
+
     /*Checklist*/
     const [checked, setChecked] = useState([]);
     // Add/Remove checked item from list
     const handleCheck = (event) => {
         var updatedList = [...checked];
         if (event.target.checked) {
-        updatedList = [...checked, event.target.value];
+            updatedList = [...checked, event.target.value];
         } else {
-        updatedList.splice(checked.indexOf(event.target.value), 1);
+            updatedList.splice(checked.indexOf(event.target.value), 1);
         }
         setChecked(updatedList);
     };
@@ -145,7 +148,7 @@ function Dashboard(){
 
 
 
-    /*Return function*/    
+    /*Return function*/
     return (
         <div className="db-container">
             <div className="db-sidebar">
@@ -157,10 +160,10 @@ function Dashboard(){
                             <p>BO interface</p>
                         </div>
                     </div>
-                    <SideBarItem 
-                        Item={MdCalendarToday} 
-                        page="Calendar" 
-                        href="/" 
+                    <SideBarItem
+                        Item={MdCalendarToday}
+                        page="Calendar"
+                        href="/"
                     />
                     <SideBarItem
                         Item={MdOutlineMap}
@@ -184,44 +187,44 @@ function Dashboard(){
                     />
                 </div>
                 <div className="db-overview">
-                    <div style={{ display:'flex', margin:'0em 1.5em'}}>
-                        <h4 style={{ marginRight:'9em'}}>Overview</h4>
-                        <MdAddCircleOutline style={{ marginTop:'.9em', fontSize:'25px', color:'#454545'}}/>
+                    <div style={{ display: 'flex', margin: '0em 1.5em' }}>
+                        <h4 style={{ marginRight: '9em' }}>Overview</h4>
+                        <MdAddCircleOutline style={{ marginTop: '.9em', fontSize: '25px', color: '#454545' }} />
                     </div>
-                    <div style={{ marginLeft:'1.3em'}}>
+                    <div style={{ marginLeft: '1.3em' }}>
                         <div className="db-taskovr">
-                            <RiLoader2Fill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
+                            <RiLoader2Fill style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Ongoing tasks</p>
-                            <h1 style={{marginLeft:'-3.3em'}}>69</h1>
+                            <h1 style={{ marginLeft: '-3.3em' }}>69</h1>
                         </div>
                         <div className="db-taskovr">
-                            <RiTimeLine style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
+                            <RiTimeLine style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Overdued tasks</p>
-                            <h1 style={{marginLeft:'-3.8em'}}>420</h1>
+                            <h1 style={{ marginLeft: '-3.8em' }}>420</h1>
                         </div>
                         <div className="db-taskovr">
-                            <RiCheckboxCircleFill style={{margin:'.4em 1em 0em 1em', fontSize:'25px', color:'#454545'}}/>
+                            <RiCheckboxCircleFill style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Completed tasks</p>
                             <h1>111</h1>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
-            
+
             <div className="db-content">
                 <div className="db-header">
-                    <div style={{float:'left'}}>
+                    <div style={{ float: 'left' }}>
                         <p>DASHBOARD</p>
                     </div>
-                    <div style={{float:'right'}}>
+                    <div style={{ float: 'right' }}>
                         <div className="db-headerstuff">
                             <button className="db-addtaskbtn">
-                                <FaPlus style={{fontSize:'15px', color:'white', float:'left'}}/>
-                                <p style={{fontSize:'15px', color:'white', float:'left', marginTop:'0em'}}>Add task</p>
-                            </button>                            
-                            <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
+                                <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
+                                <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Add task</p>
+                            </button>
+                            <MdInfo style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
+                            <MdNotifications style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
+                            <FaUserCircle style={{ margin: '.1em .25em', fontSize: '30px', color: '#acacac' }} />
                         </div>
                     </div>
                 </div>
@@ -234,21 +237,25 @@ function Dashboard(){
                             </div>
                             <div className="db-calendar">
                                 <h2>Calendar</h2>
-                                <div className="db-calendaring"></div>
+                                <div className="db-calendaring">
+
+                                    <Calendar onChange={onChange} value={value} />
+
+                                </div>
                             </div>
                         </div>
-                        <div className="db-lower">                            
+                        <div className="db-lower">
                             <div className="db-collector">
-                            <MDBTable scrollY style={{height:'1000px'}}>
-                            <MDBTableHead columns={collector.columns} />
-                            <MDBTableBody rows={collector.rows} />
-                            </MDBTable>
+                                <MDBTable scrollY style={{ height: '1000px' }}>
+                                    <MDBTableHead columns={collector.columns} />
+                                    <MDBTableBody rows={collector.rows} />
+                                </MDBTable>
                             </div>
                             <div className="db-janitor">
-                            <MDBTable scrollY style={{height:'1000px'}}>
-                            <MDBTableHead columns={janitor.columns} />
-                            <MDBTableBody rows={janitor.rows} />
-                            </MDBTable>
+                                <MDBTable scrollY style={{ height: '1000px' }}>
+                                    <MDBTableHead columns={janitor.columns} />
+                                    <MDBTableBody rows={janitor.rows} />
+                                </MDBTable>
                             </div>
                         </div>
                     </div>
@@ -258,8 +265,8 @@ function Dashboard(){
                             <div className="db-list-container">
                                 {checkList.map((item, index) => (
                                     <div key={index}>
-                                    <input value={item} type="checkbox" onChange={handleCheck} />
-                                    <span className={isChecked(item)}>{item}</span>
+                                        <input value={item} type="checkbox" onChange={handleCheck} />
+                                        <span className={isChecked(item)}>{item}</span>
                                     </div>
                                 ))}
                             </div>
