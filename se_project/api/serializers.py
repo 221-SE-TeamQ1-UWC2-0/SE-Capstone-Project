@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from usr.models import UWC_User
+from base.models import Task
 
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -37,7 +38,9 @@ class UserSerializer(ModelSerializer):
         user.save()
         return user
 
-    
-
+class TaskSerializer(ModelSerializer):
+    class Meta:
+        model = Task
+        fields = '__all__'
     
         

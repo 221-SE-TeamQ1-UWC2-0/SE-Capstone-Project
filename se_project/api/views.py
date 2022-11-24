@@ -4,8 +4,9 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserTokenObtainPairSerializer, UserSerializer
+from .serializers import UserTokenObtainPairSerializer, UserSerializer, TaskSerializer
 from usr.models import UWC_User
+from base.models import Task
 
 # Create your views here.
 
@@ -33,3 +34,8 @@ class UserViewSet(ModelViewSet):
         except Http404:
             return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class TaskViewSet(ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
