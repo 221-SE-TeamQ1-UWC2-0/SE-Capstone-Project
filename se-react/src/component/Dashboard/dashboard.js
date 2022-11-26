@@ -292,7 +292,7 @@ useEffect(() => {
                     <div className="db-board">
                         <div className="db-upper">
                             <div className="db-map">
-                                <a href=""><h2>Map</h2></a>
+                                <a href="/map"><h2>Map</h2></a>
                                 <div className="db-mapping">
                                     <div className="db-map-container" ref={mapContainerRef} />
                                 </div>
