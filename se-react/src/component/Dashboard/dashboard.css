@@ -307,3 +307,7 @@ td {
   .db-map-container .mapboxgl-ctrl-attrib {
     display: none;
   }
+  .db-map a{
+    text-decoration: none;
+    color:black;
+  }
