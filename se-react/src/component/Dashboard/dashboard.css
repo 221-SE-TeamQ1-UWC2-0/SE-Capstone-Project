@@ -293,3 +293,17 @@ td {
     gap: 10px;
     margin-left: 0em;
 }
+
+
+
+/*Map*/
+.db-map-container {
+    height: 100% !important;
+    width:100%;
+  }
+  .db-map-container .mapboxgl-ctrl-logo {
+    display: none;
+  }
+  .db-map-container .mapboxgl-ctrl-attrib {
+    display: none;
+  }

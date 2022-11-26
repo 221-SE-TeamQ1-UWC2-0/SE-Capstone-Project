@@ -1,5 +1,11 @@
 .map-container {
-    height: 45em;
+    height: 100vh;
+  }
+  .map-container .mapboxgl-ctrl-logo {
+    display: none;
+  }
+  .map-container .mapboxgl-ctrl-attrib {
+    display: none;
   }
   
   .sidebar {

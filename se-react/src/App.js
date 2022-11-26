@@ -11,7 +11,6 @@ import PrivateRoute from './utils/privateRoute';
 import { AuthProvider } from './context/AuthContext';
 import Task from './component/app/task';
 import Mhome from './component/app/mhome';
-import Test from './component/app/test';
 
 function App() {
   // if (true) return <Task />
@@ -28,11 +27,7 @@ function App() {
             <Route path='/mhome' element={<Mhome />} />
             <Route path='/collector-info' element={<Collector />} />
             <Route path='/edit' element={<Edit />} />
-<<<<<<< HEAD
-            <Route path='/test' element={<Test />} />
-=======
             <Route path='/map' element={<Mapbox />} />
->>>>>>> 42d586a551792d578cac8659d204435a0eb1cb44
           </Route>
         </Routes>
       </AuthProvider>
