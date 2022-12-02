@@ -9,6 +9,8 @@ class MCP(models.Model):
     id = models.CharField(max_length=100, primary_key = True)
     location = models.JSONField()
     capacity = models.FloatField()
+    lat = models.FloatField()
+    long = models.FloatField()
 
 class Vehicle(models.Model):
 

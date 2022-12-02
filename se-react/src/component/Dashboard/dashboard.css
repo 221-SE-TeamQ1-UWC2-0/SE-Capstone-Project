@@ -10,7 +10,6 @@
     background-color: white;
     width: 20%;
     height: 100%;
-    border-right: solid 1px #868585;
 }
 
 /*Upper sidebar*/
@@ -68,7 +67,9 @@
 .db-sidebar_item h3 {
     color: #454545;
     font-weight: 500;
-    font-size: .9em;
+    font-size: 1em;
+    margin-top:.5em;
+    margin-left:1em;
 }
 
 /*Icon*/
@@ -83,7 +84,7 @@
 /*Lower Sidebar*/
 .db-overview h4 {
     color: #454545;
-    margin-top: 2em;
+    margin-top: 3em;
     margin-bottom: 1.5em;
 
 }
@@ -93,6 +94,8 @@
     width: 15em;
     border: solid 1px #acacac;
     display: flex;
+    border-radius: 10px;
+    margin-bottom:1em;
 }
 
 .db-taskovr p {
@@ -118,7 +121,6 @@
     width: 100%;
     height: 10%;
     background-color: white;
-    border-bottom: solid 1px #454545;
 }
 
 .db-header p {
@@ -183,7 +185,7 @@
     width: 50%;
 }
 
-.db-map h2 {
+.db-map h4 {
     margin-top: .3em;
     margin-bottom: .5em;
     margin-left: 1.5em;
@@ -202,17 +204,24 @@
     width: 50%;
 }
 
-.db-calendar h2 {
+.db-calendar h4 {
     margin-top: .3em;
     margin-bottom: .5em;
     margin-left: 1.5em;
 }
 
 .db-calendaring {
-    width: 80%;
-    height: 85%;
+    width: 78%;
+    height: 75%;
     margin-left: 2.5em;
     margin-top: -.5em;
+}
+.react-calendar__navigation button {
+    background-color: #acacac !important;
+
+}
+.react-calendar__month-view__weekdays div{
+    background-color: #e0e0e0 !important;
 }
 
 /*lower*/
@@ -226,7 +235,7 @@
 /*collector*/
 .db-collector {
     width: 50%;
-    height: 100%;
+    height: 90%;
     justify-content: center;
     margin-left: 5em;
 }
@@ -234,15 +243,25 @@
 /*janitor*/
 .db-janitor {
     width: 50%;
-    height: 100%;
+    height: 90%;
     justify-content: center;
     margin-left: 5em;
+}
+.db-janitor a, .db-collector a {
+    text-decoration: none;
+    color: black;
+}
+.db-janitor h4, .db-collector h4 {
+    margin-left:-1.5em;
+}
+.db-janitor div, .db-collector div {
+    margin-left:-2em;
 }
 
 .table-wrapper-scroll-y {
     max-height: 1000px !important;
-    height: 21.5em;
-    width: 23em;
+    height: 20em;
+    width: 25em;
 }
 
 table {
@@ -252,7 +271,6 @@ table {
 
 .table {
     margin: 0 !important;
-    margin-right: 1em;
 }
 
 thead {
@@ -260,12 +278,12 @@ thead {
 }
 
 thead th {
-    padding-right: 3em !important;
+    padding-right: 3.5em !important;
 }
 
 th,
 td {
-    padding: 0em 1.5em;
+    padding: .5em 2em !important;
 }
 
 
@@ -273,6 +291,9 @@ td {
 .db-tasklist {
     padding: 2em 1em;
     width: 15%;
+    height:110%;
+    background-color: #f6f6f6;
+    border-radius: 15px;
 }
 
 .db-checkList {

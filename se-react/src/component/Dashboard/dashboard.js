@@ -238,12 +238,7 @@ useEffect(() => {
                     <SideBarItem
                         Item={MdChatBubbleOutline}
                         page="Inbox"
-                        href="/"
-                    />
-                    <SideBarItem
-                        Item={MdSettings}
-                        page="Settings"
-                        href="/"
+                        href="https://www.messenger.com"
                     />
                 </div>
                 <div className="db-overview">
@@ -292,28 +287,30 @@ useEffect(() => {
                     <div className="db-board">
                         <div className="db-upper">
                             <div className="db-map">
-                                <a href="/map"><h2>Map</h2></a>
+                                <a href="/map"><h4>Map</h4></a>
                                 <div className="db-mapping">
                                     <div className="db-map-container" ref={mapContainerRef} />
                                 </div>
                             </div>
                             <div className="db-calendar">
-                                <h2>Calendar</h2>
+                                <h4>Calendar</h4>
                                 <div className="db-calendaring">
 
                                     <Calendar onChange={onChange} value={value} />
-
+                                
                                 </div>
                             </div>
                         </div>
                         <div className="db-lower">
                             <div className="db-collector">
+                                <a href="/collector-info"><h4>Collector information</h4></a>
                                 <MDBTable scrollY style={{ height: '1000px' }}>
                                     <MDBTableHead columns={collector.columns} />
                                     <MDBTableBody rows={collector.rows} />
                                 </MDBTable>
                             </div>
                             <div className="db-janitor">
+                                <a href="/janitor-info"><h4>Janitor information</h4></a>
                                 <MDBTable scrollY style={{ height: '1000px' }}>
                                     <MDBTableHead columns={janitor.columns} />
                                     <MDBTableBody rows={janitor.rows} />
