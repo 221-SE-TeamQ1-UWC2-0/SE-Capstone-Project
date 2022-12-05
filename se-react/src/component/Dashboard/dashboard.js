@@ -6,7 +6,6 @@ import './calendar.css'
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import geoJson from "../map/MCP.json";
-import DataFetching from "./DataFetching";
 
 import {
     MdCalendarToday,
@@ -29,6 +28,7 @@ import {
     FaUserCircle,
     FaPlus,
 } from "react-icons/fa";
+import axios from "axios";
 
 /*-----------------------*/
 
@@ -59,16 +59,6 @@ const TodoList = [{ "date": "2022-12-05", content: "Collect on Route B" }]
 for (const todo of TodoList) {
     checkList.push(todo.content)
 }
-// const currentDate = new Date();
-// const dates = TodoList
-//     .filter((bigN) => new Date(bigN.task) < currentDate)
-//     .map((data) => {
-//         return {
-//             content: data.content,
-//         }
-//     });
-// console.log(dates)
-
 
 const collector = {
     columns: [
@@ -138,13 +128,24 @@ const janitor = {
 };
 
 
+async function Taskfetching() {
+    let response = await axios.get('http://localhost:8000/api/task/')
+    let posts = response.data
+    const result = posts.map(value => {
+        return {
+            date: value.body.split('|')[0],
+            content: value.body.split('|')[1],
+        }
+    })
+    return result
+}
 
 
 function Dashboard() {
     /*Map*/
     /*Map*/
     const mapContainerRef = useRef(null);
-
+    const [task, setTask] = useState([])
     // Initialize map when component mounts
     useEffect(() => {
         const map = new mapboxgl.Map({
@@ -153,6 +154,10 @@ function Dashboard() {
             center: [106.6856, 10.7633],
             zoom: 11.5,
         });
+        Taskfetching().then(response => {
+            setTask(response)
+        })
+
         map.on("load", function () {
             // Add an image to use as a custom marker
             map.loadImage(
@@ -193,12 +198,6 @@ function Dashboard() {
         return () => map.remove();
     }, []);
 
-
-
-
-
-    const [value, onChange] = useState(new Date());
-
     /*Checklist*/
     const [checked, setChecked] = useState([]);
     // Add/Remove checked item from list
@@ -221,13 +220,16 @@ function Dashboard() {
     var isChecked = (item) =>
         checked.includes(item) ? "checked-item" : "not-checked-item";
 
+    const defaultdate = new Date();
+    defaultdate.setHours(0, 0, 0, 0)
+    const [date, setDate] = useState(defaultdate);
 
+    const onChange = date => {
+        setDate(date)
+    }
 
-
-    /*Return function*/
     return (
         <div className="db-container">
-            <DataFetching />
             <div className="db-sidebar">
                 <div className="db-opt">
                     <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
@@ -312,8 +314,9 @@ function Dashboard() {
                             <div className="db-calendar">
                                 <h4>Calendar</h4>
                                 <div className="db-calendaring">
-
-                                    <Calendar onChange={onChange} value={value} />
+                                    <Calendar onChange={onChange} value={date} />
+                                    {date.toLocaleDateString("en-GB")}
+                                    {date.getTime()}
 
                                 </div>
                             </div>
@@ -338,14 +341,16 @@ function Dashboard() {
                     <div className="db-tasklist">
                         <h2>Task list</h2>
                         <div className="db-checkList">
+
                             <div className="db-list-container">
-                                {checkList.map((item, index) => (
-                                    <div key={index}>
-                                        <input value={item} type="checkbox" onChange={handleCheck} />
-                                        <span className={isChecked(item)}>{item}</span>
-                                    </div>
-                                ))}
+                                {task.map((item, index) => {
+                                    { console.log(item.date) }
+                                    // console.log(date)
+                                    if (Date.parse(item.date + "T00:00") === date.getTime()) return <div key={index}>{item.content} </div>
+                                    else return null
+                                })}
                             </div>
+
                         </div>
                         <div className="db-checkedlist">
                             <p>Items checked are: </p>
