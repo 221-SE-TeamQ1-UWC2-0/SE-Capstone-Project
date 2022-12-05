@@ -18,7 +18,7 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
 class UserSerializer(ModelSerializer):
     class Meta:
         model = UWC_User
-        fields = ['staff_id','fullname', 'date_of_birth', 'residential_id', 'phone_number', 'email', 'password']
+        fields = ['staff_id','fullname', 'date_of_birth', 'residential_id', 'phone_number', 'email', 'password','role']
         extra_kwargs = {
             'password': {
                 'write_only': True,
@@ -29,6 +29,9 @@ class UserSerializer(ModelSerializer):
             'staff_id': {
                 'read_only': True,
             },
+            'role': {
+                'write_only': True
+            }
         }
     
     def create(self, validated_data):
