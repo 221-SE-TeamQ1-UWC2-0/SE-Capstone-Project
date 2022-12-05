@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from usr.models import UWC_User
-from base.models import Task
+from base.models import Task, MCP, Vehicle, Route
 
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -46,4 +46,17 @@ class TaskSerializer(ModelSerializer):
         model = Task
         fields = '__all__'
     
-        
+class MCPSerializer(ModelSerializer):
+    class Meta:
+        model = MCP
+        fields = '__all__'
+
+class VehicleSerializer(ModelSerializer):
+    class Meta:
+        model = Vehicle
+        fields = '__all__'
+
+class RouteSerializer(ModelSerializer):
+    class Meta:
+        model= Route
+        fields = '__all__'
