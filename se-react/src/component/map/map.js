@@ -1,70 +1,3 @@
-/*import React, { useRef, useEffect } from "react";
-import mapboxgl from "mapbox-gl";
-import "./map.css";
-import geoJson from "./MCP.json";
-
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
-
-const Map = () => {
-  const mapContainerRef = useRef(null);
-
-  // Initialize map when component mounts
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [106.6626, 10.7733 ],
-      zoom: 11.5,
-    });
-    map.on("load", function () {
-      // Add an image to use as a custom marker
-      map.loadImage(
-        "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
-        function (error, image) {
-          if (error) throw error;
-          map.addImage("custom-marker", image);
-          // Add a GeoJSON source with multiple points
-          map.addSource("points", {
-            type: "geojson",
-            data: {
-              type: "FeatureCollection",
-              features: geoJson.features,
-            },
-          });
-          // Add a symbol layer
-          map.addLayer({
-            id: "points",
-            type: "symbol",
-            source: "points",
-            layout: {
-              "icon-image": "custom-marker",
-              // get the title name from the source's "title" property
-              "text-field": ["get", "title"],
-              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-              "text-offset": [0, 1.25],
-              "text-anchor": "top",
-            },
-          });
-        }
-      );
-    });
-
-    // Add navigation control (the +/- zoom buttons)
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-    // Clean up on unmount
-    return () => map.remove();
-  }, []);
-
-  return <div className="map-container" ref={mapContainerRef} />;
-};
-
-export default Map;
-
-*/
-
-
 import React, { useRef, useEffect } from "react"
 import ReactDOM from "react-dom"
 import mapboxgl from "mapbox-gl"
@@ -80,25 +13,6 @@ import geojson from "./MCP.json";
 // I typically like to store sensitive things like this
 // in a .env file
 mapboxgl.accessToken ="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
-/**
- * Our custom Popup component used to render a nicely styled
- * map popup with additional information about the
- * user's selected bus route
- */
-const Popup = ({ routeName, routeNumber, city, type }) => (
-  <div className="popup">
-    <h3 className="route-name">{routeName}</h3>
-    <div className="route-metric-row">
-      <h4 className="row-title">Route #</h4>
-      <div className="row-value">{routeNumber}</div>
-    </div>
-    <div className="route-metric-row">
-      <h4 className="row-title">Route Type</h4>
-      <div className="row-value">{type}</div>
-    </div>
-    <p className="route-city">Serves {city}</p>
-  </div>
-)
 
 
 
@@ -146,43 +60,15 @@ const Map = () => {
 
 
     // start and end point
-    const start = [106.65815149483268, 10.770948414755182];   // Start point - GET from database
+    const start = [106.65815149483268, 10.770948414755182];  // Start point - GET from database
+    const point = [106.6703210895497, 10.755718794189761];
     const coords = [ 106.6840721427908, 10.779540553081702 ]; // End point  - GET from database
 
 
     // only want to work with the map after it has fully loaded
     // if you try to add sources and layers before the map has loaded
     // things will not work properly
-    //Old version--------------------------------------------------------------------------------------------------
-    /*map.on("load", () => {
-      // bus routes source
-      // another example of using a geojson source
-      // this time we are hitting an ESRI API that returns
-      // data in the geojson format
-      // see https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#geojson
-      map.addSource("bus-routes", {
-        type: "geojson",
-        data:
-        { "type": "Feature",
-        "properties": { "FID": 2, "LineAbbr": "2", "LineName": "200 SOUTH", "Frequency": "15", "RouteType": "Local", "City": "Salt Lake City", "County": "Salt Lake", "AvgBrd": 1432, "SHAPE_Length": 0.09996123182330087 },
-        "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 106.65815149483268, 10.770948414755182 ], [ 106.65252642456261, 10.790188056776884 ] ] ] }
-        }
-       
-      })
 
-      // bus routes - line layer
-      // see https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#line
-      map.addLayer({
-        id: "bus-routes-line",
-        type: "line",
-        source: "bus-routes",
-        paint: {
-          "line-color": "#4094ae",
-          "line-width": 4,
-        },
-      })
-    })*/
-    //Old version--------------------------------------------------------------------------------------------------
     // create a function to make a directions request
 
 
@@ -231,6 +117,16 @@ const Map = () => {
         });
       }
       // add turn instructions here at the end
+      const instructions = document.getElementById('instructions');
+      const steps = data.legs[0].steps;
+
+      let tripInstructions = '';
+      for (const step of steps) {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 60
+      )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
     }
 
 
@@ -267,6 +163,7 @@ const Map = () => {
         }
       });
 
+      
 
       // Display end point to the map
       map.addLayer({
@@ -367,6 +264,7 @@ const Map = () => {
           <input type="text" placeholder="End point.." name="end"></input>
         </form>
       </div>
+      <div id="instructions"></div>
       <div ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
     </div>
   );
