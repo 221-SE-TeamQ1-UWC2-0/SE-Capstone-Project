@@ -35,6 +35,15 @@ class UserViewSet(ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class CollectorViewSet(ModelViewSet):
+
+    queryset = UWC_User.objects.all().filter(role = "COLLECTOR")
+    serializer_class = UserSerializer
+
+class JanitorViewSet(ModelViewSet):
+
+    queryset = UWC_User.objects.all().filter(role = 'JANITOR')
+    serializer_class = UserSerializer
 
 class TaskViewSet(ModelViewSet):
     queryset = Task.objects.all()
