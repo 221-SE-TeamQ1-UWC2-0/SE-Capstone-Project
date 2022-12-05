@@ -4,25 +4,24 @@ from usr.models import UWC_User
 # Create your models here.
 """
 Create a pattern for ID of MCP, Vehicle, Route, Person
+
+UPDATED: REMOVE ID FIELD FROM MCP, VEHICLE AND ROUTE SINCE DJANGO ALREADY SUPPORT AUTO INCREMENTAL ID FIELD
 """
 class MCP(models.Model):
 
-    id = models.CharField(max_length=100, primary_key = True)
     location = models.JSONField()
     capacity = models.FloatField()
-    lat = models.FloatField()
-    long = models.FloatField()
+    lat = models.FloatField(null=True)
+    long = models.FloatField(null=True)
 
 class Vehicle(models.Model):
 
-    id = models.CharField(max_length=100, primary_key = True)
     fuel_capacity = models.FloatField()
     capacity = models.FloatField()
     driver = models.ForeignKey(UWC_User, on_delete=models.SET_NULL, null=True)
 
 class Route(models.Model):
 
-    id = models.CharField(max_length=100, primary_key= True)
     seq_mcps_id = models.JSONField()
     vehicle_id = models.ForeignKey(Vehicle, on_delete=models.SET_NULL, null=True)
 
