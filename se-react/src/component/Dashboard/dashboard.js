@@ -28,6 +28,7 @@ import {
     FaUserCircle,
     FaPlus,
 } from "react-icons/fa";
+import axios from "axios";
 /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
@@ -54,6 +55,10 @@ const checkList = ["Rooftop t4", "???", "Die", "Draft SE", "Life"];
 /*Table*/
 
 
+/*
+    Fetch to get user information
+*/
+
 const collector = {
     columns: [
         {
@@ -73,18 +78,18 @@ const collector = {
         },
     ],
     rows: [
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
     ]
 };
 const janitor = {
@@ -204,10 +209,20 @@ useEffect(() => {
     // Return classes based on whether item is checked
     var isChecked = (item) =>
         checked.includes(item) ? "checked-item" : "not-checked-item";
-
-
-
-
+    
+    const [user_json, setData] = useState([]);
+    useEffect(()  => {
+        axios.get('http://localhost:8000/api/user/')
+        .then(res => setData(() => res.data))
+        .catch(err => console.log(err))
+    }, [user_json.length])
+    
+    for (let i = 0; i <= user_json.length-1; i++){
+        var push_tmp = {
+            'id': 
+        }
+    }
+    
     /*Return function*/
     return (
         <div className="db-container">
