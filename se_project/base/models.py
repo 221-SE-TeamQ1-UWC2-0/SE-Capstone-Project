@@ -12,18 +12,24 @@ class MCP(models.Model):
     lat = models.FloatField()
     long = models.FloatField()
 
+#   Todo: user is a foreign key
 class Vehicle(models.Model):
 
     id = models.CharField(max_length=100, primary_key = True)
     fuel_capacity = models.FloatField()
     capacity = models.FloatField()
 
+# Todo: vehicle is a foreign key
 class Route(models.Model):
 
     id = models.CharField(max_length=100, primary_key= True)
     seq_mcps_id = models.JSONField()
-    vehicle_id = models.CharField(max_length=100)
+    vehicle_id = models.CharField(max_length=100) 
 
+#   Todo: modify attrs
+"""
+    1. User id --> Task
+"""
 class Task(models.Model):
     body = models.TextField(max_length=255, blank=False)
 
