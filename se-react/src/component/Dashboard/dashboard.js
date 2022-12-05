@@ -232,11 +232,11 @@ function Dashboard() {
         .catch(err => console.log(err))
     }, [user_json.length])
     
-    for (let i = 0; i <= user_json.length-1; i++){
+    /*for (let i = 0; i <= user_json.length-1; i++){
         var push_tmp = {
             'id': 
         }
-    }
+    }*/
     
     /*Return function*/
     return (
