@@ -29,7 +29,6 @@ import {
     FaPlus,
 } from "react-icons/fa";
 import axios from "axios";
-
 /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
@@ -60,7 +59,11 @@ for (const todo of TodoList) {
     checkList.push(todo.content)
 }
 
-const collector = {
+/*
+    Fetch to get user information
+*/
+
+var collector = {
     columns: [
         {
             label: 'ID',
@@ -79,18 +82,18 @@ const collector = {
         },
     ],
     rows: [
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
     ]
 };
 const janitor = {
@@ -220,6 +223,32 @@ function Dashboard() {
     var isChecked = (item) =>
         checked.includes(item) ? "checked-item" : "not-checked-item";
 
+    const [user_json, setData] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/user/')
+            .then(res => setData(() => res.data))
+            .catch(err => console.log(err))
+    }, [user_json.length])
+
+    for (let i = 0; i <= user_json.length - 1; i++) {
+        // _status = "" ;
+        // if (user_json[i]['status'] == 1){
+        //     _status = "Available"
+        // }
+        // else if (user_json[i]['status'] == 0){
+        //     _status = "On-going"
+        // }
+        // else{_status = "Inactive"}
+        // var push_tmp = 
+        // if (user_json[i]['staff_id'] != "COLLECTOR"){
+
+        //     collector.rows.push(push_tmp);
+
+
+
+        // }
+    }
+    console.log(collector.rows)
     const defaultdate = new Date();
     defaultdate.setHours(0, 0, 0, 0)
     const [date, setDate] = useState(defaultdate);
@@ -227,7 +256,7 @@ function Dashboard() {
     const onChange = date => {
         setDate(date)
     }
-
+    /*Return function*/
     return (
         <div className="db-container">
             <div className="db-sidebar">

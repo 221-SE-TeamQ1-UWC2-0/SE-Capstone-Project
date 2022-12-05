@@ -10,10 +10,13 @@ function COList(){
     const [userList, setUserList] = useState([]);
 
     const columns = [
-        {dataField:'id',text:'ID'},
-        {dataField:'name',text:'NAME', /*sort:true, filter:textFilter()*/},
-        {dataField:'username',text:'USERNAME', /*sort:true, filter:textFilter()*/},
-        {dataField:'email',text:'EMAIL'},
+        {dataField:'staff_id',text:'Staff ID'},
+        {dataField:'fullname',text:'Full Name', /*sort:true, filter:textFilter()*/},
+        {dataField:'residential_id', text:'Residential ID'},
+        {dataField:'email',text:'Email'},
+        {dataField:'phone_number',text:'Phone Number'},
+        {dataField: 'date_of_birth', text: 'Birthday'}
+
     ]
     
     const pagination = paginationFactory({
@@ -35,11 +38,12 @@ function COList(){
         }
     });
     useEffect(()=>{
-        fetch("https://jsonplaceholder.typicode.com/users")
+        fetch("http://127.0.0.1:8000/api/collector/")
             .then (response => response.json())
             .then(result => setUserList(result))
             .catch(error => console.log(error));
-    },[])
+    },[userList.length])
+    console.log(userList)
     return <div>
         <BootstrapTable 
         bootstrap4 
