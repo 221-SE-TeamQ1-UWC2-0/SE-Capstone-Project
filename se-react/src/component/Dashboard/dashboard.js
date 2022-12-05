@@ -1,11 +1,12 @@
 import "./dashboard.css";
-import React, { useState, Component,useRef, useEffect } from "react";
+import React, { useState, Component, useRef, useEffect } from "react";
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import Calendar from 'react-calendar';
 import './calendar.css'
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import geoJson from "../map/MCP.json";
+import DataFetching from "./DataFetching";
 
 import {
     MdCalendarToday,
@@ -28,6 +29,7 @@ import {
     FaUserCircle,
     FaPlus,
 } from "react-icons/fa";
+import axios from "axios";
 /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
@@ -50,9 +52,27 @@ const Logo = () => {
     );
 };
 /*Check list*/
-const checkList = ["Rooftop t4", "???", "Die", "Draft SE", "Life"];
+const checkList = ["2022-12-05", "Collect on Route B", "Die", "Draft SE", "Life"];
 /*Table*/
 
+const TodoList = [{ "date": "2022-12-05", content: "Collect on Route B" }]
+for (const todo of TodoList) {
+    checkList.push(todo.content)
+}
+// const currentDate = new Date();
+// const dates = TodoList
+//     .filter((bigN) => new Date(bigN.task) < currentDate)
+//     .map((data) => {
+//         return {
+//             content: data.content,
+//         }
+//     });
+// console.log(dates)
+
+
+/*
+    Fetch to get user information
+*/
 
 const collector = {
     columns: [
@@ -73,18 +93,18 @@ const collector = {
         },
     ],
     rows: [
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
-        { id: "CO001", status: "Available", action: "Contact" },
-        { id: "CO002", status: "On-going", action: "Contact" },
-        { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
+        // { id: "CO001", status: "Available", action: "Contact" },
+        // { id: "CO002", status: "On-going", action: "Contact" },
+        // { id: "CO003", status: "Inactive", action: "Contact" },
     ]
 };
 const janitor = {
@@ -127,55 +147,55 @@ const janitor = {
 function Dashboard() {
     /*Map*/
     /*Map*/
-const mapContainerRef = useRef(null);
+    const mapContainerRef = useRef(null);
 
-// Initialize map when component mounts
-useEffect(() => {
-  const map = new mapboxgl.Map({
-    container: mapContainerRef.current,
-    style: "mapbox://styles/mapbox/streets-v11",
-    center: [106.6856, 10.7633 ],
-    zoom: 11.5,
-  });
-  map.on("load", function () {
-    // Add an image to use as a custom marker
-    map.loadImage(
-      "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
-      function (error, image) {
-        if (error) throw error;
-        map.addImage("custom-marker", image);
-        // Add a GeoJSON source with multiple points
-        map.addSource("points", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: geoJson.features,
-          },
+    // Initialize map when component mounts
+    useEffect(() => {
+        const map = new mapboxgl.Map({
+            container: mapContainerRef.current,
+            style: "mapbox://styles/mapbox/streets-v11",
+            center: [106.6856, 10.7633],
+            zoom: 11.5,
         });
-        // Add a symbol layer
-        map.addLayer({
-          id: "points",
-          type: "symbol",
-          source: "points",
-          layout: {
-            "icon-image": "custom-marker",
-            // get the title name from the source's "title" property
-            "text-field": ["get", "title"],
-            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            "text-offset": [0, 1.25],
-            "text-anchor": "top",
-          },
+        map.on("load", function () {
+            // Add an image to use as a custom marker
+            map.loadImage(
+                "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
+                function (error, image) {
+                    if (error) throw error;
+                    map.addImage("custom-marker", image);
+                    // Add a GeoJSON source with multiple points
+                    map.addSource("points", {
+                        type: "geojson",
+                        data: {
+                            type: "FeatureCollection",
+                            features: geoJson.features,
+                        },
+                    });
+                    // Add a symbol layer
+                    map.addLayer({
+                        id: "points",
+                        type: "symbol",
+                        source: "points",
+                        layout: {
+                            "icon-image": "custom-marker",
+                            // get the title name from the source's "title" property
+                            "text-field": ["get", "title"],
+                            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+                            "text-offset": [0, 1.25],
+                            "text-anchor": "top",
+                        },
+                    });
+                }
+            );
         });
-      }
-    );
-  });
 
-  // Add navigation control (the +/- zoom buttons)
-  map.addControl(new mapboxgl.NavigationControl(), "top-right");
+        // Add navigation control (the +/- zoom buttons)
+        map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-  // Clean up on unmount
-  return () => map.remove();
-}, []);
+        // Clean up on unmount
+        return () => map.remove();
+    }, []);
 
 
 
@@ -204,13 +224,24 @@ useEffect(() => {
     // Return classes based on whether item is checked
     var isChecked = (item) =>
         checked.includes(item) ? "checked-item" : "not-checked-item";
-
-
-
-
+    
+    const [user_json, setData] = useState([]);
+    useEffect(()  => {
+        axios.get('http://localhost:8000/api/user/')
+        .then(res => setData(() => res.data))
+        .catch(err => console.log(err))
+    }, [user_json.length])
+    
+    for (let i = 0; i <= user_json.length-1; i++){
+        var push_tmp = {
+            'id': 
+        }
+    }
+    
     /*Return function*/
     return (
         <div className="db-container">
+            <DataFetching />
             <div className="db-sidebar">
                 <div className="db-opt">
                     <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
@@ -297,7 +328,7 @@ useEffect(() => {
                                 <div className="db-calendaring">
 
                                     <Calendar onChange={onChange} value={value} />
-                                
+
                                 </div>
                             </div>
                         </div>

@@ -16,7 +16,7 @@ class UserTokenObtainPairView(TokenObtainPairView):
 
 
 class UserViewSet(ModelViewSet):
-    queryset = UWC_User.objects.all()
+    queryset = UWC_User.objects.all().exclude(role = "BACKOFFICER")
     serializer_class = UserSerializer
 
     def retrieve(self, request, pk):
