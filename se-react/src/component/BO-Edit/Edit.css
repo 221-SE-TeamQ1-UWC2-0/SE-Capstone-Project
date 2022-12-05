@@ -15,6 +15,10 @@
     height:48%;
     border-bottom: solid 1px #868585;
 }
+.edit-sidebar .edit-opt a{
+    text-decoration: none;
+    color:black;
+}
 .edit-logo {
     width: 5em;
     background-color: white;
@@ -55,9 +59,11 @@
     background-color: rgb(195, 195, 195);
 }
 .edit-sidebar_item h3{
-    color:#454545;
+    color: #454545;
     font-weight: 500;
-    font-size: .9em;
+    font-size: 1em;
+    margin-top:.3em;
+    margin-left:1em;
 }
 /*Icon*/
 .edit-sidebar_img{
@@ -67,29 +73,6 @@
     margin-right:.5em;
 }
 
-
-/*Lower Sidebar*/
-.edit-overview h4{
-    color:#454545;
-    margin-top:2em;
-    margin-bottom: 1.5em;
-
-}
-.edit-taskovr{
-    height:5em;
-    width:15em;
-    border: solid 1px #acacac;
-    display: flex;
-}
-.edit-taskovr p{
-    margin-top:.6em;
-}
-.edit-taskovr h1{
-    margin-top:1em;
-    margin-left:-4em;
-    font-weight: 450;
-    font-size:35px;
-}
 
 .edit-header{
     width:82em;

@@ -1,27 +1,31 @@
 import "./dashboard.css";
 import React, { useState, Component, useRef, useEffect } from "react";
-import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+//import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import Calendar from 'react-calendar';
 import './calendar.css'
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import geoJson from "../map/MCP.json";
+import geojson from "../map/MCP.json";
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 
 import {
     MdCalendarToday,
     MdOutlineMap,
     MdSource,
     MdChatBubbleOutline,
-    MdSettings,
     MdAddCircleOutline,
     MdNotifications,
     MdInfo,
+    MdOutlineAddLocation,
 } from "react-icons/md";
 
 import {
-    RiLoader2Fill,
-    RiTimeLine,
-    RiCheckboxCircleFill
+    RiUser6Fill,
+    RiUserLine,
+    RiUserLocationLine,
+    RiTruckLine,
 } from "react-icons/ri";
 
 import {
@@ -63,73 +67,6 @@ for (const todo of TodoList) {
     Fetch to get user information
 */
 
-var collector = {
-    columns: [
-        {
-            label: 'ID',
-            field: 'id',
-            sort: 'asc'
-        },
-        {
-            label: 'Status',
-            field: 'first',
-            sort: 'asc'
-        },
-        {
-            label: 'Action',
-            field: 'last',
-            sort: 'asc'
-        },
-    ],
-    rows: [
-        // { id: "CO001", status: "Available", action: "Contact" },
-        // { id: "CO002", status: "On-going", action: "Contact" },
-        // { id: "CO003", status: "Inactive", action: "Contact" },
-        // { id: "CO001", status: "Available", action: "Contact" },
-        // { id: "CO002", status: "On-going", action: "Contact" },
-        // { id: "CO003", status: "Inactive", action: "Contact" },
-        // { id: "CO001", status: "Available", action: "Contact" },
-        // { id: "CO002", status: "On-going", action: "Contact" },
-        // { id: "CO003", status: "Inactive", action: "Contact" },
-        // { id: "CO001", status: "Available", action: "Contact" },
-        // { id: "CO002", status: "On-going", action: "Contact" },
-        // { id: "CO003", status: "Inactive", action: "Contact" },
-    ]
-};
-const janitor = {
-    columns: [
-        {
-            label: 'ID',
-            field: 'id',
-            sort: 'asc'
-        },
-        {
-            label: 'Status',
-            field: 'first',
-            sort: 'asc'
-        },
-        {
-            label: 'Action',
-            field: 'last',
-            sort: 'asc'
-        },
-    ],
-    rows: [
-        { id: "JA001", status: "Available", action: "Contact" },
-        { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact" },
-        { id: "JA001", status: "Available", action: "Contact" },
-        { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact" },
-        { id: "JA001", status: "Available", action: "Contact" },
-        { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact" },
-        { id: "JA001", status: "Available", action: "Contact" },
-        { id: "JA002", status: "On-going", action: "Contact" },
-        { id: "Ja003", status: "Inactive", action: "Contact" },
-    ],
-};
-
 
 async function Taskfetching() {
     let response = await axios.get('http://localhost:8000/api/task/')
@@ -146,61 +83,38 @@ async function Taskfetching() {
 
 function Dashboard() {
     /*Map*/
-    /*Map*/
-    const mapContainerRef = useRef(null);
-    const [task, setTask] = useState([])
-    // Initialize map when component mounts
-    useEffect(() => {
-        const map = new mapboxgl.Map({
-            container: mapContainerRef.current,
-            style: "mapbox://styles/mapbox/streets-v11",
-            center: [106.6856, 10.7633],
-            zoom: 11.5,
-        });
-        Taskfetching().then(response => {
-            setTask(response)
-        })
+    //----------------------------------------------------------//
+    const mapContainer = useRef()
+    const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
+  useEffect(() => {
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/outdoors-v11",
+      center: [106.68926, 10.7489933 ],
+      zoom: 11,
+    })
+    for (const feature of geojson.features) {
+      const el = document.createElement('div');
+      el.className = 'marker';
+    
+      new mapboxgl.Marker(el)
+      .setLngLat(feature.geometry.coordinates)
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML(
+            `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+          )
+      )
+      .addTo(map);
+    }
 
-        map.on("load", function () {
-            // Add an image to use as a custom marker
-            map.loadImage(
-                "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
-                function (error, image) {
-                    if (error) throw error;
-                    map.addImage("custom-marker", image);
-                    // Add a GeoJSON source with multiple points
-                    map.addSource("points", {
-                        type: "geojson",
-                        data: {
-                            type: "FeatureCollection",
-                            features: geoJson.features,
-                        },
-                    });
-                    // Add a symbol layer
-                    map.addLayer({
-                        id: "points",
-                        type: "symbol",
-                        source: "points",
-                        layout: {
-                            "icon-image": "custom-marker",
-                            // get the title name from the source's "title" property
-                            "text-field": ["get", "title"],
-                            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-                            "text-offset": [0, 1.25],
-                            "text-anchor": "top",
-                        },
-                    });
-                }
-            );
-        });
+    return () => map.remove()
+  }, [])
+    //----------------------------------------------------------//
 
-        // Add navigation control (the +/- zoom buttons)
-        map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-        // Clean up on unmount
-        return () => map.remove();
-    }, []);
-
+    //Task-----------------------------------------------------//
+    const [task, setTask] = useState([])   
     /*Checklist*/
     const [checked, setChecked] = useState([]);
     // Add/Remove checked item from list
@@ -248,7 +162,6 @@ function Dashboard() {
 
         // }
     }
-    console.log(collector.rows)
     const defaultdate = new Date();
     defaultdate.setHours(0, 0, 0, 0)
     const [date, setDate] = useState(defaultdate);
@@ -256,39 +169,51 @@ function Dashboard() {
     const onChange = date => {
         setDate(date)
     }
+    //----------------------------------------------------------//
     /*Return function*/
     return (
         <div className="db-container">
             <div className="db-sidebar">
                 <div className="db-opt">
-                    <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
+                    <a href="/dashboard"><div style={{ display: "flex", alignItems: "center", marginBottom: "0em" }}>
                         <Logo />
                         <div className="db-Logoname">
                             <h4>UWC 2.0</h4>
                             <p>BO interface</p>
                         </div>
-                    </div>
-                    <SideBarItem
-                        Item={MdCalendarToday}
-                        page="Calendar"
-                        href="/"
-                    />
+                    </div></a>
                     <SideBarItem
                         Item={MdOutlineMap}
                         page="Map"
-                        href="/"
-                    />
-                    <SideBarItem
-                        Item={MdSource}
-                        page="Resources"
-                        href="/"
+                        href="/map"
                     />
                     <SideBarItem
                         Item={MdChatBubbleOutline}
                         page="Inbox"
                         href="https://www.messenger.com"
                     />
+                    <SideBarItem
+                        Item={RiUserLine}
+                        page="Collector"
+                        href="/collector-info"
+                    />
+                    <SideBarItem
+                        Item={RiUserLocationLine}
+                        page="Janitor"
+                        href="/janitor-info"
+                    />
+                    <SideBarItem
+                        Item={RiTruckLine}
+                        page="Vehicle"
+                        href="/"
+                    />
+                    <SideBarItem
+                        Item={MdOutlineAddLocation}
+                        page="MCP"
+                        href="/"
+                    />
                 </div>
+                <hr></hr>
                 <div className="db-overview">
                     <div style={{ display: 'flex', margin: '0em 1.5em' }}>
                         <h4 style={{ marginRight: '9em' }}>Overview</h4>
@@ -296,19 +221,14 @@ function Dashboard() {
                     </div>
                     <div style={{ marginLeft: '1.3em' }}>
                         <div className="db-taskovr">
-                            <RiLoader2Fill style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
-                            <p>Ongoing tasks</p>
-                            <h1 style={{ marginLeft: '-3.3em' }}>69</h1>
+                            <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
+                            <p>Available collector</p>
+                            <h2 style={{ marginLeft: '-3.3em'}}>69/122</h2>
                         </div>
                         <div className="db-taskovr">
-                            <RiTimeLine style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
-                            <p>Overdued tasks</p>
-                            <h1 style={{ marginLeft: '-3.8em' }}>420</h1>
-                        </div>
-                        <div className="db-taskovr">
-                            <RiCheckboxCircleFill style={{ margin: '.4em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
-                            <p>Completed tasks</p>
-                            <h1>111</h1>
+                            <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
+                            <p>Available janitor</p>
+                            <h2 style={{ marginLeft: '-3.8em' }}>121/232</h2>
                         </div>
                     </div>
                 </div>
@@ -321,6 +241,10 @@ function Dashboard() {
                     </div>
                     <div style={{ float: 'right' }}>
                         <div className="db-headerstuff">
+                            <a href="/map"><button className="db-addtaskbtn">
+                                <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
+                                <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Set Route</p>
+                            </button></a>
                             <button className="db-addtaskbtn">
                                 <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
                                 <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Add task</p>
@@ -337,55 +261,38 @@ function Dashboard() {
                             <div className="db-map">
                                 <a href="/map"><h4>Map</h4></a>
                                 <div className="db-mapping">
-                                    <div className="db-map-container" ref={mapContainerRef} />
+                                    <div ref={mapContainer} style={{ width: "60em", height: "51em" }} />
                                 </div>
                             </div>
                             <div className="db-calendar">
-                                <h4>Calendar</h4>
-                                <div className="db-calendaring">
-                                    <Calendar onChange={onChange} value={date} />
-                                    {date.toLocaleDateString("en-GB")}
-                                    {date.getTime()}
+                                <div>
+                                    <h4>Calendar</h4>
+                                    <div className="db-calendaring">
+                                        <Calendar onChange={onChange} value={date} />
+                                        {/*{date.toLocaleDateString("en-GB")}*/}
+                                        {/*{date.getTime()}*/}
 
+                                    </div>
+                                </div>
+                                <div className="db-tasklist">
+                                    <div className="db-checkList">
+                                        <h4>Task list</h4>
+                                        <div className="db-list-container">
+                                            {task.map((item, index) => {
+                                                // console.log(date)
+                                                if (Date.parse(item.date + "T00:00") === date.getTime()) return <div key={index}>{item.content} </div>
+                                                else return null
+                                            })}
+                                        </div>
+                                    </div>
+                                    <div className="db-checkedlist">
+                                        <p>Liet ke task o day</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="db-lower">
-                            <div className="db-collector">
-                                <a href="/collector-info"><h4>Collector information</h4></a>
-                                <MDBTable scrollY style={{ height: '1000px' }}>
-                                    <MDBTableHead columns={collector.columns} />
-                                    <MDBTableBody rows={collector.rows} />
-                                </MDBTable>
-                            </div>
-                            <div className="db-janitor">
-                                <a href="/janitor-info"><h4>Janitor information</h4></a>
-                                <MDBTable scrollY style={{ height: '1000px' }}>
-                                    <MDBTableHead columns={janitor.columns} />
-                                    <MDBTableBody rows={janitor.rows} />
-                                </MDBTable>
-                            </div>
-                        </div>
                     </div>
-                    <div className="db-tasklist">
-                        <h2>Task list</h2>
-                        <div className="db-checkList">
-
-                            <div className="db-list-container">
-                                {task.map((item, index) => {
-                                    { console.log(item.date) }
-                                    // console.log(date)
-                                    if (Date.parse(item.date + "T00:00") === date.getTime()) return <div key={index}>{item.content} </div>
-                                    else return null
-                                })}
-                            </div>
-
-                        </div>
-                        <div className="db-checkedlist">
-                            <p>Items checked are: </p>
-                            <p>{`${checkedItems}`}</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
             </div>

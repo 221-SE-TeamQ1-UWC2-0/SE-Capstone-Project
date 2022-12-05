@@ -126,7 +126,7 @@ const Map = () => {
       }
       instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
         data.duration / 60
-      )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
+      )} min </strong></p><ol>${tripInstructions}</ol>`;
     }
 
 
@@ -255,6 +255,7 @@ const Map = () => {
     return () => map.remove()
   }, [])
 
+
   return(
     <div>
       <div className="map-holder">
@@ -262,6 +263,11 @@ const Map = () => {
           <h5><b>Please input the start and end MCP</b></h5>
           <input type="text" placeholder="Start point.." name="start"></input>
           <input type="text" placeholder="End point.." name="end"></input>
+          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" />
+          <div id="assign">
+            <input type="text" placeholder="Vehicle ID" name="vehicle"></input>
+            <input type="submit" name="signin" id="signin" className="assign btn-secondary" value="Assign" />
+          </div>
         </form>
       </div>
       <div id="instructions"></div>

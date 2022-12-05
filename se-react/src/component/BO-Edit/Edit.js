@@ -3,13 +3,16 @@ import React, { useState, Component, useEffect } from "react";
 
 
 import {
-    MdCalendarToday,
     MdOutlineMap,
-    MdSource,
     MdChatBubbleOutline,
-    MdSettings,
+    MdOutlineAddLocation,
+} from "react-icons/md";
 
-  } from "react-icons/md";
+import {
+    RiUserLine,
+    RiUserLocationLine,
+    RiTruckLine,
+} from "react-icons/ri";
   import {
     FaRegImage,
     FaUserCircle,
@@ -45,40 +48,44 @@ function Edit(){
     return (
         <div className="edit-container">
             <div className="edit-sidebar">
-                <div className="edit-opt">
-                    <div style={{ display: "flex", alignItems: "center", marginBottom: "1.5em" }}>
+            <div className="edit-opt">
+                    <a href="/dashboard"><div style={{ display: "flex", alignItems: "center", marginBottom: "0em" }}>
                         <Logo />
-                        <div className="edit-Logoname">
+                        <div className="db-Logoname">
                             <h4>UWC 2.0</h4>
                             <p>BO interface</p>
                         </div>
-                    </div>
-                    <SideBarItem 
-                        Item={MdCalendarToday} 
-                        page="Calendar" 
-                        href="/" 
-                    />
+                    </div></a>
                     <SideBarItem
                         Item={MdOutlineMap}
                         page="Map"
-                        href="/"
-                    />
-                    <SideBarItem
-                        Item={MdSource}
-                        page="Resources"
-                        href="/"
+                        href="/map"
                     />
                     <SideBarItem
                         Item={MdChatBubbleOutline}
                         page="Inbox"
+                        href="https://www.messenger.com"
+                    />
+                    <SideBarItem
+                        Item={RiUserLine}
+                        page="Collector"
+                        href="/collector-info"
+                    />
+                    <SideBarItem
+                        Item={RiUserLocationLine}
+                        page="Janitor"
+                        href="/janitor-info"
+                    />
+                    <SideBarItem
+                        Item={RiTruckLine}
+                        page="Vehicle"
                         href="/"
                     />
                     <SideBarItem
-                        Item={MdSettings}
-                        page="Settings"
+                        Item={MdOutlineAddLocation}
+                        page="MCP"
                         href="/"
                     />
-                  
                 </div>
             </div>
             

@@ -24,17 +24,31 @@
   display:flex;
 }
 .map-holder h5{
-  margin-right:5em;
+  margin-right:2em;
   padding-top:.2em;
 }
 .map-holder input{
   margin-right:0.2em;
   height:2.5em;
-  width:15em;
+  width:10em;
   border-radius: 5px;
   border:none;
 }
+.map-holder .submit{
+  height:2em;
+  width:8em;
+  margin-top:.2em;
+  background-color: #acacac;
+  margin-right:10em;
+}
 
+#assign .assign{
+  height:2em;
+  width:8em;
+  margin-top:.2em;
+  background-color: #acacac;
+  margin-right:10em;
+}
 
 
 .marker {
