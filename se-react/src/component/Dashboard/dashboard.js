@@ -241,12 +241,12 @@ function Dashboard() {
         //     _status = "On-going"
         // }
         // else{_status = "Inactive"}
-        var push_tmp = 
-        if (user_json[i]['staff_id'] != "COLLECTOR"){
+        // var push_tmp = 
+        // if (user_json[i]['staff_id'] != "COLLECTOR"){
             
-            collector.rows.push(push_tmp);
+        //     collector.rows.push(push_tmp);
 
-        }
+        // }
     }
     console.log(collector.rows)
     /*Return function*/

@@ -146,8 +146,8 @@ const Map = () => {
 
 
     // start and end point
-    const start = [106.65815149483268, 10.770948414755182];
-    const coords = [ 106.6840721427908, 10.779540553081702 ];
+    const start = [106.65815149483268, 10.770948414755182];   // Start point - GET from database
+    const coords = [ 106.6840721427908, 10.779540553081702 ]; // End point  - GET from database
 
 
     // only want to work with the map after it has fully loaded
