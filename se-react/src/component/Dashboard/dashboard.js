@@ -74,7 +74,7 @@ for (const todo of TodoList) {
     Fetch to get user information
 */
 
-const collector = {
+var collector = {
     columns: [
         {
             label: 'ID',
@@ -233,11 +233,22 @@ function Dashboard() {
     }, [user_json.length])
     
     for (let i = 0; i <= user_json.length-1; i++){
-        var push_tmp = {
-            'id': 
+        // _status = "" ;
+        // if (user_json[i]['status'] == 1){
+        //     _status = "Available"
+        // }
+        // else if (user_json[i]['status'] == 0){
+        //     _status = "On-going"
+        // }
+        // else{_status = "Inactive"}
+        var push_tmp = 
+        if (user_json[i]['staff_id'] != "COLLECTOR"){
+            
+            collector.rows.push(push_tmp);
+
         }
     }
-    
+    console.log(collector.rows)
     /*Return function*/
     return (
         <div className="db-container">
