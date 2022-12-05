@@ -4,7 +4,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP1",
-        "description": "A northside park that is home to the Lincoln Park Zoo"
+        "description": "Status : full"
       },
       "geometry": {
         "coordinates": [106.698190, 10.773660],
@@ -15,7 +15,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP2",
-        "description": "A lakefront park on Chicago's south side"
+        "description": "Status : empty"
       },
       "geometry": {
         "coordinates": [106.722050, 10.761530],
@@ -26,7 +26,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP3",
-        "description": "A downtown park known for its art installations and unique architecture"
+        "description": "Status : 70%"
       },
       "geometry": {
         "coordinates": [106.682240, 10.785820],
@@ -37,7 +37,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP4",
-        "description": "A downtown park that is the site of many of Chicago's favorite festivals and events"
+        "description": "Status : 26% --- Janitor name"
       },
       "geometry": {
         "coordinates": [106.706320, 10.754930],
@@ -48,7 +48,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP5",
-        "description": "A large park on Chicago's northwest side"
+        "description": "Status : full"
       },
       "geometry": {
         "coordinates": [106.650170, 10.777020],
@@ -59,7 +59,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP6",
-        "description": "A large park near in Chicago's North Lawndale neighborhood"
+        "description": "Status : full"
       },
       "geometry": {
         "coordinates": [106.6492 , 10.7464 ],
@@ -70,7 +70,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP7",
-        "description": "A park on the Illinois-Indiana border featuring a historic fieldhouse"
+        "description": "Empty"
       },
       "geometry": {
         "coordinates": [106.7267 , 10.7322 ],
@@ -81,7 +81,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP8",
-        "description": "A lakeside park that was the site of the 1893 World's Fair"
+        "description": "Status : 50%"
       },
       "geometry": {
         "coordinates": [106.6652 , 10.7401 ],
@@ -92,7 +92,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP9",
-        "description": "A large park in Chicago's Austin neighborhood"
+        "description": "Status : 20%"
       },
       "geometry": {
         "coordinates": [106.73489, 10.86421],
@@ -103,7 +103,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP10",
-        "description": "A northside park that is home to the Lincoln Park Zoo"
+        "description": "Status : full"
       },
       "geometry": {
         "coordinates": [106.666451, 10.768003],
@@ -114,7 +114,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP11",
-        "description": "A northside park that is home to the Lincoln Park Zoo"
+        "description": "Status : empty"
       },
       "geometry": {
         "coordinates": [106.6437 , 10.7640 ],
@@ -125,7 +125,7 @@
       "type": "Feature",
       "properties": {
         "title": "MCP12",
-        "description": "A northside park that is home to the Lincoln Park Zoo"
+        "description": "Status : full"
       },
       "geometry": {
         "coordinates": [106.6540 , 10.8631 ],
