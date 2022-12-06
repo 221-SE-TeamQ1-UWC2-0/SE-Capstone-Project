@@ -143,20 +143,6 @@ function Dashboard() {
     Taskfetching().then((result) => setTask(() => result));
   }, [user_json.length]);
 
-  for (let i = 0; i <= user_json.length - 1; i++) {
-    // _status = "" ;
-    // if (user_json[i]['status'] == 1){
-    //     _status = "Available"
-    // }
-    // else if (user_json[i]['status'] == 0){
-    //     _status = "On-going"
-    // }
-    // else{_status = "Inactive"}
-    // var push_tmp =
-    // if (user_json[i]['staff_id'] != "COLLECTOR"){
-    //     collector.rows.push(push_tmp);
-    // }
-  }
   const defaultdate = new Date();
   defaultdate.setHours(0, 0, 0, 0);
   const [date, setDate] = useState(defaultdate);
@@ -250,6 +236,23 @@ function Dashboard() {
           </div>
           <div style={{ float: 'right' }}>
             <div className='db-headerstuff'>
+            <a href='/edit'>
+                <button className='db-addtaskbtn'>
+                  <FaPlus
+                    style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      color: 'white',
+                      float: 'left',
+                      marginTop: '0em',
+                    }}
+                  >
+                    Edit info
+                  </p>
+                </button>
+              </a>
               <a href='/map'>
                 <button className='db-addtaskbtn'>
                   <FaPlus
@@ -298,13 +301,13 @@ function Dashboard() {
                   color: '#454545',
                 }}
               />
-              <FaUserCircle
+              <a href='/login'><FaUserCircle
                 style={{
                   margin: '.1em .25em',
                   fontSize: '30px',
                   color: '#acacac',
                 }}
-              />
+              /></a>
             </div>
           </div>
         </div>

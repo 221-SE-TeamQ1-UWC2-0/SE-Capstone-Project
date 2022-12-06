@@ -123,11 +123,11 @@ function Edit(){
                             </div>
                             <div className="edit-info">
                                 <div className="user-box">
-                                    <label>Username</label>
+                                    <label>Current Password</label>
                                     <input type="text" name="" required="" placeholder="user name"/>                                    
                                 </div>
                                 <div className="user-box">
-                                    <label>Password</label>
+                                    <label>New Password</label>
                                     <input type="password" name="" required="" placeholder="user password"/>                                    
                                 </div>
                             </div>

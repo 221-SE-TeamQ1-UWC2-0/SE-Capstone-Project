@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import mapboxgl from "mapbox-gl"
 // import the mapbox styles
@@ -8,8 +8,11 @@ import "mapbox-gl/dist/mapbox-gl.css"
 import "./map.css"
 import geojson from "./MCP.json";
 import axios from "axios"
+import MCPList from "../mcps/mcpList"
 
-
+import {
+  RiHome2Fill
+} from 'react-icons/ri';
 // Grab the access token from your Mapbox account
 // I typically like to store sensitive things like this
 // in a .env file
@@ -20,8 +23,9 @@ mapboxgl.accessToken ="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbD
 const Map = () => {
   const mapContainer = useRef()
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
+  const [listMCP, getMCPList] = useState([]);
+  const [listLngLat, setListLngLat] = useState([])
 
-  
 
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
@@ -36,7 +40,8 @@ const Map = () => {
       center: [106.68926, 10.7489933 ],
       zoom: 12.5,
     })
-
+    
+    
     //Get latlong when clicking on map
     var marker = new mapboxgl.Marker();
     function add_marker (event) {
@@ -62,6 +67,18 @@ const Map = () => {
     /*const marker1 = new mapboxgl.Marker()
     .setLngLat([106.65815149483268, 10.770948414755182])
     .addTo(map);*/
+
+    axios
+      .get('http://127.0.0.1:8000/api/mcp/')
+      .then((res) => {
+        getMCPList(() => {
+          return res.data
+        })
+      })
+      .catch((err) => console.log(err));
+
+    
+
     for (const feature of geojson.features) {
       // create a HTML element for each feature
       const el = document.createElement('div');
@@ -78,7 +95,6 @@ const Map = () => {
       )
       .addTo(map);
     }
-    
 
 
     // start and end point
@@ -277,19 +293,43 @@ const Map = () => {
     return () => map.remove()
   }, [])
 
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = event => {
+    // 👇️ toggle shown state
+    setIsShown(current => !current);
+
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
+
 
   return(
     <div>
       <div className="map-holder">
         <form method='GET' class="pointing" action="">
+          <a href="/dashboard"><RiHome2Fill style={{color:'white', marginLeft:'-2em', fontSize:'30px', marginTop:'.3em'}}/></a>
           <h5><b>Please input the start and end MCP</b></h5>
           <input type="text" placeholder="Start point.." name="start"></input>
           <input type="text" placeholder="End point.." name="end"></input>
-          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" />
+          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit"/>
+          <div id="onclick" onClick={handleClick}>Assign to</div>
+          {isShown && (
           <div id="assign">
-            <input type="text" placeholder="Vehicle ID" name="vehicle"></input>
+             <select name="languages" id="lang" style={{color:"darkgray"}}>
+                <option value="Vehicle1">Vehicle1</option>
+                <option value="Vehicle2">Vehicle2</option>
+                <option value="Vehicle3">Vehicle3</option>
+                <option value="Vehicle4">Vehicle4</option>
+                <option value="Vehicle5">Vehicle5</option>
+                <option value="Vehicle6">Vehicle6</option>
+                <option value="Vehicle7">Vehicle7</option>
+                <option value="Vehicle8">Vehicle8</option>
+                <option value="Vehicle9">Vehicle9</option>
+              </select>
             <input type="submit" name="signin" id="signin" className="assign btn-secondary" value="Assign" />
           </div>
+          )}
         </form>
       </div>
       <div id="instructions"></div>
