@@ -75,7 +75,7 @@ const Map = () => {
       })
       .catch((err) => console.log(err));
 
-
+    
 
     for (const feature of geojson.features) {
       // create a HTML element for each feature
@@ -89,28 +89,6 @@ const Map = () => {
         new mapboxgl.Popup({ offset: 25 }) // add popups
           .setHTML(
             `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-          )
-      )
-      .addTo(map);
-    }for (let i = 0; i < listMCP.length; i++) {
-      // create a HTML element for each feature
-      const el = document.createElement('div');
-      el.className = 'marker';
-    
-      // make a marker for each feature and add to the map
-      console.log(MCPList.reduce((r,e) => {
-        r.push(e.long, e.lat)
-        return r
-      }))
-      new mapboxgl.Marker(el)
-      .setLngLat(MCPList.reduce((r,e) => {
-        r.push(e.long, e.lat)
-        return r
-      }))
-      .setPopup(
-        new mapboxgl.Popup({ offset: 25 }) // add popups
-          .setHTML(
-            `<h3>MCP${listMCP[i].id}</h3><p>(${listMCP[i].lat}, ${listMCP[i].long})</p>`
           )
       )
       .addTo(map);
