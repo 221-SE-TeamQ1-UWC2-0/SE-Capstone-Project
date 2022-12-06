@@ -205,7 +205,7 @@ function Dashboard() {
                     <SideBarItem
                         Item={RiTruckLine}
                         page="Vehicle"
-                        href="/"
+                        href="/vehicle-info"
                     />
                     <SideBarItem
                         Item={MdOutlineAddLocation}

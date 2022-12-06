@@ -1,6 +1,7 @@
-import "./info.css";
+
+import "./vehicle.css";
 import React, { useState, Component, useEffect } from "react";
-import JAList from "./JAList";
+import VehicleList from "./vehicleList";
 
 
 import {
@@ -49,7 +50,7 @@ const Logo = () => {
 };
 
 
-function Janitor(){
+function Vehicle(){
     
     /*Return function*/    
     return (
@@ -118,7 +119,7 @@ function Janitor(){
             <div className="in4-content">
                 <div className="in4-header">
                     <div style={{float:'left'}}>
-                        <p>JANITOR INFORMATION</p>
+                        <p>VEHICLES INFORMATION</p>
                     </div>
                     <div style={{float:'right'}}>
                         <div className="in4-headerstuff">
@@ -133,11 +134,11 @@ function Janitor(){
                     </div>
                 </div>
                 <div className="in4-main">
-                    <JAList/>
+                    <VehicleList/>
                 </div>
 
             </div>
         </div>
     );
 }
-export default Janitor;
+export default Vehicle;

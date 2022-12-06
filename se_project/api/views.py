@@ -54,4 +54,7 @@ class VehicleViewSet(ModelViewSet):
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 
-class MCPViewSet(ModelViewSet)
+class MCPViewSet(ModelViewSet):
+
+    queryset = MCP.objects.all()
+    serializer_class = MCPSerializer
