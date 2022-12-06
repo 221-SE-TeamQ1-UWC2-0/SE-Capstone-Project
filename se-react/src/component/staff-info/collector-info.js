@@ -122,6 +122,23 @@ function Collector(){
                     </div>
                     <div style={{float:'right'}}>
                         <div className="in4-headerstuff">
+                        <a href='/edit'>
+                            <button className='db-addtaskbtn'>
+                            <FaPlus
+                                style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                            />
+                            <p
+                                style={{
+                                fontSize: '15px',
+                                color: 'white',
+                                float: 'left',
+                                marginTop: '0em',
+                                }}
+                            >
+                                Edit info
+                            </p>
+                            </button>
+                        </a>
                         <a href='/map'>
                             <button className='db-addtaskbtn'>
                             <FaPlus
@@ -139,7 +156,7 @@ function Collector(){
                             </p>
                             </button>
                         </a>
-                        <a href='/addtask'><button className='db-addtaskbtn'>
+                        <a href="/addtask"><button className='db-addtaskbtn'>
                             <FaPlus
                             style={{ fontSize: '15px', color: 'white', float: 'left' }}
                             />
@@ -153,10 +170,16 @@ function Collector(){
                             >
                             Add task
                             </p>
-                        </button></a>                          
+                        </button></a>                         
                             <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
                             <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
-                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
+                            <a href='/login'><FaUserCircle
+                                style={{
+                                margin: '.1em .25em',
+                                fontSize: '30px',
+                                color: '#acacac',
+                                }}
+                            /></a>
                         </div>
                     </div>
                 </div>
