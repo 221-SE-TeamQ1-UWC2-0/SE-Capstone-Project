@@ -4,9 +4,9 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserTokenObtainPairSerializer, UserSerializer, TaskSerializer, MCPSerializer, VehicleSerializer, RouteSerializer
+from .serializers import UserTokenObtainPairSerializer, UserSerializer, TaskSerializer, VehicleSerializer, MCPSerializer
 from usr.models import UWC_User
-from base.models import Task, MCP, Vehicle, Route
+from base.models import *
 
 # Create your views here.
 
@@ -49,14 +49,15 @@ class TaskViewSet(ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+class VehicleViewSet(ModelViewSet):
+
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer
+
 class MCPViewSet(ModelViewSet):
     queryset = MCP.objects.all()
     serializer_class = MCPSerializer
 
-class VehicleViewSet(ModelViewSet):
-    queryset = Vehicle.objects.all()
-    serializer_class = VehicleSerializer
-
 class RouteViewSet(ModelViewSet):
-    queryset = Route.objects.all()
-    serializer_class = RouteSerializer
+    queryset= MCP.objects.all()
+    serializer_class = MCPSerializer

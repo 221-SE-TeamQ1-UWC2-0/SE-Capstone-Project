@@ -8,5 +8,5 @@ from usr.models import UWC_User
 class DashboardView(viewsets.ModelViewSet):
 
     serializer_class = EmployeeSerializer
-
+    
     queryset = UWC_User.objects.filter(role != "Ad", role != "BO")
