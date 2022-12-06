@@ -127,11 +127,11 @@ function Task() {
                 <div className='task-add'>
                     <div className='in4-holder'>
                         <div className='in4-holder-left'>
-                            <form method='POST' action="" name="info" >
+                            <form method='POST' action="" name="info" style={{ marginTop: '7em' }}>
                                 <h5><FaFontAwesomeFlag /> General information</h5>
                                 <div className='Staffname'>
                                     <p><b>Staff ID</b></p>
-                                    <input type="text" placeholder="Staff1" name="assigned_to" style={{ height: '2.5em' }}/>
+                                    <input type="text" placeholder="Staff1" name="assigned_to" style={{ height: '2.5em' }} />
                                 </div>
                                 <div>
                                     <p><b>Description</b></p>
