@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import mapboxgl from "mapbox-gl"
 // import the mapbox styles
@@ -277,6 +277,15 @@ const Map = () => {
     return () => map.remove()
   }, [])
 
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = event => {
+    // 👇️ toggle shown state
+    setIsShown(current => !current);
+
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
 
   return(
     <div>
@@ -285,11 +294,24 @@ const Map = () => {
           <h5><b>Please input the start and end MCP</b></h5>
           <input type="text" placeholder="Start point.." name="start"></input>
           <input type="text" placeholder="End point.." name="end"></input>
-          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" />
+          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit"/>
+          <div id="onclick" onClick={handleClick}>Assign to</div>
+          {isShown && (
           <div id="assign">
-            <input type="text" placeholder="Vehicle ID" name="vehicle"></input>
+             <select name="languages" id="lang" style={{color:"darkgray"}}>
+                <option value="Vehicle1">Vehicle1</option>
+                <option value="Vehicle2">Vehicle2</option>
+                <option value="Vehicle3">Vehicle3</option>
+                <option value="Vehicle4">Vehicle4</option>
+                <option value="Vehicle5">Vehicle5</option>
+                <option value="Vehicle6">Vehicle6</option>
+                <option value="Vehicle7">Vehicle7</option>
+                <option value="Vehicle8">Vehicle8</option>
+                <option value="Vehicle9">Vehicle9</option>
+              </select>
             <input type="submit" name="signin" id="signin" className="assign btn-secondary" value="Assign" />
           </div>
+          )}
         </form>
       </div>
       <div id="instructions"></div>
