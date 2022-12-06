@@ -1,0 +1,19 @@
+.in4-holder-left{
+    background-color: #acacac;
+    border-radius: 5px 0px 0px 5px;
+}
+.in4-holder-left button{
+    height:2.5em;
+    width:8em;
+    margin-left:7em;
+}
+.in4-holder-left input{
+    border:none;
+    border-radius: 5px;
+    background-color:#efefef;
+}
+.in4-holder-right{
+    background-color: #acacac;
+    border-radius: 0px 5px 5px 0px;
+
+}

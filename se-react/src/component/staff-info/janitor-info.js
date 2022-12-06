@@ -122,10 +122,38 @@ function Janitor() {
                     </div>
                     <div style={{ float: 'right' }}>
                         <div className="in4-headerstuff">
-                            <button className="in4-addtaskbtn">
-                                <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
-                                <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Add task</p>
-                            </button>
+                        <a href='/map'>
+                <button className='db-addtaskbtn'>
+                  <FaPlus
+                    style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      color: 'white',
+                      float: 'left',
+                      marginTop: '0em',
+                    }}
+                  >
+                    Set Route
+                  </p>
+                </button>
+              </a>
+              <a href='/addtask'><button className='db-addtaskbtn'>
+                <FaPlus
+                  style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                />
+                <p
+                  style={{
+                    fontSize: '15px',
+                    color: 'white',
+                    float: 'left',
+                    marginTop: '0em',
+                  }}
+                >
+                  Add task
+                </p>
+              </button></a>
                             <MdInfo style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
                             <MdNotifications style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
                             <FaUserCircle style={{ margin: '.1em .25em', fontSize: '30px', color: '#acacac' }} />

@@ -263,7 +263,7 @@ function Dashboard() {
                   </p>
                 </button>
               </a>
-              <button className='db-addtaskbtn'>
+              <a href='/addtask'><button className='db-addtaskbtn'>
                 <FaPlus
                   style={{ fontSize: '15px', color: 'white', float: 'left' }}
                 />
@@ -277,7 +277,7 @@ function Dashboard() {
                 >
                   Add task
                 </p>
-              </button>
+              </button></a>
               <MdInfo
                 style={{
                   margin: '.25em .25em',

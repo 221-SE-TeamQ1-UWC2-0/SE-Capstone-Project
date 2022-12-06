@@ -51,7 +51,7 @@ function Task() {
     return (
         <div className="in4-container">
             <div className="in4-sidebar">
-                <div className="task-opt">
+                <div className="in4-opt">
                     <a href="/dashboard"><div style={{ display: "flex", alignItems: "center", marginBottom: "0em" }}>
                         <Logo />
                         <div className="db-Logoname">
@@ -118,10 +118,6 @@ function Task() {
                     </div>
                     <div style={{ float: 'right' }}>
                         <div className="in4-headerstuff">
-                            <button className="in4-addtaskbtn">
-                                <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
-                                <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Add task</p>
-                            </button>
                             <MdInfo style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
                             <MdNotifications style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
                             <FaUserCircle style={{ margin: '.1em .25em', fontSize: '30px', color: '#acacac' }} />
@@ -135,15 +131,13 @@ function Task() {
                                 <h5><FaFontAwesomeFlag /> General information</h5>
                                 <div className='Staffname'>
                                     <p><b>Staff ID</b></p>
-                                    <input type="text" placeholder="Staff1" name="assigned_to" />
+                                    <input type="text" placeholder="Staff1" name="assigned_to" style={{ height: '2.5em' }}/>
                                 </div>
                                 <div>
                                     <p><b>Description</b></p>
                                     <input type="text" placeholder="Collect MCP 2" name="Body" style={{ height: '5em' }} />
                                 </div>
                                 <button className='submit-task' type="button">Add Task</button>
-
-
                             </form>
                         </div>
                         <div className='in4-holder-right'>
