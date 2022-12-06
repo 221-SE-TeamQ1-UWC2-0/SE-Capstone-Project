@@ -91,7 +91,7 @@ function Janitor(){
                     <SideBarItem
                         Item={MdOutlineAddLocation}
                         page="MCP"
-                        href="/"
+                        href="/mcp-info"
                     />
                 </div>
                 <hr></hr>

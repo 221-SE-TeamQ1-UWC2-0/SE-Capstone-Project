@@ -28,7 +28,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/janitor-info' element={<Janitor />} />
             <Route path='/vehicle-info' element={<Vehicle/>} />
-            {/* <Route path='/mcps-info' element={<MCP />} /> */}
+            <Route path='/mcp-info' element={<MCP />} />
             <Route path='/collector-info' element={<Collector />} />
 
             <Route path='/edit' element={<Edit />} />
