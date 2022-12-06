@@ -328,11 +328,11 @@ function Dashboard() {
                 <div className='db-tasklist'>
                   <div className='db-checkList'>
                     <h4>Task list</h4>
-                    <div className='db-list-container'>
+                    <div className='db-list-container border-top border-dark'>
                       {task.map((item, index) => {
                         // console.log(date)
                         if (Date.parse(item.date + 'T00:00') === date.getTime())
-                          return <div key={index} className='border-top border-dark'>{item.content} </div>;
+                          return <div key={index} className={index !== 0 ? 'border-top border-dark': ''}>{item.content} </div>;
                         else return null;
                       })}
                     </div>
