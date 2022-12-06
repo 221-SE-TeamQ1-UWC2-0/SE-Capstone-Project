@@ -11,7 +11,7 @@ function StaffList() {
 
     const columns = [
         { dataField: 'staff_id', text: 'Staff ID' },
-        { dataField: 'body', text: 'Description' }
+        { dataField: 'fullname', text: 'Fullname' }
     ]
 
     const pagination = paginationFactory({

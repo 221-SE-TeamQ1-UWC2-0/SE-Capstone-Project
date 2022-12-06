@@ -202,7 +202,11 @@ function Dashboard() {
             href='/janitor-info'
           />
           <SideBarItem Item={RiTruckLine} page='Vehicle' href='/vehicle-info' />
-          <SideBarItem Item={MdOutlineAddLocation} page='MCP' href='/mcp-info' />
+          <SideBarItem
+            Item={MdOutlineAddLocation}
+            page='MCP'
+            href='/mcp-info'
+          />
         </div>
         <hr></hr>
         <div className='db-overview'>
@@ -263,21 +267,23 @@ function Dashboard() {
                   </p>
                 </button>
               </a>
-              <button className='db-addtaskbtn'>
-                <FaPlus
-                  style={{ fontSize: '15px', color: 'white', float: 'left' }}
-                />
-                <p
-                  style={{
-                    fontSize: '15px',
-                    color: 'white',
-                    float: 'left',
-                    marginTop: '0em',
-                  }}
-                >
-                  Add task
-                </p>
-              </button>
+              <a href='/addtask'>
+                <button className='db-addtaskbtn'>
+                  <FaPlus
+                    style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      color: 'white',
+                      float: 'left',
+                      marginTop: '0em',
+                    }}
+                  >
+                    Add task
+                  </p>
+                </button>
+              </a>
               <MdInfo
                 style={{
                   margin: '.25em .25em',
@@ -332,7 +338,16 @@ function Dashboard() {
                       {task.map((item, index) => {
                         // console.log(date)
                         if (Date.parse(item.date + 'T00:00') === date.getTime())
-                          return <div key={index} className={index !== 0 ? 'border-top border-dark': ''}>{item.content} </div>;
+                          return (
+                            <div
+                              key={index}
+                              className={
+                                index !== 0 ? 'border-top border-dark' : ''
+                              }
+                            >
+                              {item.content}{' '}
+                            </div>
+                          );
                         else return null;
                       })}
                     </div>
