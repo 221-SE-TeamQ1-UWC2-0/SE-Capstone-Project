@@ -9,7 +9,6 @@ UPDATED: REMOVE ID FIELD FROM MCP, VEHICLE AND ROUTE SINCE DJANGO ALREADY SUPPOR
 """
 class MCP(models.Model):
 
-    location = models.JSONField()
     capacity = models.FloatField()
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)
