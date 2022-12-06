@@ -1,24 +1,26 @@
-.in4-container{
+.in4-container {
     position: absolute;
     display: flex;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
+
 /*Sidebar*/
-.in4-sidebar{
+.in4-sidebar {
     background-color: white;
-    width:20%;
-    height:100%;
-    border-right: solid 1px #868585;
+    width: 20%;
+    height: 100%;
 }
+
 /*Upper sidebar*/
-.in4-sidebar .opt{
-    height:48%;
+.in4-sidebar .opt {
+    height: 48%;
     border-bottom: solid 1px #868585;
 }
-.in4-opt a{
+
+.in4-opt a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 .in4-logo {
@@ -29,48 +31,56 @@
     justify-content: center;
 }
 
-.in4-logo img{
+.in4-logo img {
     width: 2.5em;
     height: auto;
 }
-.in4-Logoname{
-    margin-top:10px;
+
+.in4-Logoname {
+    margin-top: 10px;
 }
-.in4-Logoname h4{
-    margin-bottom:-5px;
+
+.in4-Logoname h4 {
+    margin-bottom: -5px;
     font-weight: 500;
 }
-.in4-Logoname p{
-    font-size:13px;
+
+.in4-Logoname p {
+    font-size: 13px;
     color: #868585;
 }
+
 .in4-sidebar_link {
     text-decoration: none;
     color: white;
     width: fit-content;
 }
+
 .in4-sidebar_item {
     display: flex;
     align-items: center;
     padding-left: 1.4em;
     cursor: pointer;
-    height:3em;
+    height: 3em;
     border-radius: 5px;
 }
-.in4-sidebar_item:hover{
+
+.in4-sidebar_item:hover {
     background-color: rgb(195, 195, 195);
 }
-.in4-sidebar_item h3{
-    color:#454545;
+
+.in4-sidebar_item h3 {
+    color: #454545;
     font-weight: 500;
     font-size: .9em;
 }
+
 /*Icon*/
-.in4-sidebar_img{
-    color:#454545;
+.in4-sidebar_img {
+    color: #454545;
     width: 1.5em;
     height: auto;
-    margin-right:.5em;
+    margin-right: .5em;
 }
 
 /*Lower Sidebar*/
@@ -87,90 +97,152 @@
     border: solid 1px #acacac;
     display: flex;
     border-radius: 10px;
-    margin-bottom:1em;
+    margin-bottom: 1em;
 }
+
 .in4-taskovr:hover {
     background-color: #767676;
-    color:white;
+    color: white;
 }
 
 .in4-taskovr p {
     margin-top: 1.2em;
 }
-.in4-taskovr h2{
-    margin-top:2em;
+
+.in4-taskovr h2 {
+    margin-top: 2em;
 }
 
 /*Content*/
-.in4-content{
-    width:100%;
+.in4-content {
+    width: 100%;
     height: 100%;
 }
+
 /*header*/
-.in4-header{
-    width:100%;
-    height:10%;
+.in4-header {
+    width: 100%;
+    height: 10%;
     background-color: white;
-    border-bottom: solid 1px #454545;
 }
-.in4-header p{
-    font-size:20px;
+
+.in4-header p {
+    font-size: 20px;
     font-weight: 700;
     margin-left: 1.5em;
-    margin-top:1em;
+    margin-top: 1em;
 }
-.in4-header .in4-headerstuff{
-    width:auto;
-    padding:1em 1em;
+
+.in4-header .in4-headerstuff {
+    width: auto;
+    padding: 1em 1em;
     display: flex;
     justify-content: center;
 }
-.in4-addtaskbtn{
-    height:3em;
-    width:10em;
+
+.in4-addtaskbtn {
+    height: 3em;
+    width: 10em;
     font-size: 13px;
-    margin-right:3em;
-    padding-top:.8em !important;
+    margin-right: 3em;
+    padding-top: .8em !important;
     background-color: #868585;
     border: none;
-    color:white;
+    color: white;
 }
-.in4-addtaskbtn:hover{
-    height:3em;
-    width:10em;
+
+.in4-addtaskbtn:hover {
+    height: 3em;
+    width: 10em;
     font-size: 13px;
-    margin-right:3em;
-    padding-top:.8em;
+    margin-right: 3em;
+    padding-top: .8em;
     background-color: #454545;
     border: none;
-    color:white;
-    cursor:pointer;
+    color: white;
+    cursor: pointer;
 }
 
 /*main*/
-.in4-table{
-    margin-left:5em;
-    margin-top:3em;
+.in4-table {
+    margin-left: 5em;
+    margin-top: 3em;
 }
 
-.in4-sr-only{
+.in4-sr-only {
     display: none;
 }
-.in4-row{
-    margin-left:5em !important;
+
+.in4-row {
+    margin-left: 5em !important;
 }
-table th{
+
+table th {
     text-align: center;
 }
-.in4-page-link{
-    color:#6c757d !important;
+
+.in4-page-link {
+    color: #6c757d !important;
 }
-.active>.in4-page-link, .in4-page-link.active {
+
+.active>.in4-page-link,
+.in4-page-link.active {
     background-color: #6c757d !important;
     border-color: #6c757d !important;
-    color:white !important;
+    color: white !important;
 }
-.react-bootstrap-table-pagination{
-    margin-top:3em !important;
+
+.react-bootstrap-table-pagination {
+    margin-top: 3em !important;
     padding: 0em 2em;
+}
+
+.task-add {
+    width: 100%;
+    height: 80%;
+}
+
+.in4-holder {
+    margin: 2.4em 2em;
+    height: 100%;
+    background-color: rgb(196, 184, 184);
+    border-radius: 10px;
+    display: flex;
+}
+
+
+.in4-holder form {
+    margin: 1.5em;
+    width: 90%;
+}
+
+.info-general {
+    margin-top: 2em
+}
+
+.Staffname {
+    margin-top: 2em;
+}
+
+input {
+    width: 90%;
+    border-radius: 7px;
+    margin-bottom: 1em;
+    background-color: aliceblue;
+}
+
+.submit-task {
+    border-radius: 5px;
+    width: 30%;
+    margin: 1em 10em;
+}
+
+
+.stafflist {
+    height: 90%;
+    width: 90%;
+}
+
+.in4-holder-right {
+    width: 100%;
 }

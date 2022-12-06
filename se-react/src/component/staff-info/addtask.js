@@ -1,8 +1,6 @@
-import "./info.css";
-import React, { useState, Component, useEffect } from "react";
-import JAList from "./JAList";
-
-
+import './addtask.css'
+import './info.css'
+import StaffList from "./staffList";
 import {
     MdOutlineMap,
     MdChatBubbleOutline,
@@ -25,6 +23,7 @@ import {
 import {
     FaUserCircle,
     FaPlus,
+    FaFontAwesomeFlag,
 } from "react-icons/fa";
 /*-----------------------*/
 
@@ -48,10 +47,7 @@ const Logo = () => {
     );
 };
 
-
-function Janitor() {
-
-    /*Return function*/
+function Task() {
     return (
         <div className="in4-container">
             <div className="in4-sidebar">
@@ -86,13 +82,14 @@ function Janitor() {
                     <SideBarItem
                         Item={RiTruckLine}
                         page="Vehicle"
-                        href="/vehicle-info"
+                        href="/"
                     />
                     <SideBarItem
                         Item={MdOutlineAddLocation}
                         page="MCP"
-                        href="/mcp-info"
+                        href="/"
                     />
+
                 </div>
                 <hr></hr>
                 <div className="in4-overview">
@@ -114,81 +111,46 @@ function Janitor() {
                     </div>
                 </div>
             </div>
-
-            <div className="in4-content">
+            <div className='in4-content'>
                 <div className="in4-header">
                     <div style={{ float: 'left' }}>
-                        <p>JANITOR INFORMATION</p>
+                        <p>TASK MANAGEMENT</p>
                     </div>
                     <div style={{ float: 'right' }}>
                         <div className="in4-headerstuff">
-                        <a href='/edit'>
-                            <button className='db-addtaskbtn'>
-                            <FaPlus
-                                style={{ fontSize: '15px', color: 'white', float: 'left' }}
-                            />
-                            <p
-                                style={{
-                                fontSize: '15px',
-                                color: 'white',
-                                float: 'left',
-                                marginTop: '0em',
-                                }}
-                            >
-                                Edit info
-                            </p>
-                            </button>
-                        </a>
-                        <a href='/map'>
-                            <button className='db-addtaskbtn'>
-                            <FaPlus
-                                style={{ fontSize: '15px', color: 'white', float: 'left' }}
-                            />
-                            <p
-                                style={{
-                                fontSize: '15px',
-                                color: 'white',
-                                float: 'left',
-                                marginTop: '0em',
-                                }}
-                            >
-                                Set Route
-                            </p>
-                            </button>
-                        </a>
-                        <a href="/addtask"><button className='db-addtaskbtn'>
-                            <FaPlus
-                            style={{ fontSize: '15px', color: 'white', float: 'left' }}
-                            />
-                            <p
-                            style={{
-                                fontSize: '15px',
-                                color: 'white',
-                                float: 'left',
-                                marginTop: '0em',
-                            }}
-                            >
-                            Add task
-                            </p>
-                        </button></a>  
                             <MdInfo style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
                             <MdNotifications style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
-                            <a href='/login'><FaUserCircle
-                                style={{
-                                margin: '.1em .25em',
-                                fontSize: '30px',
-                                color: '#acacac',
-                                }}
-                            /></a>
+                            <FaUserCircle style={{ margin: '.1em .25em', fontSize: '30px', color: '#acacac' }} />
                         </div>
                     </div>
                 </div>
-                <div className="in4-main">
-                    <JAList />
-                </div>
+                <div className='task-add'>
+                    <div className='in4-holder'>
+                        <div className='in4-holder-left'>
+                            <form method='POST' action="" name="info" style={{ marginTop: '7em' }}>
+                                <h5><FaFontAwesomeFlag /> General information</h5>
+                                <div className='Staffname'>
+                                    <p><b>Staff ID</b></p>
+                                    <input type="text" placeholder="Staff1" name="assigned_to" style={{ height: '2.5em' }} />
+                                </div>
+                                <div>
+                                    <p><b>Description</b></p>
+                                    <input type="text" placeholder="Collect MCP 2" name="Body" style={{ height: '5em' }} />
+                                </div>
+                                <button className='submit-task' type="button">Add Task</button>
+                            </form>
+                        </div>
+                        <div className='in4-holder-right'>
+                            <StaffList />
+                        </div>
+                    </div>
 
+
+                </div>
             </div>
         </div>
+
+
     );
 }
-export default Janitor;
+export default Task;

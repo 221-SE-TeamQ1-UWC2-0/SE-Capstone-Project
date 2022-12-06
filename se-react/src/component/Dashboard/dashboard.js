@@ -232,6 +232,23 @@ function Dashboard() {
           </div>
           <div style={{ float: 'right' }}>
             <div className='db-headerstuff'>
+            <a href='/edit'>
+                <button className='db-addtaskbtn'>
+                  <FaPlus
+                    style={{ fontSize: '15px', color: 'white', float: 'left' }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      color: 'white',
+                      float: 'left',
+                      marginTop: '0em',
+                    }}
+                  >
+                    Edit info
+                  </p>
+                </button>
+              </a>
               <a href='/map'>
                 <button className='db-addtaskbtn'>
                   <FaPlus
@@ -249,7 +266,7 @@ function Dashboard() {
                   </p>
                 </button>
               </a>
-              <button className='db-addtaskbtn'>
+              <a href="/addtask"><button className='db-addtaskbtn'>
                 <FaPlus
                   style={{ fontSize: '15px', color: 'white', float: 'left' }}
                 />
@@ -263,7 +280,7 @@ function Dashboard() {
                 >
                   Add task
                 </p>
-              </button>
+              </button></a>
               <MdInfo
                 style={{
                   margin: '.25em .25em',
@@ -278,13 +295,13 @@ function Dashboard() {
                   color: '#454545',
                 }}
               />
-              <FaUserCircle
+              <a href='/login'><FaUserCircle
                 style={{
                   margin: '.1em .25em',
                   fontSize: '30px',
                   color: '#acacac',
                 }}
-              />
+              /></a>
             </div>
           </div>
         </div>
