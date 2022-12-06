@@ -8,6 +8,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 import "./map.css"
 import geojson from "./MCP.json";
 import axios from "axios"
+import MCPList from "../mcps/mcpList"
 
 import {
   RiHome2Fill
@@ -22,8 +23,9 @@ mapboxgl.accessToken ="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbD
 const Map = () => {
   const mapContainer = useRef()
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
+  const [listMCP, getMCPList] = useState([]);
+  const [listLngLat, setListLngLat] = useState([])
 
-  
 
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
@@ -38,7 +40,8 @@ const Map = () => {
       center: [106.68926, 10.7489933 ],
       zoom: 12.5,
     })
-
+    
+    
     //Get latlong when clicking on map
     var marker = new mapboxgl.Marker();
     function add_marker (event) {
@@ -64,6 +67,18 @@ const Map = () => {
     /*const marker1 = new mapboxgl.Marker()
     .setLngLat([106.65815149483268, 10.770948414755182])
     .addTo(map);*/
+
+    axios
+      .get('http://127.0.0.1:8000/api/mcp/')
+      .then((res) => {
+        getMCPList(() => {
+          return res.data
+        })
+      })
+      .catch((err) => console.log(err));
+
+
+
     for (const feature of geojson.features) {
       // create a HTML element for each feature
       const el = document.createElement('div');
@@ -79,8 +94,29 @@ const Map = () => {
           )
       )
       .addTo(map);
-    }
+    }for (let i = 0; i < listMCP.length; i++) {
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
     
+      // make a marker for each feature and add to the map
+      console.log(MCPList.reduce((r,e) => {
+        r.push(e.long, e.lat)
+        return r
+      }))
+      new mapboxgl.Marker(el)
+      .setLngLat(MCPList.reduce((r,e) => {
+        r.push(e.long, e.lat)
+        return r
+      }))
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML(
+            `<h3>MCP${listMCP[i].id}</h3><p>(${listMCP[i].lat}, ${listMCP[i].long})</p>`
+          )
+      )
+      .addTo(map);
+    }
 
 
     // start and end point
@@ -288,6 +324,7 @@ const Map = () => {
     // 👇️ or simply set it to true
     // setIsShown(true);
   };
+
 
   return(
     <div>

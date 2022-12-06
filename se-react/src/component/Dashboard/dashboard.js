@@ -143,20 +143,6 @@ function Dashboard() {
     Taskfetching().then((result) => setTask(() => result));
   }, [user_json.length]);
 
-  for (let i = 0; i <= user_json.length - 1; i++) {
-    // _status = "" ;
-    // if (user_json[i]['status'] == 1){
-    //     _status = "Available"
-    // }
-    // else if (user_json[i]['status'] == 0){
-    //     _status = "On-going"
-    // }
-    // else{_status = "Inactive"}
-    // var push_tmp =
-    // if (user_json[i]['staff_id'] != "COLLECTOR"){
-    //     collector.rows.push(push_tmp);
-    // }
-  }
   const defaultdate = new Date();
   defaultdate.setHours(0, 0, 0, 0);
   const [date, setDate] = useState(defaultdate);
