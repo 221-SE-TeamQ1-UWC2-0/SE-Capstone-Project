@@ -24,9 +24,9 @@
   display:flex;
 }
 .map-holder h5{
-  margin-left:-2em;
+  margin-left:-.5em;
   margin-right:1em;
-  padding-top:.2em;
+  padding-top:.5em;
 }
 .map-holder input{
   margin-right:0.2em;
@@ -47,7 +47,7 @@
   width:8em;
   margin-top:.2em;
   background-color: #acacac;
-  margin-right:5em;
+  margin-right:3em;
 }
 .map-holder #onclick{
   height:2em;

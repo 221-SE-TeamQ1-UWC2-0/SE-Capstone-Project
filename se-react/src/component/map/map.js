@@ -10,7 +10,9 @@ import geojson from "./MCP.json";
 import axios from "axios"
 import MCPList from "../mcps/mcpList"
 
-
+import {
+  RiHome2Fill
+} from 'react-icons/ri';
 // Grab the access token from your Mapbox account
 // I typically like to store sensitive things like this
 // in a .env file
@@ -305,7 +307,8 @@ const Map = () => {
   return(
     <div>
       <div className="map-holder">
-        <form method='GET' className="pointing" action="">
+        <form method='GET' class="pointing" action="">
+          <a href="/dashboard"><RiHome2Fill style={{color:'white', marginLeft:'-2em', fontSize:'30px', marginTop:'.3em'}}/></a>
           <h5><b>Please input the start and end MCP</b></h5>
           <input type="text" placeholder="Start point.." name="start"></input>
           <input type="text" placeholder="End point.." name="end"></input>
