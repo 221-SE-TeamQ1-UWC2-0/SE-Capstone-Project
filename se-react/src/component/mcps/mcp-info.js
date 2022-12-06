@@ -1,55 +1,143 @@
-import React, {useState, useEffect} from 'react';
-import BootstrapTable from 'react-bootstrap-table-next';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-import filterFactory, {textFilter} from 'react-bootstrap-table2-filter';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+import React, { useState, Component, useEffect } from "react";
+import MCPList from "./mcpList.js";
+import './mcp.css'
 
-function VehicleList(){
-    const [vehicleList, setVehicleList] = useState([]);
+import {
+    MdOutlineMap,
+    MdChatBubbleOutline,
+    MdAddCircleOutline,
+    MdNotifications,
+    MdInfo,
+    MdOutlineAddLocation,
+  } from "react-icons/md";
 
-    const columns = [
-        {dataField:'id',text:'Vehicle ID'},
-        {dataField:'fuel_capacity',text:'Fuel Capacity', /*sort:true, filter:textFilter()*/},
-        {dataField:'capacity', text:'Weight Capacity'},
-        {dataField:'driver', text:'Driver ID'}
+  import {
+    RiUser6Fill,
+    RiLoader2Fill,
+    RiTimeLine,
+    RiCheckboxCircleFill,
+    RiUserLine,
+    RiUserLocationLine,
+    RiTruckLine,
+  } from "react-icons/ri";
 
-    ]
-    
-    const pagination = paginationFactory({
-        page:1,
-        sizePerPage:6,
-        lastPageText:'>>',
-        firstPageText:'<<',
-        nextPageText:'>',
-        prePageText:'<',
-        showTotal:true,
-        alwaysShowAllBtns:true,
-        onPageChange: function(page,sizePerPage){
-            console.log('page',page);
-            console.log('sizePerpage',sizePerPage);
-        },
-        onSizePerPageChange: function(page,sizePerPage){
-            console.log('page',page);
-            console.log('sizePerpage',sizePerPage);
-        }
-    });
-    useEffect(()=>{
-        fetch("http://127.0.0.1:8000/api/vehicle/")
-            .then (response => response.json())
-            .then(result => setVehicleList(result))
-            .catch(error => console.log(error));
-    },[])
-    return <div>
-        <BootstrapTable 
-        bootstrap4 
-        keyField='id' 
-        columns={columns} 
-        data={vehicleList}
-        pagination = {pagination}
-        filter = {filterFactory()}
-        />
+  import {
+    FaUserCircle,
+    FaPlus,
+  } from "react-icons/fa";
+  /*-----------------------*/
+
+const SideBarItem = ({ Item, page, href }) => {
+    return (
+      <a className="in4-sidebar_link" href={href}>
+        <div className="in4-sidebar_item">
+          {<Item className="in4-sidebar_img" />}
+          <h3>
+            {page}
+          </h3>
         </div>
+      </a>
+    );
+  };
+const Logo = () => {
+    return (
+        <div className="in4-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HCMUT_official_logo.png" />
+        </div>
+    );
+};
+
+
+function MCP(){
+    
+    /*Return function*/    
+    return (
+        <div className="in4-container">
+            <div className="in4-sidebar">
+            <div className="in4-opt">
+                    <a href="/dashboard"><div style={{ display: "flex", alignItems: "center", marginBottom: "0em" }}>
+                        <Logo />
+                        <div className="db-Logoname">
+                            <h4>UWC 2.0</h4>
+                            <p>BO interface</p>
+                        </div>
+                    </div></a>
+                    <SideBarItem
+                        Item={MdOutlineMap}
+                        page="Map"
+                        href="/map"
+                    />
+                    <SideBarItem
+                        Item={MdChatBubbleOutline}
+                        page="Inbox"
+                        href="https://www.messenger.com"
+                    />
+                    <SideBarItem
+                        Item={RiUserLine}
+                        page="Collector"
+                        href="/collector-info"
+                    />
+                    <SideBarItem
+                        Item={RiUserLocationLine}
+                        page="Janitor"
+                        href="/janitor-info"
+                    />
+                    <SideBarItem
+                        Item={RiTruckLine}
+                        page="Vehicle"
+                        href="/vehicle-info"
+                    />
+                    <SideBarItem
+                        Item={MdOutlineAddLocation}
+                        page="MCP"
+                        href="/mcp-info"
+                    />
+                </div>
+                <hr></hr>
+                <div className="in4-overview">
+                    <div style={{ display: 'flex', margin: '0em 1.5em' }}>
+                        <h4 style={{ marginRight: '9em' }}>Overview</h4>
+                        <MdAddCircleOutline style={{ marginTop: '.9em', fontSize: '25px', color: '#454545' }} />
+                    </div>
+                    <div style={{ marginLeft: '1.3em' }}>
+                        <div className="in4-taskovr">
+                            <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
+                            <p>Available collector</p>
+                            <h2 style={{ marginLeft: '-3.3em'}}>69/122</h2>
+                        </div>
+                        <div className="in4-taskovr">
+                            <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
+                            <p>Available janitor</p>
+                            <h2 style={{ marginLeft: '-3.8em' }}>121/232</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div className="in4-content">
+                <div className="in4-header">
+                    <div style={{float:'left'}}>
+                        <p>MCP INFORMATION</p>
+                    </div>
+                    <div style={{float:'right'}}>
+                        <div className="in4-headerstuff">
+                            <button className="in4-addtaskbtn">
+                                <FaPlus style={{fontSize:'15px', color:'white', float:'left'}}/>
+                                <p style={{fontSize:'15px', color:'white', float:'left', marginTop:'0em'}}>Add task</p>
+                            </button>                            
+                            <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
+                            <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
+                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="in4-main">
+                    <MCPList/>
+                </div>
+
+            </div>
+        </div>
+    );
 }
-export default VehicleList;
+export default MCP;
+
