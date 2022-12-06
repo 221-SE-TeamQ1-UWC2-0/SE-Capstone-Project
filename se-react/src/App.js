@@ -5,11 +5,13 @@ import Collector from './component/staff-info/collector-info';
 import Edit from './component/BO-Edit/Edit';
 import LoginView from './component/authenticate/login';
 import RegisterView from './component/authenticate/register';
-import Mapbox from './component/map/map';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utils/privateRoute';
 import { AuthProvider } from './context/AuthContext';
-import Task from './component/staff-info/addtask';
+import Addtask from './component/staff-info/addtask';
+import Vehicle from './component/vehicle/vehicle-info'
+import MCP from './component/mcps/mcp-info'
+import Mapbox from './component/map/map'
 
 function App() {
   // if (true) return <Task />
@@ -23,8 +25,11 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/janitor-info' element={<Janitor />} />
-            <Route path='/task' element={<Task />} />
+            <Route path='/addtask' element={<Addtask />} />
+            <Route path='/vehicle-info' element={<Vehicle />} />
+            <Route path='/mcp-info' element={<MCP />} />
             <Route path='/collector-info' element={<Collector />} />
+
             <Route path='/edit' element={<Edit />} />
             <Route path='/map' element={<Mapbox />} />
           </Route>

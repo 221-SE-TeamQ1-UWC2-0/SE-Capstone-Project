@@ -79,12 +79,12 @@ function Edit(){
                     <SideBarItem
                         Item={RiTruckLine}
                         page="Vehicle"
-                        href="/"
+                        href="/vehicle-info"
                     />
                     <SideBarItem
                         Item={MdOutlineAddLocation}
                         page="MCP"
-                        href="/"
+                        href="/mcp-info"
                     />
                 </div>
             </div>

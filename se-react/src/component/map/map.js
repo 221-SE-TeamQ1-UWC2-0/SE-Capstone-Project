@@ -7,6 +7,7 @@ import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 import "./map.css"
 import geojson from "./MCP.json";
+import axios from "axios"
 
 
 // Grab the access token from your Mapbox account
@@ -35,7 +36,27 @@ const Map = () => {
       center: [106.68926, 10.7489933 ],
       zoom: 12.5,
     })
-    
+
+    //Get latlong when clicking on map
+    var marker = new mapboxgl.Marker();
+    function add_marker (event) {
+      var coordinates = event.lngLat;
+      console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+      marker.setLngLat(coordinates).addTo(map);
+      axios({
+        url: 'http://localhost:8000/api/mcp/',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          lat: coordinates.lat,
+          long: coordinates.lng,
+          capacity: Math.floor(Math.random()*101),
+        }
+      }).then(res => console.log(res.data)).catch(err => console.log(err))
+    }
+    map.on('click', add_marker);
 
     //Adding marker 
     /*const marker1 = new mapboxgl.Marker()
@@ -57,6 +78,7 @@ const Map = () => {
       )
       .addTo(map);
     }
+    
 
 
     // start and end point

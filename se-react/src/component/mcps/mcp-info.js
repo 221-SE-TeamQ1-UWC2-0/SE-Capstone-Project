@@ -1,7 +1,6 @@
-import "./info.css";
 import React, { useState, Component, useEffect } from "react";
-import JAList from "./JAList";
-
+import MCPList from "./mcpList.js";
+import './mcp.css'
 
 import {
     MdOutlineMap,
@@ -10,9 +9,9 @@ import {
     MdNotifications,
     MdInfo,
     MdOutlineAddLocation,
-} from "react-icons/md";
+  } from "react-icons/md";
 
-import {
+  import {
     RiUser6Fill,
     RiLoader2Fill,
     RiTimeLine,
@@ -20,26 +19,26 @@ import {
     RiUserLine,
     RiUserLocationLine,
     RiTruckLine,
-} from "react-icons/ri";
+  } from "react-icons/ri";
 
-import {
+  import {
     FaUserCircle,
     FaPlus,
-} from "react-icons/fa";
-/*-----------------------*/
+  } from "react-icons/fa";
+  /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
     return (
-        <a className="in4-sidebar_link" href={href}>
-            <div className="in4-sidebar_item">
-                {<Item className="in4-sidebar_img" />}
-                <h3>
-                    {page}
-                </h3>
-            </div>
-        </a>
+      <a className="in4-sidebar_link" href={href}>
+        <div className="in4-sidebar_item">
+          {<Item className="in4-sidebar_img" />}
+          <h3>
+            {page}
+          </h3>
+        </div>
+      </a>
     );
-};
+  };
 const Logo = () => {
     return (
         <div className="in4-logo">
@@ -49,13 +48,13 @@ const Logo = () => {
 };
 
 
-function Janitor() {
-
-    /*Return function*/
+function MCP(){
+    
+    /*Return function*/    
     return (
         <div className="in4-container">
             <div className="in4-sidebar">
-                <div className="in4-opt">
+            <div className="in4-opt">
                     <a href="/dashboard"><div style={{ display: "flex", alignItems: "center", marginBottom: "0em" }}>
                         <Logo />
                         <div className="db-Logoname">
@@ -104,7 +103,7 @@ function Janitor() {
                         <div className="in4-taskovr">
                             <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Available collector</p>
-                            <h2 style={{ marginLeft: '-3.3em' }}>69/122</h2>
+                            <h2 style={{ marginLeft: '-3.3em'}}>69/122</h2>
                         </div>
                         <div className="in4-taskovr">
                             <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
@@ -114,30 +113,31 @@ function Janitor() {
                     </div>
                 </div>
             </div>
-
+            
             <div className="in4-content">
                 <div className="in4-header">
-                    <div style={{ float: 'left' }}>
-                        <p>JANITOR INFORMATION</p>
+                    <div style={{float:'left'}}>
+                        <p>MCP INFORMATION</p>
                     </div>
-                    <div style={{ float: 'right' }}>
+                    <div style={{float:'right'}}>
                         <div className="in4-headerstuff">
                             <button className="in4-addtaskbtn">
-                                <FaPlus style={{ fontSize: '15px', color: 'white', float: 'left' }} />
-                                <p style={{ fontSize: '15px', color: 'white', float: 'left', marginTop: '0em' }}>Add task</p>
-                            </button>
-                            <MdInfo style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
-                            <MdNotifications style={{ margin: '.25em .25em', fontSize: '25px', color: '#454545' }} />
-                            <FaUserCircle style={{ margin: '.1em .25em', fontSize: '30px', color: '#acacac' }} />
+                                <FaPlus style={{fontSize:'15px', color:'white', float:'left'}}/>
+                                <p style={{fontSize:'15px', color:'white', float:'left', marginTop:'0em'}}>Add task</p>
+                            </button>                            
+                            <MdInfo style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
+                            <MdNotifications style={{margin:'.25em .25em',fontSize:'25px', color:'#454545'}}/>
+                            <FaUserCircle style={{margin:'.1em .25em',fontSize:'30px', color:'#acacac'}}/>
                         </div>
                     </div>
                 </div>
                 <div className="in4-main">
-                    <JAList />
+                    <MCPList/>
                 </div>
 
             </div>
         </div>
     );
 }
-export default Janitor;
+export default MCP;
+
