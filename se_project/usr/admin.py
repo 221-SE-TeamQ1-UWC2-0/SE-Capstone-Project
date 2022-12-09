@@ -13,7 +13,7 @@ class UWCUserAdmin(UserAdmin):
     list_display = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role', 'date_joined']
     list_filter = ['staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role', 'date_joined']
     fieldsets = (
-        (None, {'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role')}),
+        (None, {'fields': ('staff_id', 'fullname', 'date_of_birth', 'gender', 'phone_number', 'email', 'residential_id', 'role', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_superuser', 'is_active', 'user_permissions')})
     )
     add_fieldsets = (

@@ -28,6 +28,8 @@ import {
 
 import { FaUserCircle, FaPlus } from 'react-icons/fa';
 import axios from 'axios';
+import { useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
 /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
@@ -109,6 +111,9 @@ function Dashboard() {
   }, []);
   //----------------------------------------------------------//
 
+  //Context---------------------------------------------------//
+  const {logoutUser, User} = useContext(AuthContext)
+  console.log(User)
   //Task-----------------------------------------------------//
   const [task, setTask] = useState([]);
   /*Checklist*/
@@ -225,6 +230,9 @@ function Dashboard() {
               <p>Available janitor</p>
               <h2 style={{ marginLeft: '-3.8em' }}>121/232</h2>
             </div>
+            <h4>
+              Welcome, <strong>{User.user_id.toUpperCase()}</strong>
+            </h4>
           </div>
         </div>
       </div>
@@ -236,7 +244,7 @@ function Dashboard() {
           </div>
           <div style={{ float: 'right' }}>
             <div className='db-headerstuff'>
-            <a href='/edit'>
+              <a href='/edit'>
                 <button className='db-addtaskbtn'>
                   <FaPlus
                     style={{ fontSize: '15px', color: 'white', float: 'left' }}
@@ -301,13 +309,17 @@ function Dashboard() {
                   color: '#454545',
                 }}
               />
-              <a href='/login'><FaUserCircle
-                style={{
-                  margin: '.1em .25em',
-                  fontSize: '30px',
-                  color: '#acacac',
-                }}
-              /></a>
+              <div onClick={logoutUser}>
+                <a href>
+                  <FaUserCircle
+                    style={{
+                      margin: '.1em .25em',
+                      fontSize: '30px',
+                      color: '#acacac',
+                    }}
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
