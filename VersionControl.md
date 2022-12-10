@@ -204,7 +204,7 @@ Duong Ngoc Quang Huy
    </td>
    <td>08/11/2022
    </td>
-   <td>In progress
+   <td>Approved and completed
    </td>
   </tr>
   <tr>
