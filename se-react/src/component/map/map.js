@@ -1,56 +1,54 @@
-import React, { useRef, useEffect, useState } from "react"
-import ReactDOM from "react-dom"
-import mapboxgl from "mapbox-gl"
+import React, { useRef, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import mapboxgl from 'mapbox-gl';
 // import the mapbox styles
 // alternatively can use a link tag in the head of public/index.html
 // see https://docs.mapbox.com/mapbox-gl-js/api/
-import "mapbox-gl/dist/mapbox-gl.css"
-import "./map.css"
-import geojson from "./MCP.json";
-import axios from "axios"
-import MCPList from "../mcps/mcpList"
-import {
-  MdHomeFilled
-} from "react-icons/md";
+import 'mapbox-gl/dist/mapbox-gl.css';
+import './map.css';
+import geojson from './MCP.json';
+import axios from 'axios';
+import MCPList from '../mcps/mcpList';
+import { MdHomeFilled } from 'react-icons/md';
 
 // Grab the access token from your Mapbox account
 // I typically like to store sensitive things like this
 // in a .env file
-mapboxgl.accessToken ="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA";
-
-
+mapboxgl.accessToken =
+  'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
 const Map = () => {
-  const mapContainer = useRef()
-  const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
+  const mapContainer = useRef();
+  const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
   const [listMCP, getMCPList] = useState([]);
-  const [vehicleList, getVehicleList] = useState([]) ;
+  const [vehicleList, getVehicleList] = useState([]);
   /*const [start, setstart] = useState([106.65815149483268, 10.770948414755182])
   const[coords , setEndPoint] = useState([ 106.6840721427908, 10.779540553081702])*/
-  const startPointRef = useRef()
-  const endPointRef = useRef()
+  const startPointRef = useRef();
+  const endPointRef = useRef();
   useEffect(() => {
-      fetch('http://127.0.0.1:8000/api/vehicle/')
-           .then(response => response.json())
-           .then(result => getVehicleList(result))
-           .catch(error => console.log(error))
-  }, [vehicleList.length])
-  
+    fetch('http://127.0.0.1:8000/api/vehicle/')
+      .then((response) => response.json())
+      .then((result) => getVehicleList(result))
+      .catch((error) => console.log(error));
+  }, [vehicleList.length]);
+
   useEffect(() => {
-      fetch('http://127.0.0.1:8000/api/mcp/')
-          .then(response => response.json())
-          .then(result => getMCPList(result))
-          .catch(error => console.log(error))
-  }, [listMCP.length])
-  
-  var viewVehicleList = []
-  for (let i = 0; i < vehicleList.length; i++){
+    fetch('http://127.0.0.1:8000/api/mcp/')
+      .then((response) => response.json())
+      .then((result) => getMCPList(result))
+      .catch((error) => console.log(error));
+  }, [listMCP.length]);
+
+  var viewVehicleList = [];
+  for (let i = 0; i < vehicleList.length; i++) {
     viewVehicleList.push(
-      <option value="vehicle{vehicleList[i].id}">Vehicle {vehicleList[i].id}</option>
-    )
+      <option value='vehicle{vehicleList[i].id}'>
+        Vehicle {vehicleList[i].id}
+      </option>,
+    );
   }
 
-  
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
   // is only rendered once
@@ -60,57 +58,52 @@ const Map = () => {
     // https://docs.mapbox.com/mapbox-gl-js/api/map/
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/outdoors-v11",
-      center: [106.68926, 10.7489933 ],
+      style: 'mapbox://styles/mapbox/outdoors-v11',
+      center: [106.68926, 10.7489933],
       zoom: 12.5,
-    })
-    
-    
-    function viewMCPList(result){
+    });
+
+    function viewMCPList(result) {
       for (let i = 0; i < result.length; i++) {
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el)
-        .setLngLat([result[i].long, result[i].lat])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(
-              `<h3>MCP${result[i].id}</h3>
+          .setLngLat([result[i].long, result[i].lat])
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                `<h3>MCP${result[i].id}</h3>
                <p>Capacity: ${result[i].capacity}</p>
                <p>Latitude: ${result[i].lat}</p>
                <p>Longtitude: ${result[i].long}</p>
-               `
-            )
-        )
-        .addTo(map);
+               `,
+              ),
+          )
+          .addTo(map);
       }
     }
-    //Adding marker 
+    //Adding marker
     /*const marker1 = new mapboxgl.Marker()
     .setLngLat([106.65815149483268, 10.770948414755182])
     .addTo(map);*/
 
- 
-    
-
-    async function getMCPs(){
-        let response = await axios({
-            method: 'GET',
-            url: 'http://127.0.0.1:8000/api/mcp/'
-        }).then((response) => {
-            viewMCPList(response.data);
-            // return response.data;
-        });
-    } 
+    async function getMCPs() {
+      let response = await axios({
+        method: 'GET',
+        url: 'http://127.0.0.1:8000/api/mcp/',
+      }).then((response) => {
+        viewMCPList(response.data);
+        // return response.data;
+      });
+    }
     getMCPs();
-    
+
     // start and end point
     // var start = [106.65815149483268, 10.770948414755182];  // Start point - GET from database
     const point = [106.6703210895497, 10.755718794189761];
     // var coords = [ 106.6840721427908, 10.779540553081702 ]; // End point  - GET from database
-
 
     // only want to work with the map after it has fully loaded
     // if you try to add sources and layers before the map has loaded
@@ -118,15 +111,13 @@ const Map = () => {
 
     // create a function to make a directions request
 
-
-
     async function getRoute(end) {
       // make a directions request using driving profile
       // an arbitrary start will always be the same
       // only the end or destination will change
       const query = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
-        { method: 'GET' }
+        { method: 'GET' },
       );
       const json = await query.json();
       const data = json.routes[0];
@@ -136,8 +127,8 @@ const Map = () => {
         properties: {},
         geometry: {
           type: 'LineString',
-          coordinates: route
-        }
+          coordinates: route,
+        },
       };
       // if the route already exists on the map, we'll reset it using setData
       if (map.getSource('route')) {
@@ -150,17 +141,17 @@ const Map = () => {
           type: 'line',
           source: {
             type: 'geojson',
-            data: geojson
+            data: geojson,
           },
           layout: {
             'line-join': 'round',
-            'line-cap': 'round'
+            'line-cap': 'round',
           },
           paint: {
             'line-color': '#3887be',
             'line-width': 5,
-            'line-opacity': 0.75
-          }
+            'line-opacity': 0.75,
+          },
         });
       }
       // add turn instructions here at the end
@@ -172,13 +163,34 @@ const Map = () => {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       }
       instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-        data.duration / 60
+        data.duration / 60,
       )} min </strong></p><ol>${tripInstructions}</ol>`;
     }
 
-
-    var start = [parseFloat(localStorage.getItem('start').split(',')[0]),parseFloat(localStorage.getItem('start').split(',')[1])];
-    var coords = [ parseFloat(localStorage.getItem('end').split(',')[0]), parseFloat(localStorage.getItem('end').split(',')[1])];
+    var start = [
+      parseFloat(
+        localStorage.getItem('start')
+          ? localStorage.getItem('start').split(',')[0]
+          : 0,
+      ),
+      parseFloat(
+        localStorage.getItem('start')
+          ? localStorage.getItem('start').split(',')[1]
+          : 0,
+      ),
+    ];
+    var coords = [
+      parseFloat(
+        localStorage.getItem('end')
+          ? localStorage.getItem('end').split(',')[0]
+          : 0,
+      ),
+      parseFloat(
+        localStorage.getItem('end')
+          ? localStorage.getItem('end').split(',')[1]
+          : 0,
+      ),
+    ];
     /*Display at the same time when the map is rendered*/
     map.on('load', () => {
       // make an initial directions request that
@@ -199,19 +211,17 @@ const Map = () => {
                 properties: {},
                 geometry: {
                   type: 'Point',
-                  coordinates: start
-                }
-              }
-            ]
-          }
+                  coordinates: start,
+                },
+              },
+            ],
+          },
         },
         paint: {
           'circle-radius': 10,
-          'circle-color': '#3887be'
-        }
+          'circle-color': '#3887be',
+        },
       });
-
-      
 
       // Display end point to the map
       map.addLayer({
@@ -227,22 +237,21 @@ const Map = () => {
                 properties: {},
                 geometry: {
                   type: 'Point',
-                  coordinates: coords
-                }
-              }
-            ]
-          }
+                  coordinates: coords,
+                },
+              },
+            ],
+          },
         },
         paint: {
           'circle-radius': 10,
-          'circle-color': '#f30'
-        }
+          'circle-color': '#f30',
+        },
       });
       getRoute(coords);
 
       // this is where the code from the next step will go
     });
-        
 
     /**
      * Event handler for defining what happens when a user clicks on the map
@@ -263,10 +272,10 @@ const Map = () => {
             properties: {},
             geometry: {
               type: 'Point',
-              coordinates: coords
-            }
-          }
-        ]
+              coordinates: coords,
+            },
+          },
+        ],
       };
       if (map.getLayer('end')) {
         map.getSource('end').setData(end);
@@ -284,79 +293,120 @@ const Map = () => {
                   properties: {},
                   geometry: {
                     type: 'Point',
-                    coordinates: coords
-                  }
-                }
-              ]
-            }
+                    coordinates: coords,
+                  },
+                },
+              ],
+            },
           },
           paint: {
             'circle-radius': 10,
-            'circle-color': '#f30'
-          }
+            'circle-color': '#f30',
+          },
         });
       }
       getRoute(coords);
     });
 
     // cleanup function to remove map on unmount
-    return () => map.remove()
-  }, [])
+    return () => map.remove();
+  }, []);
 
   const [isShown, setIsShown] = useState(false);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     // 👇️ toggle shown state
-    setIsShown(current => !current);
+    setIsShown((current) => !current);
 
     // 👇️ or simply set it to true
     // setIsShown(true);
   };
-  function handleSubmitViewRoute(event){
-        event.preventDefault();
-        let start_coor = [];
-        let end_coor = [];
-        let start_id = startPointRef.current.value;
-        let end_id = endPointRef.current.value; 
-        console.log(start_id, end_id)
+  function handleSubmitViewRoute(event) {
+    event.preventDefault();
+    let start_coor = [];
+    let end_coor = [];
+    let start_id = startPointRef.current.value;
+    let end_id = endPointRef.current.value;
+    console.log(start_id, end_id);
 
-        for (let i = 0; i < listMCP.length; i++){
-            if (listMCP[i].id == Number(start_id)){
-              start_coor.push(listMCP[i].long, listMCP[i].lat);
-            }
-            
-            else if (listMCP[i].id == Number(end_id)){
-              end_coor.push(listMCP[i].long, listMCP[i].lat)
-            }
-        }
-        localStorage.setItem('start', start_coor);
-        localStorage.setItem('end',end_coor);
-  } 
+    for (let i = 0; i < listMCP.length; i++) {
+      if (listMCP[i].id == Number(start_id)) {
+        start_coor.push(listMCP[i].long, listMCP[i].lat);
+      } else if (listMCP[i].id == Number(end_id)) {
+        end_coor.push(listMCP[i].long, listMCP[i].lat);
+      }
+    }
+    localStorage.setItem('start', start_coor);
+    localStorage.setItem('end', end_coor);
+  }
 
-  return(
+  return (
     <div>
-      <div className="map-holder">
-        <form method='GET' className="pointing" action="" >
-          <a href="/"><MdHomeFilled style={{color:'white', marginLeft:'-2em',marginTop:'0em', fontSize:'30px'}}/></a>
-          <h5><b>Please input the start and end MCP</b></h5>
-          <input ref={startPointRef} id = "start_coor" type="text" placeholder="Start MCP..." name="start_point"></input>
-          <input ref={endPointRef} id = "end_coor" type="text" placeholder="End MCP.." name="end_point" ></input>
-          <a href="/map"><input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" onClick={handleSubmitViewRoute}/><button id="submitbtn">Enter</button></a>
-          <div id="onclick" onClick={handleClick}>Assign to</div>
-          {isShown && (
-          <div id="assign">
-             <select name="languages" id="lang" style={{color:"darkgray"}}>
-                {viewVehicleList} 
-            </select>
-            <input type="submit" name="signin" id="signin" className="assign btn-secondary" value="Assign" />
+      <div className='map-holder'>
+        <form method='GET' className='pointing' action=''>
+          <a href='/'>
+            <MdHomeFilled
+              style={{
+                color: 'white',
+                marginLeft: '-2em',
+                marginTop: '0em',
+                fontSize: '30px',
+              }}
+            />
+          </a>
+          <h5>
+            <b>Please input the start and end MCP</b>
+          </h5>
+          <input
+            ref={startPointRef}
+            id='start_coor'
+            type='text'
+            placeholder='Start MCP...'
+            name='start_point'
+          ></input>
+          <input
+            ref={endPointRef}
+            id='end_coor'
+            type='text'
+            placeholder='End MCP..'
+            name='end_point'
+          ></input>
+          <a href='/map'>
+            <input
+              type='submit'
+              name='signin'
+              id='signin'
+              className='submit btn-secondary'
+              value='Submit'
+              onClick={handleSubmitViewRoute}
+            />
+            <button id='submitbtn'>Enter</button>
+          </a>
+          <div id='onclick' onClick={handleClick}>
+            Assign to
           </div>
+          {isShown && (
+            <div id='assign'>
+              <select name='languages' id='lang' style={{ color: 'darkgray' }}>
+                {viewVehicleList}
+              </select>
+              <input
+                type='submit'
+                name='signin'
+                id='signin'
+                className='assign btn-secondary'
+                value='Assign'
+              />
+            </div>
           )}
         </form>
       </div>
-      <div id="instructions"></div> 
-      <div ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
-      <a href="/setMCPmap"><div id="setMCP">Set new MCP</div></a>
+      <div id='instructions'></div>
+      <div ref={mapContainer} style={{ width: '100%', height: '100vh' }} />
+      <a href='/setMCPmap'>
+        <div id='setMCP'>Set new MCP</div>
+      </a>
     </div>
   );
-}
-export default Map
+};
+export default Map;
