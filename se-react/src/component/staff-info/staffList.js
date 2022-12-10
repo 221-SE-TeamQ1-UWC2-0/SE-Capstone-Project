@@ -38,7 +38,6 @@ function StaffList() {
             .then(result => setUserList(result))
             .catch(error => console.log(error));
     }, [userList.length])
-    console.log(userList)
     return <div>
         <BootstrapTable
             bootstrap4

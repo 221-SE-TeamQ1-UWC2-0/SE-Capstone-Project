@@ -41,7 +41,6 @@ function RegisterView() {
     }
 
     registerUser(name, dob, resId, gender, password, role);
-    console.log(RegisterError)
   };
 
   /*Return function*/
