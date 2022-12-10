@@ -24,9 +24,9 @@ const Map = () => {
   const mapContainer = useRef()
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
   const [listMCP, getMCPList] = useState([]);
-  const [vehicleList, getVehicleList] = useState([]) 
-  const [start, setstart] = useState([106.65815149483268, 10.770948414755182])
-  const[coords , setEndPoint] = useState([ 106.6840721427908, 10.779540553081702])
+  const [vehicleList, getVehicleList] = useState([]) ;
+  /*const [start, setstart] = useState([106.65815149483268, 10.770948414755182])
+  const[coords , setEndPoint] = useState([ 106.6840721427908, 10.779540553081702])*/
   const startPointRef = useRef()
   const endPointRef = useRef()
   useEffect(() => {
@@ -177,7 +177,8 @@ const Map = () => {
     }
 
 
-
+    var start = [parseFloat(localStorage.getItem('start').split(',')[0]),parseFloat(localStorage.getItem('start').split(',')[1])];
+    var coords = [ parseFloat(localStorage.getItem('end').split(',')[0]), parseFloat(localStorage.getItem('end').split(',')[1])];
     /*Display at the same time when the map is rendered*/
     map.on('load', () => {
       // make an initial directions request that
@@ -328,10 +329,9 @@ const Map = () => {
               end_coor.push(listMCP[i].long, listMCP[i].lat)
             }
         }
-        console.log(start, coords)
-        setstart(start_coor);
-        setEndPoint(end_coor);
-    } 
+        localStorage.setItem('start', start_coor);
+        localStorage.setItem('end',end_coor);
+  } 
 
   return(
     <div>
@@ -341,7 +341,7 @@ const Map = () => {
           <h5><b>Please input the start and end MCP</b></h5>
           <input ref={startPointRef} id = "start_coor" type="text" placeholder="Start MCP..." name="start_point"></input>
           <input ref={endPointRef} id = "end_coor" type="text" placeholder="End MCP.." name="end_point" ></input>
-          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" onClick={handleSubmitViewRoute}/>
+          <a href="/map"><input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" onClick={handleSubmitViewRoute}/><button id="submitbtn">Enter</button></a>
           <div id="onclick" onClick={handleClick}>Assign to</div>
           {isShown && (
           <div id="assign">

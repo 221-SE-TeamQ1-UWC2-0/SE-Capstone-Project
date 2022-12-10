@@ -45,9 +45,16 @@
 .map-holder .submit{
   height:2em;
   width:8em;
-  margin-top:.2em;
   background-color: #acacac;
-  margin-right:3em;
+  margin-top:.2em;
+}
+.map-holder #submitbtn{
+  height:2em;
+  width:8em;
+  background-color: #acacac;
+  border:none;
+  border-radius: 5px;
+  margin-right:4em;
 }
 .map-holder #onclick{
   height:2em;
@@ -58,7 +65,7 @@
   padding-top:.2em;
   color:black;
   border-radius: 5px;
-  margin-top:.2em;
+  margin-top:0em;
   margin-left:-1em;
   margin-right:2em;
   cursor: pointer;
@@ -67,7 +74,7 @@
 #assign .assign{
   height:2em;
   width:8em;
-  margin-top:.2em;
+  margin-top:0em;
   background-color: #acacac;
 }
 
