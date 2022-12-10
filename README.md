@@ -5,9 +5,23 @@
 ## Technology
 
 ### Frontend
-
+You need to go to the folder se-react then running the following commands
+```{bash}
+npm install --force --save
+```
+```
+npm start
+```
 ### Backend
-
+```
+activate <env_name>
+```
+```
+cd se_project
+```
+```
+python manage.py runserver
+```
 ## Run locally
 You need to clone the repository then install all require packages in an environment. We recommend you use anaconda distribution
 ### Install Anaconda
