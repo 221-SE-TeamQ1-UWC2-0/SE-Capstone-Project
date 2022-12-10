@@ -12,6 +12,7 @@ import Addtask from './component/staff-info/addtask';
 import Vehicle from './component/vehicle/vehicle-info'
 import MCP from './component/mcps/mcp-info'
 import Mapbox from './component/map/map'
+import Mapping from './component/map/setMCPmap'
 
 function App() {
   // if (true) return <Task />
@@ -29,9 +30,9 @@ function App() {
             <Route path='/vehicle-info' element={<Vehicle />} />
             <Route path='/mcp-info' element={<MCP />} />
             <Route path='/collector-info' element={<Collector />} />
-
             <Route path='/edit' element={<Edit />} />
             <Route path='/map' element={<Mapbox />} />
+            <Route path='/setMCPmap' element={<Mapping />} />
           </Route>
         </Routes>
       </AuthProvider>

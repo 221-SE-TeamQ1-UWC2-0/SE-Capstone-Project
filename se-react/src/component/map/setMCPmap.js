@@ -9,9 +9,7 @@ import "./map.css"
 import geojson from "./MCP.json";
 import axios from "axios"
 import MCPList from "../mcps/mcpList"
-import {
-  MdHomeFilled
-} from "react-icons/md";
+
 
 // Grab the access token from your Mapbox account
 // I typically like to store sensitive things like this
@@ -20,7 +18,7 @@ mapboxgl.accessToken ="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbD
 
 
 
-const Map = () => {
+const Mapping = () => {
   const mapContainer = useRef()
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
   const [listMCP, getMCPList] = useState([]);
@@ -38,7 +36,7 @@ const Map = () => {
   var viewVehicleList = []
   for (let i = 0; i < vehicleList.length; i++){
     viewVehicleList.push(
-      <option value="vehicle{vehicleList[i].id}">Vehicle {vehicleList[i].id}</option>
+      <option value="vehicle{vehicleList[i].id}">Vehicle{vehicleList[i].id}</option>
     )
   }
   // this is where all of our map logic is going to live
@@ -56,6 +54,27 @@ const Map = () => {
     })
     
     
+    //Get latlong when clicking on map
+    var marker = new mapboxgl.Marker();
+    function add_marker (event) {
+      var coordinates = event.lngLat;
+      console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+      marker.setLngLat(coordinates).addTo(map);
+      axios({
+        url: 'http://localhost:8000/api/mcp/',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          lat: coordinates.lat,
+          long: coordinates.lng,
+          capacity: Math.floor(Math.random()*101),
+        }
+      }).then(res => console.log(res.data)).catch(err => console.log(err))
+    }
+    map.on('click', add_marker);
+
     function viewMCPList(result){
       for (let i = 0; i < result.length; i++) {
         // create a HTML element for each feature
@@ -303,28 +322,9 @@ const Map = () => {
   
   return(
     <div>
-      <div className="map-holder">
-        <form method='GET' className="pointing" action="" >
-          <a href="/"><MdHomeFilled style={{color:'white', marginLeft:'-2em',marginTop:'0em', fontSize:'30px'}}/></a>
-          <h5><b>Please input the start and end MCP</b></h5>
-          <input type="text" placeholder="Start MCP..." name="start"></input>
-          <input type="text" placeholder="End MCP.." name="end" ></input>
-          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit"/>
-          <div id="onclick" onClick={handleClick}>Assign to</div>
-          {isShown && (
-          <div id="assign">
-             <select name="languages" id="lang" style={{color:"darkgray"}}>
-                {viewVehicleList} 
-            </select>
-            <input type="submit" name="signin" id="signin" className="assign btn-secondary" value="Assign" />
-          </div>
-          )}
-        </form>
-      </div>
-      <div id="instructions"></div> 
       <div ref={mapContainer} style={{ width: "100%", height: "100vh" }} />
-      <a href="/setMCPmap"><div id="setMCP">Set new MCP</div></a>
+      <a href="/map"><div id="setMCP">Back to map</div></a>
     </div>
   );
 }
-export default Map
+export default Mapping
