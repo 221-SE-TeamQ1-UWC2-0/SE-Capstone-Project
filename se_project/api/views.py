@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserTokenObtainPairSerializer, UserSerializer, TaskSerializer, VehicleSerializer, MCPSerializer
+from .serializers import UserTokenObtainPairSerializer, UserSerializer, TaskSerializer, VehicleSerializer, MCPSerializer, RouteSerializer
 from usr.models import UWC_User
 from base.models import *
 
@@ -59,5 +59,5 @@ class MCPViewSet(ModelViewSet):
     serializer_class = MCPSerializer
 
 class RouteViewSet(ModelViewSet):
-    queryset= MCP.objects.all()
-    serializer_class = MCPSerializer
+    queryset= Route.objects.all()
+    serializer_class = RouteSerializer
