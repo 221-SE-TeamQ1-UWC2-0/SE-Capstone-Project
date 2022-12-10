@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserTokenObtainPairView, UserViewSet, TaskViewSet, CollectorViewSet, JanitorViewSet, MCPViewSet, VehicleViewSet
+from .views import UserTokenObtainPairView, UserViewSet, TaskViewSet, CollectorViewSet, JanitorViewSet, MCPViewSet, VehicleViewSet, RouteViewSet
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 
@@ -10,6 +10,7 @@ router.register('collector', CollectorViewSet)
 router.register('janitor', JanitorViewSet)
 router.register('mcp', MCPViewSet)
 router.register('vehicle', VehicleViewSet)
+router.register('route', RouteViewSet)
 
 urlpatterns = [
     path('token/', UserTokenObtainPairView.as_view(), name='token_obtain'),
