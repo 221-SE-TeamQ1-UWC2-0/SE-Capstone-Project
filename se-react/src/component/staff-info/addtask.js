@@ -26,6 +26,8 @@ import {
     FaFontAwesomeFlag,
 } from "react-icons/fa";
 import { useState } from 'react';
+import { useRef } from 'react';
+import axios from 'axios';
 /*-----------------------*/
 
 const SideBarItem = ({ Item, page, href }) => {
@@ -49,8 +51,41 @@ const Logo = () => {
 };
 
 function Task() {
-    const [staffID, setStaffID] = useState('')
-    const [body, setBody] = useState('')
+    const staffIDRef = useRef()
+    const bodyRef = useRef()
+    const [formError, setFormError] = useState('') 
+
+    const submitData = async (e) => {
+        e.preventDefault()
+        const staffID = staffIDRef.current.value
+        const body = bodyRef.current.value
+        if (staffID === '' || body == '') {
+            setFormError('No filed shall be left empty')
+            return
+        }
+        try {
+            const response = await axios({
+              url: 'http://localhost:8000/api/task/',
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              data: {
+                body: body,
+                assigned_to: staffID,
+              },
+            });
+            if (response.status == 201) {
+                alert('Success!')
+                setFormError('')
+            }
+            else setFormError('Something went wrong...')
+        }
+        catch(err) {
+            setFormError(err.response.data.assigned_to.join());
+        }
+    }
+
     return (
         <div className="in4-container">
             <div className="in4-sidebar">
@@ -134,17 +169,18 @@ function Task() {
                 <div className='task-add'>
                     <div className='in4-holder'>
                         <div className='in4-holder-left'>
-                            <form method='' action="" name="info" onSubmit={() => {}}>
+                            <form onSubmit={submitData}>
                                 <h5><FaFontAwesomeFlag /> General information</h5>
+                                {formError !== '' ? <div className='alert alert-danger'>{formError}</div>: null}
                                 <div className='Staffname'>
                                     <p><b>Staff ID</b></p>
-                                    <input type="text" placeholder="Staff1" name="assigned_to" value={staffID} onChange={(e) => setStaffID(() => e.target.value)}/>
+                                    <input type="text" placeholder="Staff1" name="assigned_to" ref={staffIDRef}/>
                                 </div>
                                 <div>
                                     <p><b>Description</b></p>
-                                    <input type="text" placeholder="Collect MCP 2" name="Body" style={{ height: '5em' }} value={body} onChange={(e) => setBody(() => e.target.value)}/>
+                                    <input type="text" placeholder="Collect MCP 2" name="Body" style={{ height: '5em' }} ref={bodyRef}/>
                                 </div>
-                                <button className='submit-task' type="button">Add Task</button>
+                                <button className='submit-task' type="button" onClick={submitData}>Add Task</button>
 
 
                             </form>
