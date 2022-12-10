@@ -75,6 +75,7 @@ async function Taskfetching() {
     return {
       date: value.body.split('|')[0],
       content: value.body.split('|')[1],
+      assigned_to: value.assigned_to,
     };
   });
   return result;
@@ -310,7 +311,7 @@ function Dashboard() {
                 }}
               />
               <div onClick={logoutUser}>
-                <a href>
+                <a>
                   <FaUserCircle
                     style={{
                       margin: '.1em .25em',
@@ -360,7 +361,7 @@ function Dashboard() {
                                 index !== 0 ? 'border-top border-dark' : ''
                               }
                             >
-                              {item.content}{' '}
+                              {item.assigned_to} - {item.content}
                             </div>
                           );
                         else return null;
