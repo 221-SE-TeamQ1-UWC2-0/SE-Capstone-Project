@@ -27,6 +27,13 @@ class UserViewSet(ModelViewSet):
             return Response(status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
 
+    def update(self, request, pk, *args, **kwargs):
+        user = get_object_or_404(UWC_User.objects.all(), staff_id=pk)
+        serializer = self.get_serializer(user, data=request.data, partial=False)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
     def destroy(self, request, pk):
         try:
             user = get_object_or_404(UWC_User.objects.all(), staff_id=pk)
