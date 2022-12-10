@@ -25,9 +25,10 @@ const Map = () => {
   const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
   const [listMCP, getMCPList] = useState([]);
   const [vehicleList, getVehicleList] = useState([]) 
-  const [mcpList, setMCP] = useState(null);
-
-
+  const [start, setstart] = useState([106.65815149483268, 10.770948414755182])
+  const[coords , setEndPoint] = useState([ 106.6840721427908, 10.779540553081702])
+  const startPointRef = useRef()
+  const endPointRef = useRef()
   useEffect(() => {
       fetch('http://127.0.0.1:8000/api/vehicle/')
            .then(response => response.json())
@@ -35,12 +36,21 @@ const Map = () => {
            .catch(error => console.log(error))
   }, [vehicleList.length])
   
+  useEffect(() => {
+      fetch('http://127.0.0.1:8000/api/mcp/')
+          .then(response => response.json())
+          .then(result => getMCPList(result))
+          .catch(error => console.log(error))
+  }, [listMCP.length])
+  
   var viewVehicleList = []
   for (let i = 0; i < vehicleList.length; i++){
     viewVehicleList.push(
       <option value="vehicle{vehicleList[i].id}">Vehicle {vehicleList[i].id}</option>
     )
   }
+
+  
   // this is where all of our map logic is going to live
   // adding the empty dependency array ensures that the map
   // is only rendered once
@@ -82,23 +92,24 @@ const Map = () => {
     .setLngLat([106.65815149483268, 10.770948414755182])
     .addTo(map);*/
 
+ 
+    
+
     async function getMCPs(){
         let response = await axios({
             method: 'GET',
             url: 'http://127.0.0.1:8000/api/mcp/'
         }).then((response) => {
             viewMCPList(response.data);
-            getMCPList(response.data)
-            // console.log(response.data) 
             // return response.data;
         });
     } 
     getMCPs();
     
     // start and end point
-    const start = [106.65815149483268, 10.770948414755182];  // Start point - GET from database
+    // var start = [106.65815149483268, 10.770948414755182];  // Start point - GET from database
     const point = [106.6703210895497, 10.755718794189761];
-    const coords = [ 106.6840721427908, 10.779540553081702 ]; // End point  - GET from database
+    // var coords = [ 106.6840721427908, 10.779540553081702 ]; // End point  - GET from database
 
 
     // only want to work with the map after it has fully loaded
@@ -300,16 +311,37 @@ const Map = () => {
     // 👇️ or simply set it to true
     // setIsShown(true);
   };
-  
+  function handleSubmitViewRoute(event){
+        event.preventDefault();
+        let start_coor = [];
+        let end_coor = [];
+        let start_id = startPointRef.current.value;
+        let end_id = endPointRef.current.value; 
+        console.log(start_id, end_id)
+
+        for (let i = 0; i < listMCP.length; i++){
+            if (listMCP[i].id == Number(start_id)){
+              start_coor.push(listMCP[i].long, listMCP[i].lat);
+            }
+            
+            else if (listMCP[i].id == Number(end_id)){
+              end_coor.push(listMCP[i].long, listMCP[i].lat)
+            }
+        }
+        console.log(start, coords)
+        setstart(start_coor);
+        setEndPoint(end_coor);
+    } 
+
   return(
     <div>
       <div className="map-holder">
         <form method='GET' className="pointing" action="" >
           <a href="/"><MdHomeFilled style={{color:'white', marginLeft:'-2em',marginTop:'0em', fontSize:'30px'}}/></a>
           <h5><b>Please input the start and end MCP</b></h5>
-          <input type="text" placeholder="Start MCP..." name="start"></input>
-          <input type="text" placeholder="End MCP.." name="end" ></input>
-          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit"/>
+          <input ref={startPointRef} id = "start_coor" type="text" placeholder="Start MCP..." name="start_point"></input>
+          <input ref={endPointRef} id = "end_coor" type="text" placeholder="End MCP.." name="end_point" ></input>
+          <input type="submit" name="signin" id="signin" className="submit btn-secondary" value="Submit" onClick={handleSubmitViewRoute}/>
           <div id="onclick" onClick={handleClick}>Assign to</div>
           {isShown && (
           <div id="assign">

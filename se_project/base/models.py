@@ -8,6 +8,7 @@ Create a pattern for ID of MCP, Vehicle, Route, Person
 UPDATED: REMOVE ID FIELD FROM MCP, VEHICLE AND ROUTE SINCE DJANGO ALREADY SUPPORT AUTO INCREMENTAL ID FIELD
 """
 class MCP(models.Model):
+
     capacity = models.FloatField()
     lat = models.FloatField(null=True)
     long = models.FloatField(null=True)

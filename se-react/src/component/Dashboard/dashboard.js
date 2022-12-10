@@ -217,7 +217,7 @@ function Dashboard() {
                 }}
               />
               <p>Available collector</p>
-              <h2 style={{ marginLeft: '-3.3em' }}>69/122</h2>
+              <h2 style={{ marginLeft: '-3.3em' }}>4/12</h2>
             </div>
             <div className='db-taskovr'>
               <RiUser6Fill
@@ -228,7 +228,7 @@ function Dashboard() {
                 }}
               />
               <p>Available janitor</p>
-              <h2 style={{ marginLeft: '-3.8em' }}>121/232</h2>
+              <h2 style={{ marginLeft: '-3.8em' }}>3/6</h2>
             </div>
             <h4>
               Welcome, <strong>{User.user_id.toUpperCase()}</strong>
