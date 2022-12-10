@@ -224,7 +224,7 @@ Nguyen Minh Hoang
    </td>
    <td>08/11/2022
    </td>
-   <td>In progress
+   <td>Approved and completed
    </td>
   </tr>
   <tr>
@@ -233,34 +233,29 @@ Nguyen Minh Hoang
    <td>Implement MVP1:
 <p>
 - Design a desktop-view central dashboard for Task Management for back-officers
-<p>
-- Design a mobile-view Task assignment for Janitors and Collectors.
    </td>
    <td>Nguyen Khanh Duy
    </td>
    <td>08/11/2022
    </td>
-   <td>In progress
+   <td>Approved and completed
    </td>
   </tr>
   <tr>
    <td>5.1
    </td>
-   <td>- Build the design in MVP1 with a programming
+   <td>- Build the design in MVP1 with a programming language.
 <p>
-language.
-<p>
-+ Front-end: 
++ Front-end: ReactJS
 <p>
 + Back-end: Django
-<p>
-(There will be 5.1.xx inserted in order to describe the progress of building the model)
+
    </td>
-   <td>Not yet
+   <td>Nguyen Minh Hoang + Tran Le Trung Chanh + Duong Ngoc Quang Huy + Nguyen Ho Quang
    </td>
-   <td>Not yet
+   <td>9/12/2022
    </td>
-   <td>Not Done
+   <td>Approved and completed
    </td>
   </tr>
   <tr>
@@ -268,11 +263,11 @@ language.
    </td>
    <td>Demonstrate the whole project from Task 1 to Task 5
    </td>
-   <td>Not yet
+   <td>Nguyen Khanh Duy
    </td>
-   <td>Not yet
+   <td>9/12/2022
    </td>
-   <td>Not Done
+   <td>Approved and completed
    </td>
   </tr>
 </table>
