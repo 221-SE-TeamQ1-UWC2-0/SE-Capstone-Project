@@ -103,12 +103,12 @@ function MCP(){
                         <div className="in4-taskovr">
                             <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Available collector</p>
-                            <h2 style={{ marginLeft: '-3.3em'}}>69/122</h2>
+                            <h2 style={{ marginLeft: '-3.3em'}}>4/12</h2>
                         </div>
                         <div className="in4-taskovr">
                             <RiUser6Fill style={{ margin: '.8em 1em 0em 1em', fontSize: '25px', color: '#454545' }} />
                             <p>Available janitor</p>
-                            <h2 style={{ marginLeft: '-3.8em' }}>121/232</h2>
+                            <h2 style={{ marginLeft: '-3.8em' }}>3/6</h2>
                         </div>
                     </div>
                 </div>
