@@ -1,6 +1,9 @@
 # **SE-Capstone-Project**
 
 ## Objective
+* Develop an improved version of UWC 1.0
+* Develop an advanced employee management system to bring together all relevant employee information
+* Develop an user friendly platform for each stakeholders to contact
 
 ## Technology
 
@@ -54,7 +57,7 @@ Running the application on your local.
 python manage.py runserver
 ```
 
-## **IMPORTTANT** 
+## **IMPORTANT** 
 Whenever you install packages in order to implement the functions, you need to state that information of packages installed in the **requirements.txt** file by running the following command 
 
 ```
